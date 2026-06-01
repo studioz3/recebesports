@@ -40,25 +40,58 @@
       <!-- Progresso -->
       <div class="org-steps">
         <div class="org-step done">
-          <div class="org-dot"></div>
+          <div class="org-dot" data-step="1"></div>
           <div class="org-label">Registro</div>
         </div>
         <div class="org-step done">
-          <div class="org-dot"></div>
+          <div class="org-dot" data-step="2"></div>
           <div class="org-label">Sua Empresa</div>
         </div>
         <div class="org-step active">
-          <div class="org-dot"></div>
+          <div class="org-dot" data-step="3"></div>
           <div class="org-label">Cadastro</div>
         </div>
         <div class="org-step">
-          <div class="org-dot"></div>
+          <div class="org-dot" data-step="4"></div>
           <div class="org-label">Concluído</div>
         </div>
       </div>
 
       <div class="org-card">
         <form id="orgCadastroForm" onsubmit="return finalizarCadastro(event)">
+
+          <!-- Documento oficial com foto -->
+          <h3 class="org-upload-title">Documento oficial com foto</h3>
+          <div class="org-upload-row">
+            <label class="org-dropzone" for="docOficial">
+              <input type="file" id="docOficial" accept="image/*,application/pdf" hidden onchange="orgPreviewFile(this, 'docPreview', 'Anexo do documento')">
+              <div class="org-dropzone-inner" id="docPreview">
+                <i class="fas fa-id-card"></i>
+                <span class="org-dropzone-text">Anexo do documento</span>
+                <span class="org-dropzone-hint">Clique para enviar ou arraste o arquivo</span>
+              </div>
+            </label>
+            <div class="org-upload-desc">
+              <p>Envie um documento com foto para validar sua identidade. Dê preferência à CNH (frente e verso). Se não tiver, envie o RG com CPF visível.</p>
+              <p class="org-upload-note"><i class="fas fa-lock"></i> Seus dados estão protegidos e essa verificação é feita apenas para garantir a segurança de todos na plataforma.</p>
+            </div>
+          </div>
+
+          <!-- Sua logomarca -->
+          <h3 class="org-upload-title">Sua logomarca</h3>
+          <div class="org-upload-row">
+            <label class="org-dropzone" for="logoEmpresa">
+              <input type="file" id="logoEmpresa" accept="image/*" hidden onchange="orgPreviewFile(this, 'logoPreview', 'Logomarca da empresa')">
+              <div class="org-dropzone-inner" id="logoPreview">
+                <i class="fas fa-image"></i>
+                <span class="org-dropzone-text">Logomarca da empresa</span>
+                <span class="org-dropzone-hint">Clique para enviar ou arraste o arquivo</span>
+              </div>
+            </label>
+            <div class="org-upload-desc">
+              <p>Seu perfil fica mais profissional e confiável com a identidade visual da sua empresa. Envie uma imagem de boa qualidade com até 400x200 pixels, para garantir uma ótima visualização da sua logomarca.</p>
+            </div>
+          </div>
 
           <div class="form-group">
             <label class="form-label">Site oficial (opcional)</label>
