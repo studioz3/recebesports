@@ -95,12 +95,11 @@
 .search-bar {
   position: relative;
   z-index: 3;
-  margin: -40px auto 0;
+  margin: 20px auto 0;
   max-width: 1150px;
   background: var(--color-white);
   border-radius: var(--radius-lg);
-  padding: 18px;
-  box-shadow: var(--shadow-lg);
+  padding: 0px;
   display: grid;
   grid-template-columns: 1.6fr 1fr 1fr 1fr auto auto;
   gap: 12px;
