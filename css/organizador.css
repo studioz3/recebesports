@@ -144,71 +144,125 @@
   min-height: 30vh;
 }
 
-/* Barra de progresso (4 etapas) */
-.org-steps {
+/* ==========================================================================
+   PROGRESS STEPPER — mesmo componente oficial usado em cadastro-1.html
+   ========================================================================== */
+.progress-stepper {
   display: flex;
-  max-width: 720px;
-  margin: 0 auto 42px;
-  padding-top: 4px;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0 auto 40px;
+  max-width: 680px;
+  gap: 0;
+  animation: fadeInDown 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.org-step {
-  flex: 1;
-  text-align: center;
-  position: relative;
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.org-dot {
-  width: 20px;
-  height: 20px;
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
+.step-circle {
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
-  background: #bdbdbd;
-  margin: 0 auto 12px;
+  background: #d4d4d4;
+  border: 3px solid #d4d4d4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  z-index: 2;
-  transition: var(--transition);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.org-step.active .org-dot,
-.org-step.done .org-dot {
-  background: var(--color-orange);
-}
-
-.org-step.active .org-dot {
-  box-shadow: 0 0 0 5px rgba(255, 102, 0, 0.2);
-}
-
-.org-step::before,
-.org-step::after {
-  content: '';
-  position: absolute;
-  top: 8px;
-  height: 3px;
-  width: 50%;
-  background: #bdbdbd;
-  z-index: 1;
-}
-
-.org-step::before { left: 0; }
-.org-step::after { right: 0; }
-.org-step:first-child::before { display: none; }
-.org-step:last-child::after { display: none; }
-
-.org-step.done::before,
-.org-step.done::after,
-.org-step.active::before {
-  background: var(--color-orange);
-}
-
-.org-label {
-  font-size: 13px;
+.step-number {
+  font-size: 18px;
   font-weight: 700;
-  color: var(--color-gray-text);
+  color: #808080;
+  transition: all 0.35s ease;
 }
 
-.org-step.active .org-label,
-.org-step.done .org-label {
-  color: var(--color-orange);
+.step-check {
+  position: absolute;
+  font-size: 16px;
+  color: white;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.step-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #808080;
+  text-align: center;
+  max-width: 100px;
+  line-height: 1.3;
+  transition: color 0.35s ease;
+}
+
+/* Estado: ativo */
+.progress-step[data-status="active"] .step-circle {
+  background: var(--color-orange);
+  border-color: var(--color-orange);
+  box-shadow: 0 0 0 5px rgba(255, 102, 0, 0.15);
+  transform: scale(1.1);
+}
+.progress-step[data-status="active"] .step-number { color: white; }
+.progress-step[data-status="active"] .step-label { color: var(--color-orange); }
+
+/* Estado: completo (done) */
+.progress-step[data-status="done"] .step-circle {
+  background: #10B981;
+  border-color: #10B981;
+}
+.progress-step[data-status="done"] .step-number {
+  opacity: 0;
+  transform: scale(0.5);
+}
+.progress-step[data-status="done"] .step-check {
+  opacity: 1;
+  transform: scale(1);
+}
+.progress-step[data-status="done"] .step-label { color: #10B981; }
+
+/* Conectores */
+.progress-connector {
+  flex: 1;
+  height: 3px;
+  background: #d4d4d4;
+  margin: 21px 14px 0;
+  position: relative;
+  transition: background 0.4s ease;
+}
+.progress-connector[data-status="done"] { background: #10B981; }
+.progress-connector[data-status="active"] {
+  background: linear-gradient(90deg, #10B981 0%, var(--color-orange) 100%);
+}
+
+@media (max-width: 600px) {
+  .progress-stepper { max-width: 100%; }
+  .step-circle { width: 40px; height: 40px; }
+  .step-number { font-size: 16px; }
+  .step-check { font-size: 14px; }
+  .step-label { font-size: 11px; max-width: 75px; }
+  .progress-connector { margin: 19px 10px 0; }
+}
+
+@media (max-width: 400px) {
+  .step-circle { width: 36px; height: 36px; }
+  .step-number { font-size: 14px; }
+  .step-check { font-size: 12px; }
+  .step-label { font-size: 10px; max-width: 60px; }
+  .progress-connector { margin: 17px 6px 0; }
 }
 
 /* --------------------------------------------------------------------------
@@ -453,8 +507,6 @@
   .org-hero-banner h1 { font-size: 26px; }
 
   .org-flow { padding: 34px 0 54px; }
-  .org-steps { margin-bottom: 30px; }
-  .org-label { font-size: 11px; }
   .org-card h2 { font-size: 19px; }
 
   .cnpj-row { flex-direction: column; }
@@ -464,4 +516,123 @@
 
   .org-acoes { flex-direction: column-reverse; }
   .org-acoes.single .btn { flex: 1; }
+}
+
+/* ==========================================================================
+   UPLOADS — Documento oficial + Logomarca (cadastro do organizador)
+   ========================================================================== */
+.org-upload-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-black);
+  margin: 4px 0 16px;
+}
+.org-upload-title:not(:first-child) {
+  margin-top: 36px;
+}
+
+.org-upload-row {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 28px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+/* Área de upload (dropzone) */
+.org-dropzone {
+  display: block;
+  background: var(--color-input-bg, #f4f4f4);
+  border: 2px dashed #cfcfcf;
+  border-radius: var(--radius, 10px);
+  min-height: 132px;
+  cursor: pointer;
+  transition: var(--transition);
+  overflow: hidden;
+}
+.org-dropzone:hover {
+  border-color: var(--color-orange);
+  background: rgba(255, 102, 0, 0.04);
+}
+
+.org-dropzone-inner {
+  height: 100%;
+  min-height: 132px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 18px;
+  text-align: center;
+}
+
+.org-dropzone-inner i {
+  font-size: 26px;
+  color: var(--color-orange);
+  margin-bottom: 2px;
+}
+
+.org-dropzone-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text, #444);
+}
+
+.org-dropzone-hint {
+  font-size: 12px;
+  color: var(--color-gray-text, #999);
+}
+
+/* Estado preenchido (após selecionar arquivo) */
+.org-dropzone.filled {
+  border-style: solid;
+  border-color: var(--color-orange);
+  background: rgba(255, 102, 0, 0.05);
+}
+.org-dropzone-inner img.org-thumb {
+  max-width: 100%;
+  max-height: 96px;
+  border-radius: 6px;
+  object-fit: contain;
+}
+.org-dropzone-inner .org-file-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-orange);
+  word-break: break-all;
+}
+.org-dropzone-inner .org-file-change {
+  font-size: 11px;
+  color: var(--color-gray-text, #999);
+}
+
+/* Texto explicativo ao lado */
+.org-upload-desc p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-gray-text, #777);
+  font-style: italic;
+  margin-bottom: 10px;
+}
+.org-upload-desc p:last-child { margin-bottom: 0; }
+
+.org-upload-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.org-upload-note i {
+  color: var(--color-orange);
+  font-style: normal;
+  margin-top: 2px;
+}
+
+/* Responsivo */
+@media (max-width: 720px) {
+  .org-upload-row {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .org-upload-desc p { font-size: 13px; }
 }

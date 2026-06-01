@@ -172,3 +172,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 })();
+
+// ==========================================================================
+// UPLOAD PREVIEW — cadastro do organizador (documento / logomarca)
+// Mostra miniatura (imagem) ou nome do arquivo (PDF) dentro da dropzone.
+// ==========================================================================
+function orgPreviewFile(input, previewId, defaultLabel) {
+  var preview = document.getElementById(previewId);
+  var dropzone = input.closest('.org-dropzone');
+  if (!preview) return;
+
+  var file = input.files && input.files[0];
+  if (!file) return;
+
+  dropzone.classList.add('filled');
+
+  if (file.type && file.type.indexOf('image') === 0) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      preview.innerHTML =
+        '<img src="' + e.target.result + '" alt="Pré-visualização" class="org-thumb">' +
+        '<span class="org-file-change">Clique para trocar</span>';
+    };
+    reader.readAsDataURL(file);
+  } else {
+    preview.innerHTML =
+      '<i class="fas fa-file-circle-check"></i>' +
+      '<span class="org-file-name">' + file.name + '</span>' +
+      '<span class="org-file-change">Clique para trocar</span>';
+  }
+}
