@@ -158,13 +158,13 @@ input, select, textarea {
 }
 
 .btn-nav-organizador {
-  background: var(--color-orange);
+  background: var(--color-cyan);
   color: var(--color-white);
   border: 1px solid var(--color-black);
 }
 
 .btn-nav-organizador:hover {
-  background: var(--color-cyan);
+  background: var(--color-orange);
   transform: translateY(-1px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
