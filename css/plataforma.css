@@ -1106,3 +1106,83 @@
   .hist-stats { grid-template-columns: 1fr; }
   .hist-card-stats { gap: 16px; }
 }
+
+/* ==========================================================================
+   MEUS DADOS — Resumo do Perfil de Saúde (card compacto)
+   ========================================================================== */
+.saude-resumo {
+  background: var(--color-white);
+  border: 1px solid #eee;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 22px 26px;
+}
+
+.saude-resumo-status {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.saude-resumo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(22, 163, 74, 0.12);
+  color: #16a34a;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 30px;
+}
+
+.saude-resumo-status small {
+  font-size: 12.5px;
+  color: var(--color-gray-text);
+}
+
+.saude-resumo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.saude-resumo-item .rotulo {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-gray-text);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 4px;
+}
+
+.saude-resumo-item strong {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.saude-resumo-actions {
+  display: flex;
+  justify-content: flex-start;
+}
+.saude-resumo-actions .btn {
+  padding: 11px 22px;
+  font-size: 14px;
+  gap: 8px;
+}
+
+@media (max-width: 760px) {
+  .saude-resumo-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .saude-resumo { padding: 18px; }
+  .saude-resumo-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .saude-resumo-actions .btn { width: 100%; }
+}
