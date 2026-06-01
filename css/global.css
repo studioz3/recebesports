@@ -160,7 +160,6 @@ input, select, textarea {
 .btn-nav-organizador {
   background: var(--color-cyan);
   color: var(--color-white);
-  border: 1px solid var(--color-black);
 }
 
 .btn-nav-organizador:hover {
