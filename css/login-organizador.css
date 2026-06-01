@@ -27,12 +27,12 @@ input{font-family:inherit;font-size:inherit;color:inherit}
 /* ============ LADO MARCA (esquerda) ============ */
 .brand{
   position:relative;overflow:hidden;
-  background:radial-gradient(120% 90% at 12% 8%,#284a70 0%,var(--ink-900) 46%,#002248 100%);
+  background:radial-gradient(120% 90% at 12% 8%,#0b1727 0%,var(--ink-900) 46%,#002248 100%);
   color:#fff;display:flex;flex-direction:column;padding:46px 54px;
 }
 .brand::before{ /* glow */
   content:"";position:absolute;width:520px;height:520px;right:-150px;top:-160px;
-  background:radial-gradient(circle,rgba(255,102,0,.34),transparent 66%);pointer-events:none;
+  background:radial-gradient(circle,#284a70,transparent 66%);pointer-events:none;
   animation:glowDrift 17s ease-in-out infinite alternate;
 }
 .brand::after{ /* fine grid */
