@@ -145,3 +145,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 })();
+
+// ==========================================================================
+// BOTÃO FLUTUANTE WHATSAPP — balão de suporte
+// Aparece aos 5s, fecha aos 15s (10s depois).
+// ==========================================================================
+(function waFloatBalloon() {
+  document.addEventListener('DOMContentLoaded', function () {
+    var balloon = document.getElementById('waBalloon');
+    var btn     = document.getElementById('waBtn');
+    if (!balloon || !btn) return;
+
+    var openTimer, closeTimer;
+
+    openTimer = setTimeout(function () {
+      balloon.classList.add('visible');
+      closeTimer = setTimeout(function () {
+        balloon.classList.remove('visible');
+      }, 10000);
+    }, 5000);
+
+    btn.addEventListener('click', function () {
+      clearTimeout(openTimer);
+      clearTimeout(closeTimer);
+      balloon.classList.remove('visible');
+    });
+  });
+})();
