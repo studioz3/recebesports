@@ -484,8 +484,7 @@ input, select, textarea {
    Mockup do celular FLUTUA pegando seções de cima e de baixo
    ========================================================================== */
 .servicos-atletas {
-  background: var(--color-dark) url('../assets/bg-atleta-home.jpg') center/cover no-repeat;
-  background-blend-mode: overlay;
+  background: url('../assets/bg-atleta-home.jpg') center/cover no-repeat;
   padding: 70px 0 70px;
   position: relative;
   overflow: visible; /* permite o celular sair da seção */
