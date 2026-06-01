@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Área do Organizador — RecebeSports</title>
+  <meta name="description" content="Acesso ao painel do organizador de eventos — RecebeSports / Recebe Digital.">
+  <link rel="stylesheet" href="css/login-organizador.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ================= LADO MARCA ================= -->
+  <aside class="brand">
+    <svg class="arcs" viewBox="0 0 620 620" fill="none">
+      <circle cx="310" cy="310" r="290" stroke="rgba(255,255,255,.06)" stroke-width="1.5"/>
+      <circle cx="310" cy="310" r="232" stroke="rgba(255,255,255,.05)" stroke-width="1.5"/>
+      <circle cx="310" cy="310" r="174" stroke="rgba(255,102,0,.16)" stroke-width="2" stroke-dasharray="3 9"/>
+      <circle cx="310" cy="310" r="116" stroke="rgba(255,255,255,.05)" stroke-width="1.5"/>
+      <path d="M310 78a232 232 0 0 1 164 68" stroke="#FF6600" stroke-width="3" stroke-linecap="round" opacity=".55"/>
+    </svg>
+
+    <div class="brand-fx" aria-hidden="true"></div>
+
+    <a href="index.html" class="logo">
+        <img src="assets/logo.svg" alt="Recebe Sports">
+    </a>
+
+    <div class="b-mid">
+      <h1 class="b-h1">Seus eventos, do primeiro quilômetro à <em>linha de chegada</em>.</h1>
+      <p class="b-sub">Acompanhe inscrições em tempo real,<br>controle o financeiro e gere
+        relatórios<br>completos, tudo em um só painel.</p>
+
+      <div class="b-feats">
+        <div class="b-feat"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span>Estatísticas e ocupação do evento ao vivo</div>
+        <div class="b-feat"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h15a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5"/></svg></span>Financeiro transparente, com repasses e PIX</div>
+        <div class="b-feat"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 17v-3M12 17v-6M16 17v-2"/></svg></span>Relatórios de inscrição e cronometragem</div>
+      </div>
+
+    </div>
+
+    <div class="b-foot">© RecebeSports · Recebe Digital · 2026</div>
+  </aside>
+
+  <!-- ================= LADO FORM ================= -->
+  <main class="form-side">
+    <div class="fs-top">
+      <a class="fs-back" href="index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Voltar ao site
+      </a>
+      <span class="fs-athlete">É atleta? <a href="login.html">Acessar área do atleta</a></span>
+    </div>
+
+    <div class="fs-core">
+      <h1 class="fs-h1">Acesse seu painel</h1>
+      <p class="fs-desc">Entre com suas credenciais de organizador para gerenciar
+        inscrições, eventos e relatórios.</p>
+
+      <form onsubmit="entrar(event)">
+        <div class="fld">
+          <label class="fld-lbl" for="CPF">CPF</label>
+          <div class="inp-w">
+            <svg class="lead" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <input class="inp" id="CPF" inputmode="numeric" placeholder="123.456.789-00" autocomplete="username">
+          </div>
+        </div>
+
+        <div class="fld">
+          <label class="fld-lbl" for="senha">Senha</label>
+          <div class="inp-w">
+            <svg class="lead" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2.5"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <input class="inp" id="senha" type="password" placeholder="Digite sua senha" autocomplete="current-password">
+            <button type="button" class="peek" id="peek" aria-label="Mostrar senha">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="row-aux">
+          <label class="remember" id="remember">
+            <span class="ckbox on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Manter conectado
+          </label>
+          <a class="link-mut" href="#">Esqueci minha senha</a>
+        </div>
+
+        <button class="btn-go" type="submit">
+          Acessar painel
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </form>
+
+      <div class="divider">OU</div>
+
+      <div class="signup">
+        <div class="signup-head">
+          <div class="si">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4M9 6h.01M15 6h.01M9 10h.01M15 10h.01"/></svg>
+          </div>
+          <div class="st"><b>Ainda não organiza eventos conosco?</b>Crie seu acesso de organizador para publicar e gerenciar seus eventos.</div>
+        </div>
+        <a class="signup-btn" href="organizador-criar-1.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="11" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+          Criar meu acesso organizador
+        </a>
+        <a class="signup-link" href="organizadores.html">Conhecer os serviços para organizadores</a>
+      </div>
+    </div>
+
+    <div class="fs-legal">
+      Ao acessar, você concorda com os <a href="termos-de-uso.html">Termos de Uso</a> e a <a href="politica-de-privacidade.html">Política de Privacidade</a>.
+    </div>
+  </main>
+</div>
+
+<script>
+/* mostrar / ocultar senha */
+document.getElementById('peek').addEventListener('click',function(){
+  var s=document.getElementById('senha');
+  s.type = s.type==='password' ? 'text' : 'password';
+});
+/* checkbox manter conectado */
+document.getElementById('remember').addEventListener('click',function(e){
+  e.preventDefault();
+  this.querySelector('.ckbox').classList.toggle('on');
+});
+/* acessar -> painel (protótipo: sem validação real) */
+function entrar(e){
+  e.preventDefault();
+  window.location.href='painel-organizador.html';
+}
+</script>
+</body>
+</html>

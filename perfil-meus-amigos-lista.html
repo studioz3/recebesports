@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meus amigos — Recebe Digital</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/plataforma.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="assets/logo.svg" alt="Recebe Sports">
+      </a>
+      <nav class="main-nav">
+        <a href="resultados.html">Resultados</a>
+        <a href="quem-somos.html">Quem somos</a>
+        <a href="organizadores.html">Para organizadores</a>
+      </nav>
+      <div class="nav-buttons">
+        <a href="login-organizador.html" class="btn-nav btn-nav-organizador">Área do Organizador</a>
+        <a href="login.html" class="btn-nav btn-nav-atleta">Área do Atleta</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="plataforma">
+    <div class="container">
+
+      <aside class="plat-sidebar">
+        <ul class="plat-menu">
+          <li><a href="#" onclick="event.preventDefault(); showToast('Carregando inscrições...', 'info')">Minhas Inscrições</a></li>
+          <li><a href="#" onclick="event.preventDefault(); showToast('Carregando calendário...', 'info')">Calendário de Eventos</a></li>
+          <li><a href="#" onclick="event.preventDefault(); showToast('Carregando histórico...', 'info')">Histórico de resultados</a></li>
+          <li><a href="perfil-meus-amigos-lista.html" class="active">Meus amigos</a></li>
+          <li><a href="perfil-meus-dados.html">Meus dados</a></li>
+          <li><a href="perfil-alterar-senha.html">Alterar Minha Senha</a></li>
+          <li><a href="perfil-privacidade.html">Privacidade</a></li>
+          <li><a href="perfil-saude.html">Perfil de Saúde</a></li>
+        </ul>
+      </aside>
+
+      <div class="plat-content">
+        <h1>Meus amigos</h1>
+
+        <div class="amigos-lista" id="listaAmigos"></div>
+
+        <div style="margin-top: 26px; text-align: right;">
+          <a href="perfil-meus-amigos-form.html" class="btn btn-primary">
+            <i class="fas fa-plus" style="margin-right:8px"></i> Adicionar amigo
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><img src="assets/icon-instagram.svg" alt=""></a>
+        <a href="#" aria-label="Whatsapp"><img src="assets/icon-whatsapp.svg" alt=""></a>
+        <a href="#" aria-label="Facebook"><img src="assets/icon-facebook.svg" alt=""></a>
+      </div>
+      <div class="footer-logo">
+        <img src="assets/logo.svg" alt="Recebe Sports">
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h4>Atletas</h4>
+          <ul>
+            <li><a href="login.html">Acessar</a></li>
+            <li><a href="cadastro-1.html">Crie sua conta</a></li>
+            <li><a href="resultados.html">Resultados</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Organizadores</h4>
+          <ul>
+            <li><a href="organizadores.html">Serviços Oferecidos</a></li>
+            <li><a href="organizador-criar-1.html">Crie sua Conta</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Institucional</h4>
+          <ul>
+            <li><a href="quem-somos.html">Quem Somos</a></li>
+            <li><a href="#">Políticas de Privacidade</a></li>
+            <li><a href="#">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2013 - 2026 - Recebe Digital - CNPJ: 12.345.678/0001-99 - Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/global.js"></script>
+  <script>
+    const amigos = [
+      {
+        nome: 'Luiz Carlos Santos',
+        apelido: 'Luiz',
+        cpf: '422.812.088-18',
+        nascimento: '11/01/1991',
+        email: 'luiz@minhacorrida.com.br',
+        celular: '(15)99644-4373',
+        equipe: 'Corrida'
+      },
+      {
+        nome: 'Luiz Carlos Santos',
+        apelido: 'Luiz',
+        cpf: '422.812.088-18',
+        nascimento: '11/01/1991',
+        email: 'luiz@minhacorrida.com.br',
+        celular: '(15)99644-4373',
+        equipe: 'Corrida'
+      }
+    ];
+
+    function renderAmigos() {
+      const lista = document.getElementById('listaAmigos');
+      lista.innerHTML = amigos.map((a, i) => `
+        <div class="amigo-card" data-idx="${i}">
+          <div class="info">
+            <div class="nome">${a.nome} (${a.apelido})</div>
+            <div class="info-line"><b>CPF:</b> ${a.cpf}</div>
+            <div class="info-line"><b>Data Nascimento:</b> ${a.nascimento}</div>
+            <div class="info-line"><b>E-mail:</b> ${a.email}</div>
+            <div class="info-line"><b>Celular:</b> ${a.celular}</div>
+            <div class="info-line"><b>Equipe:</b> ${a.equipe}</div>
+          </div>
+          <div class="acoes">
+            <a href="perfil-meus-amigos-form.html" class="btn btn-primary">Editar perfil</a>
+            <button class="btn btn-secondary" onclick="apagarAmigo(${i})">Apagar</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function apagarAmigo(i) {
+      if (confirm('Tem certeza que deseja remover este amigo?')) {
+        amigos.splice(i, 1);
+        renderAmigos();
+        showToast('Amigo removido (protótipo)', 'info');
+        if (amigos.length === 0) {
+          setTimeout(() => window.location = 'perfil-meus-amigos.html', 800);
+        }
+      }
+    }
+
+    renderAmigos();
+  </script>
+</body>
+</html>

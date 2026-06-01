@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>19º Mountain Bike União Europeia — RecebeSports</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/detalhe-evento.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="assets/logo.svg" alt="Recebe Sports">
+      </a>
+      <nav class="main-nav">
+        <a href="resultados.html">Resultados</a>
+        <a href="quem-somos.html">Quem somos</a>
+        <a href="organizadores.html">Para organizadores</a>
+      </nav>
+      <div class="nav-buttons">
+        <a href="login-organizador.html" class="btn-nav btn-nav-organizador">Área do Organizador</a>
+        <a href="login.html" class="btn-nav btn-nav-atleta">Área do Atleta</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- BANNER DO EVENTO -->
+  <section class="evento-banner">
+    <a href="inscricao-participante.html" aria-label="Inscreva-se neste evento">
+      <img src="assets/banner-evento.jpg" alt="5K Pela Paz no Trânsito — Inscreva-se">
+    </a>
+  </section>
+
+  <!-- CONTEÚDO -->
+  <section class="evento-content">
+    <div class="container">
+
+      <!-- Título e Meta (fora do grid de abas) -->
+      <div class="evento-header">
+        <h1 class="evento-titulo">19º Mountain Bike União Europeia<br>Sunset Edition Ultimate</h1>
+        <div class="evento-meta">
+          <span><i class="far fa-calendar"></i> 09/05/2026 <span style="color:var(--color-gray-text)">até</span> 28/05/2026</span>
+          <span><i class="fas fa-map-marker-alt"></i> Sorocaba - SP</span>
+          <span><i class="fas fa-medal"></i> Mountain Bike</span>
+        </div>
+      </div>
+
+      <!-- NAVEGAÇÃO INTERNA (rola junto, destaca a seção atual) -->
+      <nav class="evento-nav" id="eventoNav">
+        <div class="evento-nav-track">
+          <a href="#sec-sobre" class="evento-nav-link active">Sobre o Evento</a>
+          <a href="#sec-regulamento" class="evento-nav-link">Regulamento</a>
+          <a href="#sec-fale-conosco" class="evento-nav-link">Fale Conosco</a>
+          <a href="#sec-termo" class="evento-nav-link">Termo de Resp.</a>
+        </div>
+      </nav>
+
+      <!-- GRID: Conteúdo das abas + Sidebar -->
+      <div class="evento-grid">
+
+        <!-- ============================================================
+             COLUNA PRINCIPAL — Conteúdo das Abas
+             ============================================================ -->
+        <div class="evento-main">
+
+          <!-- SEÇÃO: SOBRE O EVENTO -->
+          <section class="evento-secao" id="sec-sobre">
+            <h2 class="secao-titulo">Sobre o Evento</h2>
+            
+            <div class="resumo-box">
+              <h3>Informações Gerais</h3>
+              <p>ENTREGA DE KITS CONFIRMADA DIAS 07 e 08 DE MAIO NO TERRAÇO SHOPPING DE 10:00 às 19:00</p>
+              <p>Para retirada de kits por terceiros é necessário apresentar documento e comprovante de inscrição do terceiro! Inscrições básicas 60+ e PCD só podem ser retiradas pelos próprios atletas!</p>
+              <p>Vem aí a 19ª Corrida da União Europeia!</p>
+              <p>No dia 9 de maio de 2026, às 17h, Brasília será palco de uma das provas mais tradicionais e charmosas do calendário esportivo. Prepare-se para correr ao som da energia europeia, celebrar a integração entre culturas e viver uma experiência única:</p>
+              <ul class="lista-destaque">
+                <li><i class="fas fa-check-circle"></i> Um percurso emocionante</li>
+                <li><i class="fas fa-check-circle"></i> Um pôr do sol inesquecível</li>
+                <li><i class="fas fa-check-circle"></i> Música ao vivo no pós-prova</li>
+                <li><i class="fas fa-check-circle"></i> Um clima de união, esporte e celebração</li>
+              </ul>
+              <p>A 19ª edição promete ser histórica, e você faz parte dessa história! Chame seus amigos, vista sua melhor energia e venha celebrar o esporte, a amizade e a conexão entre nações.</p>
+              <div class="evento-data-destaque">
+                <div><i class="far fa-calendar"></i> <strong>9 de maio de 2026</strong></div>
+                <div><i class="far fa-clock"></i> <strong>17h</strong></div>
+                <div><i class="fas fa-map-marker-alt"></i> <strong>Brasília - DF</strong></div>
+              </div>
+              <p class="tagline"><em>Corrida da União Europeia 2026 — Mais que uma corrida, um encontro de culturas.</em></p>
+            </div>
+
+            <h3>Modalidades</h3>
+            <div class="percursos">
+              <div class="percurso-item">
+                <span class="label"><i class="fas fa-biking"></i> 5 KM - ASSOCIADO</span>
+                <button class="ver-mapa" onclick="abrirModalPercurso('5km')">+ Informações</button>
+              </div>
+              <div class="percurso-item">
+                <span class="label"><i class="fas fa-biking"></i> 10 KM - ASSOCIADO</span>
+                <button class="ver-mapa" onclick="abrirModalPercurso('10km')">+ Informações</button>
+              </div>
+              <div class="percurso-item">
+                <span class="label"><i class="fas fa-biking"></i> 15 KM - ASSOCIADO</span>
+                <button class="ver-mapa" onclick="abrirModalPercurso('15km')">+ Informações</button>
+              </div>
+              <div class="percurso-item">
+                <span class="label"><i class="fas fa-biking"></i> 20 KM - ASSOCIADO</span>
+                <button class="ver-mapa" onclick="abrirModalPercurso('20km')">+ Informações</button>
+              </div>
+            </div>
+
+            <h3>Kit Atleta</h3>
+            <p>O atleta inscrito receberá o seguinte kit:</p>
+            <ul class="lista-kit">
+              <li><i class="fas fa-check"></i> Camiseta comemorativa dry-fit</li>
+              <li><i class="fas fa-check"></i> Chip de cronometragem descartável</li>
+              <li><i class="fas fa-check"></i> Número de peito personalizado</li>
+              <li><i class="fas fa-check"></i> Sacola do evento</li>
+            </ul>
+            <p><strong>A medalha de participação será entregue exclusivamente ao atleta que concluir a prova.</strong></p>
+
+            <div class="kit-retirada">
+              <h4><i class="fas fa-box-open"></i> Retirada do Kit</h4>
+              <p>Para retirada, será obrigatória a apresentação de:</p>
+              <ul>
+                <li>Documento oficial com foto</li>
+                <li>Comprovante de pagamento</li>
+                <li>Entrega de 1kg de alimento não perecível</li>
+              </ul>
+              <p class="aviso"><i class="fas fa-triangle-exclamation"></i> <strong>Não haverá entrega de kit no dia da prova.</strong></p>
+            </div>
+
+            <img src="assets/kit-evento.png" alt="Kit do evento" class="kit-img">
+
+            <h3>Descrição do Percurso</h3>
+            <div class="percurso-descricao">
+              <div class="percurso-etapa">
+                <div class="etapa-km">KM 0 - 5</div>
+                <div class="etapa-desc">
+                  <strong>Largada e Primeiro Trecho</strong>
+                  <p>Saída do Parque Carlos Alberto de Souza. Trecho plano e rápido pela Av. Principal com asfalto em bom estado. Ideal para ganhar ritmo.</p>
+                </div>
+              </div>
+
+              <div class="percurso-etapa">
+                <div class="etapa-km">KM 5 - 10</div>
+                <div class="etapa-desc">
+                  <strong>Subida Técnica</strong>
+                  <p>Entrada na trilha com elevação gradual. Terreno misto (terra batida e cascalho). Atenção aos pontos técnicos sinalizados.</p>
+                </div>
+              </div>
+
+              <div class="percurso-etapa">
+                <div class="etapa-km">KM 10 - 15</div>
+                <div class="etapa-desc">
+                  <strong>Descida e Retorno</strong>
+                  <p>Descida controlada com curvas fechadas. Mantenha atenção máxima. Retorno pelo mesmo trajeto com paisagem incrível do pôr do sol.</p>
+                </div>
+              </div>
+
+              <div class="percurso-etapa">
+                <div class="etapa-km">KM 15 - 20</div>
+                <div class="etapa-desc">
+                  <strong>Reta Final</strong>
+                  <p>Retorno ao parque. Trecho plano para recuperação. Chegada com estrutura completa de apoio e festa pós-prova.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mapa-pontos-apoio">
+              <h4><i class="fas fa-first-aid"></i> Pontos de Apoio</h4>
+              <ul>
+                <li><strong>KM 5:</strong> Hidratação (água e isotônico) + Apoio médico</li>
+                <li><strong>KM 10:</strong> Alimentação (frutas, barras energéticas) + Hidratação + Apoio médico</li>
+                <li><strong>KM 15:</strong> Hidratação (água e isotônico) + Apoio médico</li>
+                <li><strong>Chegada:</strong> Hidratação, alimentação completa, massagem e área de descanso</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- SEÇÃO: REGULAMENTO -->
+          <section class="evento-secao" id="sec-regulamento">
+            <h2 class="secao-titulo">Regulamento Oficial</h2>
+
+            <div class="regulamento-topo">
+              <p><strong>19º Mountain Bike União Europeia — Sunset Edition Ultimate</strong><br>
+              Data: 09 de maio de 2026 | Horário: 17h<br>
+              Local: Parque Carlos Alberto de Souza, Sorocaba - SP</p>
+              <a href="#" class="btn-download" onclick="event.preventDefault(); showToast('Fazendo download do regulamento em PDF...', 'info')">
+                <i class="fas fa-file-pdf"></i> Baixar PDF
+              </a>
+            </div>
+
+            <div class="accordion">
+                            <div class="accordion-item">
+                <button class="accordion-head" type="button" aria-expanded="false">
+                  <span>1. Disposições Gerais</span>
+                  <i class="fas fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-body" id="reg-1">
+                  <div class="accordion-body-inner">
+                    <p><strong>1.1.</strong> O 19º Mountain Bike União Europeia — Sunset Edition Ultimate é um evento esportivo organizado pela Corrida União Europeia, regido por este regulamento e pelas normas da Confederação Brasileira de Ciclismo (CBC).</p>
+                <p><strong>1.2.</strong> A prova terá largada única às 17h do dia 09/05/2026, no Parque Carlos Alberto de Souza, em Sorocaba-SP.</p>
+                <p><strong>1.3.</strong> Ao se inscrever, o participante declara estar ciente e de acordo com todas as cláusulas deste regulamento.</p>
+                <p><strong>1.4.</strong> A organização reserva-se o direito de alterar este regulamento a qualquer momento, mediante comunicação prévia aos inscritos.</p>
+                  </div>
+                </div>
+              </div>
+
+                            <div class="accordion-item">
+                <button class="accordion-head" type="button" aria-expanded="false">
+                  <span>2. Inscrições</span>
+                  <i class="fas fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-body" id="reg-2">
+                  <div class="accordion-body-inner">
+                    <p><strong>2.1.</strong> As inscrições serão realizadas exclusivamente pelo site www.recebesports.com.br no período de 01/02/2026 a 05/05/2026 ou até atingir o limite de 2.000 participantes.</p>
+                <p><strong>2.2.</strong> O valor da inscrição varia conforme o lote e a categoria escolhida. Valores disponíveis no site oficial.</p>
+                <p><strong>2.3.</strong> Após confirmação do pagamento, não haverá devolução ou transferência de valores em nenhuma hipótese.</p>
+                <p><strong>2.4.</strong> É permitida a transferência de inscrição para terceiros mediante pagamento de taxa administrativa de R$ 50,00, até 72h antes do evento.</p>
+                <p><strong>2.5.</strong> Não serão aceitas inscrições no dia da prova.</p>
+                  </div>
+                </div>
+              </div>
+
+                            <div class="accordion-item">
+                <button class="accordion-head" type="button" aria-expanded="false">
+                  <span>3. Categorias</span>
+                  <i class="fas fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-body" id="reg-3">
+                  <div class="accordion-body-inner">
+                    <p><strong>3.1.</strong> As categorias são divididas por distância e faixa etária:</p>
+                <ul>
+                  <li><strong>5 KM:</strong> Livre (a partir de 14 anos)</li>
+                  <li><strong>10 KM:</strong> Livre (a partir de 16 anos)</li>
+                  <li><strong>15 KM:</strong> Sub-30, 30-39, 40-49, 50-59, 60+</li>
+                  <li><strong>20 KM:</strong> Sub-30, 30-39, 40-49, 50-59, 60+</li>
+                </ul>
+                <p><strong>3.2.</strong> A idade considerada será a do participante na data do evento.</p>
+                <p><strong>3.3.</strong> Haverá premiação separada para categorias masculina e feminina.</p>
+                <p><strong>3.4.</strong> Atletas PCD terão categoria específica com premiação própria.</p>
+                  </div>
+                </div>
+              </div>
+
+                            <div class="accordion-item">
+                <button class="accordion-head" type="button" aria-expanded="false">
+                  <span>4. Percurso e Cronometragem</span>
+                  <i class="fas fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-body" id="reg-4">
+                  <div class="accordion-body-inner">
+                    <p><strong>4.1.</strong> O percurso está descrito na seção "Sobre o Evento" deste site e será devidamente sinalizado durante todo o trajeto.</p>
+                <p><strong>4.2.</strong> Haverá pontos de hidratação a cada 5 km e apoio médico em locais estratégicos.</p>
+                <p><strong>4.3.</strong> A cronometragem será eletrônica via chip descartável fornecido no kit do atleta.</p>
+                <p><strong>4.4.</strong> O chip deverá estar fixado na bicicleta conforme orientação da organização.</p>
+                <p><strong>4.5.</strong> O tempo limite para conclusão do percurso é de 4 horas para todas as categorias.</p>
+                <p><strong>4.6.</strong> Atletas que não concluírem no tempo estipulado não receberão classificação oficial.</p>
+                  </div>
+                </div>
+              </div>
+
+                            <div class="accordion-item">
+                <button class="accordion-head" type="button" aria-expanded="false">
+                  <span>5. Premiação</span>
+                  <i class="fas fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-body" id="reg-5">
+                  <div class="accordion-body-inner">
+                    <p><strong>5.1.</strong> Todos os participantes que concluírem a prova receberão medalha de participação.</p>
+                <p><strong>5.2.</strong> Haverá premiação em troféu para os 3 primeiros colocados de cada categoria (masculino e feminino).</p>
+                <p><strong>5.3.</strong> Premiação em dinheiro:</p>
+                <ul>
+                  <li>1º Lugar Geral Masculino: R$ 2.000,00</li>
+                  <li>2º Lugar Geral Masculino: R$ 1.000,00</li>
+                  <li>3º Lugar Geral Masculino: R$ 500,00</li>
+                  <li>1º Lugar Geral Feminino: R$ 2.000,00</li>
+                  <li>2º Lugar Geral Feminino: R$ 1.000,00</li>
+                  <li>3º Lugar Geral Feminino: R$ 500,00</li>
+                </ul>
+                <p><strong>5.4.</strong> A cerimônia de premiação ocorrerá 2 horas após o término da prova.</p>
+                <p><strong>5.5.</strong> Atletas premiados deverão apresentar documento oficial com foto para retirada.</p>
+                  </div>
+                </div>
+              </div>
+
+                            <div class="accordion-item">
+                <button class="accordion-head" type="button" aria-expanded="false">
+                  <span>6. Disposições Finais</span>
+                  <i class="fas fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-body" id="reg-6">
+                  <div class="accordion-body-inner">
+                    <p><strong>6.1.</strong> É obrigatório o uso de capacete durante todo o percurso. Atletas sem capacete serão desclassificados.</p>
+                <p><strong>6.2.</strong> Não é permitido o uso de fones de ouvido durante a prova.</p>
+                <p><strong>6.3.</strong> A organização não se responsabiliza por objetos perdidos ou roubados.</p>
+                <p><strong>6.4.</strong> Em caso de mau tempo ou força maior, a organização poderá cancelar ou adiar o evento sem devolução de valores.</p>
+                <p><strong>6.5.</strong> Imagens e vídeos captados durante o evento poderão ser utilizados pela organização para fins promocionais.</p>
+                <p><strong>6.6.</strong> Casos omissos serão resolvidos pela comissão organizadora.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SEÇÃO: FALE CONOSCO -->
+          <section class="evento-secao" id="sec-fale-conosco">
+            <h2 class="secao-titulo">Fale Conosco</h2>
+
+            <div class="contato-intro">
+              <p>Tem alguma dúvida sobre o evento? Preencha o formulário abaixo e nossa equipe responderá em até 24 horas. Você também pode entrar em contato pelos canais alternativos.</p>
+            </div>
+
+            <div class="contato-grid">
+              <form class="contato-form" onsubmit="enviarContato(event)">
+                <div class="form-group">
+                  <label class="form-label">Nome completo <span class="obrig">*</span></label>
+                  <input type="text" class="form-control" id="contatoNome" placeholder="Seu nome completo" required>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">E-mail <span class="obrig">*</span></label>
+                    <input type="email" class="form-control" id="contatoEmail" placeholder="seu@email.com" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Telefone</label>
+                    <input type="tel" class="form-control" id="contatoTel" placeholder="(00) 00000-0000">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Assunto <span class="obrig">*</span></label>
+                  <select class="form-control" id="contatoAssunto" required>
+                    <option value="">Selecione o assunto</option>
+                    <option value="inscricao">Dúvidas sobre inscrição</option>
+                    <option value="pagamento">Problema com pagamento</option>
+                    <option value="kit">Retirada de kit</option>
+                    <option value="percurso">Informações sobre o percurso</option>
+                    <option value="regulamento">Dúvidas sobre regulamento</option>
+                    <option value="outro">Outro assunto</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Mensagem <span class="obrig">*</span></label>
+                  <textarea class="form-control" id="contatoMsg" rows="6" placeholder="Descreva sua dúvida ou solicitação..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">
+                  <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                </button>
+              </form>
+
+              <div class="contato-canais">
+                <h4>Canais de Atendimento</h4>
+
+                <div class="canal-item">
+                  <div class="canal-icone whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                  </div>
+                  <div class="canal-info">
+                    <div class="canal-titulo">WhatsApp</div>
+                    <div class="canal-desc">(11) 99999-9999</div>
+                    <a href="#" onclick="event.preventDefault(); showToast('Abrindo WhatsApp...', 'info')" class="canal-link">Iniciar conversa →</a>
+                  </div>
+                </div>
+
+                <div class="canal-item">
+                  <div class="canal-icone email">
+                    <i class="fas fa-envelope"></i>
+                  </div>
+                  <div class="canal-info">
+                    <div class="canal-titulo">E-mail</div>
+                    <div class="canal-desc">contato@uniaoeuropeia.com.br</div>
+                    <a href="mailto:contato@uniaoeuropeia.com.br" class="canal-link">Enviar e-mail →</a>
+                  </div>
+                </div>
+
+                <div class="canal-item">
+                  <div class="canal-icone instagram">
+                    <i class="fab fa-instagram"></i>
+                  </div>
+                  <div class="canal-info">
+                    <div class="canal-titulo">Instagram</div>
+                    <div class="canal-desc">@corridauniaoeuropeia</div>
+                    <a href="#" onclick="event.preventDefault(); showToast('Abrindo Instagram...', 'info')" class="canal-link">Seguir perfil →</a>
+                  </div>
+                </div>
+
+                <div class="horario-atendimento">
+                  <i class="far fa-clock"></i>
+                  <div>
+                    <strong>Horário de atendimento:</strong><br>
+                    Segunda a Sexta: 9h às 18h<br>
+                    Sábado: 9h às 13h
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SEÇÃO: TERMO DE RESPONSABILIDADE -->
+          <section class="evento-secao" id="sec-termo">
+            <h2 class="secao-titulo">Termo de Responsabilidade</h2>
+
+            <div class="termo-topo">
+              <p><strong>Leia atentamente o Termo de Responsabilidade e Autorização de Uso de Imagem.</strong> Ao se inscrever no evento, você automaticamente declara ter lido e concordado com os termos abaixo.</p>
+              <a href="#" class="btn-download" onclick="event.preventDefault(); showToast('Fazendo download do termo em PDF...', 'info')">
+                <i class="fas fa-file-pdf"></i> Baixar PDF
+              </a>
+            </div>
+
+            <div class="termo-texto">
+              <h3>TERMO DE RESPONSABILIDADE E AUTORIZAÇÃO DE USO DE IMAGEM</h3>
+
+              <div class="accordion">
+              <div class="accordion-item">
+                <button class="accordion-head" type="button" aria-expanded="false">
+                  <span>1. DECLARAÇÃO DE SAÚDE E APTIDÃO FÍSICA</span>
+                  <i class="fas fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-body-inner">
+                    <p>Declaro, para todos os fins de direito, que:</p>
+              <ul>
+                <li>Estou em perfeitas condições de saúde física e mental para participar do 19º Mountain Bike União Europeia — Sunset Edition Ultimate;</li>
+                <li>Não possuo nenhuma condição médica que me impeça ou desaconselhe a prática de atividade física de alta intensidade;</li>
+                <li>Passei por avaliação médica recente e fui considerado(a) apto(a) para a prática de ciclismo;</li>
+                <li>Assumo total responsabilidade por minha condição física e pelos riscos inerentes à prática esportiva.</li>
+              </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <button class="accordion-head" type="button" aria-expanded="false">
+                  <span>2. ISENÇÃO DE RESPONSABILIDADE</span>
+                  <i class="fas fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-body-inner">
+                    <p>Declaro estar ciente de que:</p>
+              <ul>
+                <li>A prática de ciclismo envolve riscos à integridade física, incluindo, mas não se limitando a: quedas, colisões, lesões musculares, entorses, fraturas e, em casos extremos, risco de morte;</li>
+                <li>Isento total e completamente a organização do evento, seus patrocinadores, apoiadores, parceiros, equipe de apoio, funcionários e colaboradores de qualquer responsabilidade por danos, lesões, perdas ou prejuízos que eu possa sofrer antes, durante ou após o evento;</li>
+                <li>A organização não se responsabiliza por objetos pessoais perdidos, roubados ou danificados durante o evento;</li>
+                <li>Em caso de acidente ou mal súbito, autorizo a organização a prestar os primeiros socorros e/ou acionar serviços médicos de emergência, isentando-a de qualquer responsabilidade decorrente dessas ações.</li>
+              </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <button class="accordion-head" type="button" aria-expanded="false">
+                  <span>3. AUTORIZAÇÃO DE USO DE IMAGEM E VOZ</span>
+                  <i class="fas fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-body-inner">
+                    <p>Autorizo, de forma gratuita e irrevogável:</p>
+              <ul>
+                <li>O uso de minha imagem, voz e nome captados durante o evento (antes, durante e após a prova) para fins de divulgação, promoção e registro do evento;</li>
+                <li>A veiculação dessas imagens em qualquer meio de comunicação (redes sociais, site oficial, TV, jornais, revistas, materiais promocionais, etc.) sem limitação de tempo ou território;</li>
+                <li>O uso comercial dessas imagens pela organização e seus parceiros, sem que isso gere qualquer tipo de ônus ou direito a remuneração.</li>
+              </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <button class="accordion-head" type="button" aria-expanded="false">
+                  <span>4. REGULAMENTO E CONDIÇÕES GERAIS</span>
+                  <i class="fas fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-body-inner">
+                    <p>Declaro que:</p>
+              <ul>
+                <li>Li e concordo integralmente com o regulamento oficial do evento;</li>
+                <li>Comprometo-me a cumprir todas as regras estabelecidas pela organização;</li>
+                <li>Estou ciente de que o não cumprimento do regulamento poderá resultar em desclassificação sem direito a reembolso;</li>
+                <li>Compreendo que a organização reserva-se o direito de cancelar, adiar ou modificar o evento em caso de força maior, sem obrigatoriedade de reembolso;</li>
+                <li>Todas as informações fornecidas no momento da inscrição são verdadeiras e de minha inteira responsabilidade.</li>
+              </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <button class="accordion-head" type="button" aria-expanded="false">
+                  <span>5. AUTORIZAÇÃO DE MENOR (quando aplicável)</span>
+                  <i class="fas fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-body-inner">
+                    <p>No caso de participante menor de 18 anos, o responsável legal declara:</p>
+              <ul>
+                <li>Autorizo a participação do menor sob minha responsabilidade no evento;</li>
+                <li>Declaro que o menor está em perfeitas condições de saúde e apto para a prática esportiva;</li>
+                <li>Assumo total responsabilidade por qualquer dano, lesão ou prejuízo que o menor possa sofrer;</li>
+                <li>Autorizo o uso de imagem, voz e nome do menor conforme descrito no item 3.</li>
+              </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <button class="accordion-head" type="button" aria-expanded="false">
+                  <span>6. PROTEÇÃO DE DADOS PESSOAIS (LGPD)</span>
+                  <i class="fas fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-body-inner">
+                    <p>Estou ciente de que:</p>
+              <ul>
+                <li>Meus dados pessoais serão utilizados exclusivamente para fins relacionados ao evento (inscrição, comunicação, resultados, etc.);</li>
+                <li>A organização adota medidas de segurança para proteção dos dados pessoais;</li>
+                <li>Posso solicitar a exclusão dos meus dados após o evento, conforme Lei Geral de Proteção de Dados (LGPD);</li>
+                <li>Autorizo o compartilhamento dos meus dados com parceiros e patrocinadores exclusivamente para fins relacionados ao evento.</li>
+              </ul>
+                  </div>
+                </div>
+              </div>
+              </div>
+
+              <p class="termo-assinatura">
+                <strong>Ao realizar a inscrição e efetuar o pagamento, declaro ter lido, compreendido e aceito todos os termos acima descritos.</strong>
+              </p>
+
+              <p class="termo-data">
+                Data da última atualização: 01 de fevereiro de 2026
+              </p>
+            </div>
+
+            <div class="termo-aceite">
+              <label class="toggle-switch">
+                <input type="checkbox" id="aceitoTermo">
+                <span class="toggle-slider"></span>
+                <span>Li e concordo com o Termo de Responsabilidade e Autorização de Uso de Imagem</span>
+              </label>
+              <button class="btn btn-primary btn-block" onclick="confirmarTermo()" disabled id="btnConfirmarTermo">
+                <i class="fas fa-check-circle"></i> Confirmar Aceite
+              </button>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- ============================================================
+             SIDEBAR (sempre visível)
+             ============================================================ -->
+        <aside class="evento-sidebar">
+
+          <div class="sidebar-card">
+            <h4>Prepare-se! Faltam:</h4>
+            <div class="countdown">
+              <div class="countdown-item">
+                <div class="num" id="cd-dias">5</div>
+                <div class="label">Dias</div>
+              </div>
+              <div class="countdown-item">
+                <div class="num" id="cd-horas">15</div>
+                <div class="label">Horas</div>
+              </div>
+              <div class="countdown-item">
+                <div class="num" id="cd-min">26</div>
+                <div class="label">Min</div>
+              </div>
+            </div>
+
+            <a href="inscricao-participante.html" class="btn btn-primary btn-block">
+              <i class="fas fa-user-plus"></i> Inscreva-se Agora
+            </a>
+
+            <div class="info-bloco">
+              <div class="info-titulo">Local do evento:</div>
+              <div class="info-texto">Estádio Municipal Parque do Sabiá<br>Av. José Malignon Silva Santos,<br>Uberlândia - MG, Brasil</div>
+            </div>
+
+            <div class="info-bloco">
+              <div class="info-titulo">Compartilhe</div>
+              <div class="share-social orange share-na-sidebar">
+                <a href="#" onclick="event.preventDefault(); showToast('Compartilhar no Instagram')"><img src="assets/icon-instagram.svg" alt=""></a>
+                <a href="#" onclick="event.preventDefault(); showToast('Compartilhar no WhatsApp')"><img src="assets/icon-whatsapp.svg" alt=""></a>
+                <a href="#" onclick="event.preventDefault(); showToast('Compartilhar no Facebook')"><img src="assets/icon-facebook.svg" alt=""></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h4>Entrega do Kit</h4>
+            <div class="info-texto" style="margin-bottom: 14px;">Dias 07 e 08 de Maio de 2026,<br>das 10h às 19h</div>
+            <div class="info-titulo">Local de retirada:</div>
+            <div class="info-texto">Terraço Shopping<br>Av. Dr. Gastão Vidigal, 1132<br>Sorocaba - SP</div>
+          </div>
+
+          <div class="sidebar-card">
+            <h4>Organizador do Evento</h4>
+            <div class="organizador-logo">
+              <div style="background: #1f3da8; padding: 10px 20px; border-radius: 4px; color: white; font-weight: 800; font-size: 13px; text-align: center;">
+                Corrida<br>União Europeia
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h4>Patrocinadores</h4>
+            <div class="patrocinador-logo patrocinador-placeholder">
+              Espaço reservado<br>para patrocinadores
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARTILHAMENTO -->
+  <section class="compartilhe-section">
+    <div class="container">
+      <h2>Compartilhe</h2>
+      <p>Convide seus amigos para participar deste evento incrível!</p>
+      <div class="share-buttons">
+        <button class="share-btn share-instagram" onclick="compartilhar('instagram')">
+          <i class="fab fa-instagram"></i>
+          <span>Instagram</span>
+        </button>
+        <button class="share-btn share-whatsapp" onclick="compartilhar('whatsapp')">
+          <i class="fab fa-whatsapp"></i>
+          <span>WhatsApp</span>
+        </button>
+        <button class="share-btn share-facebook" onclick="compartilhar('facebook')">
+          <i class="fab fa-facebook"></i>
+          <span>Facebook</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS PARA ATLETAS -->
+  <section class="servicos-atletas">
+    <div class="container">
+      <div>
+        <h2><span class="label">Mais serviços</span> para o atleta</h2>
+        <ul class="servicos-list">
+          <li>Confirmação de inscrição por WhatsApp e e-mail</li>
+          <li>Gestão de dados</li>
+          <li>Comprovantes de pagamento</li>
+          <li>Histórico de resultados</li>
+          <li>Confirmação de pagamento por WhatsApp e e-mail</li>
+          <li>Histórico de inscrições</li>
+        </ul>
+        <a href="#" class="btn btn-primary" onclick="event.preventDefault(); showToast('Abrindo suporte ao atleta...', 'info')">Suporte ao Atleta</a>
+      </div>
+      <div class="servicos-mockup">
+        <img src="assets/mockup-atleta.png" alt="Mockup celular atleta">
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><img src="assets/icon-instagram.svg" alt=""></a>
+        <a href="#" aria-label="Whatsapp"><img src="assets/icon-whatsapp.svg" alt=""></a>
+        <a href="#" aria-label="Facebook"><img src="assets/icon-facebook.svg" alt=""></a>
+      </div>
+      <div class="footer-logo">
+        <img src="assets/logo.svg" alt="Recebe Sports">
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h4>Atletas</h4>
+          <ul>
+            <li><a href="login.html">Acessar</a></li>
+            <li><a href="cadastro-1.html">Crie sua conta</a></li>
+            <li><a href="resultados.html">Resultados</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Organizadores</h4>
+          <ul>
+            <li><a href="organizadores.html">Serviços Oferecidos</a></li>
+            <li><a href="organizador-criar-1.html">Crie sua Conta</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Institucional</h4>
+          <ul>
+            <li><a href="quem-somos.html">Quem Somos</a></li>
+            <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
+            <li><a href="termos-de-uso.html">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2013 - 2026 - Recebe Digital - CNPJ: 12.345.678/0001-99 - Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!-- BARRA FIXA SUPORTE AO CLIENTE -->
+  <button class="suporte-bar" onclick="showToast('Abrindo canal de suporte ao cliente...', 'info')">
+    <i class="fab fa-whatsapp"></i> Suporte ao cliente
+  </button>
+
+  <!-- MODAL DE PERCURSO -->
+  <div id="modalPercurso" class="modal-percurso">
+    <div class="modal-percurso-overlay" onclick="fecharModalPercurso()"></div>
+    <div class="modal-percurso-content">
+      <button class="modal-percurso-close" onclick="fecharModalPercurso()">
+        <i class="fas fa-times"></i>
+      </button>
+      
+      <div class="modal-percurso-header">
+        <i class="fas fa-route"></i>
+        <h2 id="modalPercursoTitulo"></h2>
+      </div>
+
+      <div class="modal-percurso-body">
+        <div class="modal-percurso-info" id="modalPercursoInfo"></div>
+        
+        <div class="modal-percurso-mapa">
+          <h4><i class="fas fa-map-marked-alt"></i> Visualizar Percurso no Mapa</h4>
+          <iframe 
+            id="modalPercursoMapa"
+            width="100%" 
+            height="400" 
+            style="border:0;border-radius:12px;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="modal-percurso-footer">
+        <button class="btn btn-primary" onclick="window.location='inscricao-participante.html'">
+          <i class="fas fa-running"></i> Inscrever-se Agora
+        </button>
+        <button class="btn btn-secondary" onclick="fecharModalPercurso()">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/global.js"></script>
+  <script>
+    // =====================================================================
+    // TABS
+    // =====================================================================
+    /* =====================================================================
+       NAVEGAÇÃO INTERNA — rolagem suave + destaque da seção atual (scroll-spy)
+       ===================================================================== */
+    (function () {
+      const links = Array.from(document.querySelectorAll('.evento-nav-link'));
+      const secoes = links
+        .map(l => document.querySelector(l.getAttribute('href')))
+        .filter(Boolean);
+
+      // Clique: rolagem suave até a seção
+      links.forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          const alvo = document.querySelector(link.getAttribute('href'));
+          if (alvo) alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      // Scroll-spy: marca o link da seção visível
+      function ativarLinkVisivel() {
+        const offset = 180; // compensa o header do site + a nav fixa
+        let atual = secoes[0];
+        for (const sec of secoes) {
+          if (sec.getBoundingClientRect().top - offset <= 0) atual = sec;
+        }
+        links.forEach(l => l.classList.toggle(
+          'active', l.getAttribute('href') === '#' + atual.id));
+      }
+
+      window.addEventListener('scroll', ativarLinkVisivel, { passive: true });
+      ativarLinkVisivel();
+    })();
+
+    // =====================================================================
+    // COUNTDOWN
+    // =====================================================================
+    let dias = 5, horas = 15, min = 26, seg = 49;
+    function tickCountdown() {
+      seg--;
+      if (seg < 0) { seg = 59; min--; }
+      if (min < 0) { min = 59; horas--; }
+      if (horas < 0) { horas = 23; dias--; }
+      if (dias < 0) { dias = 0; horas = 0; min = 0; seg = 0; return; }
+      document.getElementById('cd-dias').textContent = String(dias).padStart(2, '0');
+      document.getElementById('cd-horas').textContent = String(horas).padStart(2, '0');
+      document.getElementById('cd-min').textContent = String(min).padStart(2, '0');
+    }
+    setInterval(tickCountdown, 1000);
+
+    // =====================================================================
+    // ACCORDION (Regulamento e Termo) — expandir/recolher
+    // =====================================================================
+    (function () {
+      document.querySelectorAll('.accordion-head').forEach(function (head) {
+        head.addEventListener('click', function () {
+          const item = head.closest('.accordion-item');
+          const body = item.querySelector('.accordion-body');
+          const aberto = item.classList.toggle('open');
+          head.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+          body.style.maxHeight = aberto ? (body.scrollHeight + 'px') : null;
+        });
+      });
+    })();
+
+    // =====================================================================
+    // FALE CONOSCO — Envio de formulário
+    // =====================================================================
+    function enviarContato(e) {
+      e.preventDefault();
+      showToast('Mensagem enviada com sucesso! Retornaremos em até 24h.', 'sucesso');
+      e.target.reset();
+    }
+
+    // =====================================================================
+    // TERMO — Habilitar botão ao aceitar
+    // =====================================================================
+    document.getElementById('aceitoTermo')?.addEventListener('change', function() {
+      document.getElementById('btnConfirmarTermo').disabled = !this.checked;
+    });
+
+    function confirmarTermo() {
+      showToast('Termo aceito com sucesso!', 'sucesso');
+      setTimeout(() => { window.location = 'inscricao-participante.html'; }, 1500);
+    }
+
+    // =====================================================================
+    // MODAL DE PERCURSO
+    // =====================================================================
+    function abrirModalPercurso(percurso) {
+      const modal = document.getElementById('modalPercurso');
+      const titulo = document.getElementById('modalPercursoTitulo');
+      const info = document.getElementById('modalPercursoInfo');
+      const mapa = document.getElementById('modalPercursoMapa');
+
+      const percursos = {
+        '5km': {
+          titulo: '5 KM - ASSOCIADO',
+          info: `
+            <h4>Descrição do Percurso</h4>
+            <p>Percurso urbano ideal para iniciantes, passando pelos principais pontos históricos da cidade.</p>
+            
+            <h4>Características</h4>
+            <ul>
+              <li><strong>Distância:</strong> 5 quilômetros</li>
+              <li><strong>Terreno:</strong> Asfalto plano (90%), alguns trechos leves de subida</li>
+              <li><strong>Tempo estimado:</strong> 30-45 minutos</li>
+              <li><strong>Nível:</strong> Iniciante</li>
+            </ul>
+
+            <h4>Pontos de Apoio</h4>
+            <ul>
+              <li><strong>KM 0:</strong> Largada - Hidratação inicial</li>
+              <li><strong>KM 2.5:</strong> Ponto de hidratação (água e isotônico)</li>
+              <li><strong>KM 5:</strong> Chegada - Hidratação e frutas</li>
+            </ul>
+          `,
+          mapaEmbed: 'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d14625.729655740654!2d-46.64454399999999!3d-23.5631389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x94ce5989746f9669%3A0x74b8c5e72f00d59c!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!3m2!1d-23.5618513!2d-46.6557811!4m5!1s0x94ce599627a4d5e5%3A0x1e5e0673c2a48423!2sParque%20Ibirapuera%2C%20S%C3%A3o%20Paulo%20-%20SP!3m2!1d-23.5873851!2d-46.6574073!5e0!3m2!1spt-BR!2sbr!4v1234567890'
+        },
+        '10km': {
+          titulo: '10 KM - ASSOCIADO',
+          info: `
+            <h4>Descrição do Percurso</h4>
+            <p>Percurso misto com trechos urbanos e áreas verdes, desafios moderados de elevação.</p>
+            
+            <h4>Características</h4>
+            <ul>
+              <li><strong>Distância:</strong> 10 quilômetros</li>
+              <li><strong>Terreno:</strong> Asfalto (70%), parque (30%), variação de elevação moderada</li>
+              <li><strong>Tempo estimado:</strong> 50-75 minutos</li>
+              <li><strong>Nível:</strong> Intermediário</li>
+            </ul>
+
+            <h4>Pontos de Apoio</h4>
+            <ul>
+              <li><strong>KM 0:</strong> Largada - Hidratação inicial</li>
+              <li><strong>KM 3:</strong> Hidratação (água e isotônico)</li>
+              <li><strong>KM 6:</strong> Hidratação e esponja</li>
+              <li><strong>KM 9:</strong> Hidratação final</li>
+              <li><strong>KM 10:</strong> Chegada - Hidratação completa e frutas</li>
+            </ul>
+          `,
+          mapaEmbed: 'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d14625.729655740654!2d-46.64454399999999!3d-23.5631389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x94ce5989746f9669%3A0x74b8c5e72f00d59c!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!3m2!1d-23.5618513!2d-46.6557811!4m5!1s0x94ce599627a4d5e5%3A0x1e5e0673c2a48423!2sParque%20Ibirapuera%2C%20S%C3%A3o%20Paulo%20-%20SP!3m2!1d-23.5873851!2d-46.6574073!5e0!3m2!1spt-BR!2sbr!4v1234567890'
+        },
+        '15km': {
+          titulo: '15 KM - ASSOCIADO',
+          info: `
+            <h4>Descrição do Percurso</h4>
+            <p>Percurso desafiador com variações significativas de terreno e elevação, ideal para corredores experientes.</p>
+            
+            <h4>Características</h4>
+            <ul>
+              <li><strong>Distância:</strong> 15 quilômetros</li>
+              <li><strong>Terreno:</strong> Asfalto (50%), parque (40%), terra batida (10%)</li>
+              <li><strong>Tempo estimado:</strong> 1h15-1h50</li>
+              <li><strong>Nível:</strong> Avançado</li>
+            </ul>
+
+            <h4>Pontos de Apoio</h4>
+            <ul>
+              <li><strong>KM 0:</strong> Largada - Hidratação inicial</li>
+              <li><strong>KM 3:</strong> Hidratação (água e isotônico)</li>
+              <li><strong>KM 6:</strong> Hidratação completa + gel energético</li>
+              <li><strong>KM 9:</strong> Hidratação e esponja</li>
+              <li><strong>KM 12:</strong> Hidratação e banana</li>
+              <li><strong>KM 15:</strong> Chegada - Hidratação completa e refeição leve</li>
+            </ul>
+          `,
+          mapaEmbed: 'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d14625.729655740654!2d-46.64454399999999!3d-23.5631389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x94ce5989746f9669%3A0x74b8c5e72f00d59c!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!3m2!1d-23.5618513!2d-46.6557811!4m5!1s0x94ce599627a4d5e5%3A0x1e5e0673c2a48423!2sParque%20Ibirapuera%2C%20S%C3%A3o%20Paulo%20-%20SP!3m2!1d-23.5873851!2d-46.6574073!5e0!3m2!1spt-BR!2sbr!4v1234567890'
+        },
+        '20km': {
+          titulo: '20 KM - ASSOCIADO',
+          info: `
+            <h4>Descrição do Percurso</h4>
+            <p>Percurso completo de meia maratona com desafios técnicos, variações extremas de elevação e terrenos diversos.</p>
+            
+            <h4>Características</h4>
+            <ul>
+              <li><strong>Distância:</strong> 20 quilômetros (meia maratona)</li>
+              <li><strong>Terreno:</strong> Asfalto (40%), parque (35%), terra/trilha (25%)</li>
+              <li><strong>Tempo estimado:</strong> 1h45-2h30</li>
+              <li><strong>Nível:</strong> Elite/Profissional</li>
+            </ul>
+
+            <h4>Pontos de Apoio</h4>
+            <ul>
+              <li><strong>KM 0:</strong> Largada - Hidratação inicial</li>
+              <li><strong>KM 3:</strong> Hidratação (água e isotônico)</li>
+              <li><strong>KM 6:</strong> Hidratação + gel energético</li>
+              <li><strong>KM 9:</strong> Hidratação completa e banana</li>
+              <li><strong>KM 12:</strong> Hidratação + esponja + gel</li>
+              <li><strong>KM 15:</strong> Posto médico + hidratação</li>
+              <li><strong>KM 18:</strong> Hidratação final</li>
+              <li><strong>KM 20:</strong> Chegada - Área de recuperação completa</li>
+            </ul>
+          `,
+          mapaEmbed: 'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d14625.729655740654!2d-46.64454399999999!3d-23.5631389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x94ce5989746f9669%3A0x74b8c5e72f00d59c!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!3m2!1d-23.5618513!2d-46.6557811!4m5!1s0x94ce599627a4d5e5%3A0x1e5e0673c2a48423!2sParque%20Ibirapuera%2C%20S%C3%A3o%20Paulo%20-%20SP!3m2!1d-23.5873851!2d-46.6574073!5e0!3m2!1spt-BR!2sbr!4v1234567890'
+        }
+      };
+
+      const dados = percursos[percurso];
+      titulo.textContent = dados.titulo;
+      info.innerHTML = dados.info;
+      mapa.src = dados.mapaEmbed;
+
+      modal.style.display = 'flex';
+      setTimeout(() => modal.classList.add('active'), 10);
+    }
+
+    function fecharModalPercurso() {
+      const modal = document.getElementById('modalPercurso');
+      modal.classList.remove('active');
+      setTimeout(() => modal.style.display = 'none', 300);
+    }
+
+    // =====================================================================
+    // COMPARTILHAMENTO
+    // =====================================================================
+    function compartilhar(rede) {
+      const url = window.location.href;
+      const texto = 'Participe da Corrida da União Europeia 2026 - Mais que uma corrida, um encontro de culturas!';
+      
+      const links = {
+        'whatsapp': `https://wa.me/?text=${encodeURIComponent(texto + ' ' + url)}`,
+        'facebook': `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+        'instagram': '#' // Instagram não permite compartilhamento direto via URL
+      };
+
+      if (rede === 'instagram') {
+        showToast('Para compartilhar no Instagram, tire uma screenshot e poste em seu story!', 'info');
+      } else {
+        window.open(links[rede], '_blank', 'width=600,height=400');
+      }
+    }
+  </script>
+</body>
+</html>

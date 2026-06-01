@@ -1,0 +1,500 @@
+  /* ==========================================================================
+   HOME — Estilos específicos
+  ========================================================================== */
+
+/* Hero com banner principal — carrossel */
+.home-hero {
+  position: relative;
+  width: 100%;
+  line-height: 0;
+  overflow: hidden;
+}
+
+.hero-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.7s cubic-bezier(0.45, 0, 0.15, 1);
+}
+
+.hero-slide {
+  flex: 0 0 100%;
+  display: block;
+  line-height: 0;
+  cursor: pointer;
+}
+
+.hero-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Setas de navegação */
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  color: var(--color-white);
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  z-index: 4;
+}
+
+.hero-arrow:hover {
+  background: var(--color-orange);
+}
+
+.hero-arrow.prev { left: 22px; }
+.hero-arrow.next { right: 22px; }
+
+/* Indicadores (dots) */
+.hero-dots {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 4;
+}
+
+.hero-dots button {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.hero-dots button.active {
+  width: 28px;
+  border-radius: 5px;
+  background: var(--color-orange);
+}
+
+@media (max-width: 600px) {
+  .hero-arrow { width: 36px; height: 36px; font-size: 13px; }
+  .hero-arrow.prev { left: 10px; }
+  .hero-arrow.next { right: 10px; }
+}
+
+/* Search bar abaixo do hero */
+.search-bar {
+  position: relative;
+  z-index: 3;
+  margin: -40px auto 0;
+  max-width: 1150px;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  box-shadow: var(--shadow-lg);
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr auto auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.search-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--color-white);
+  border: 1px solid var(--color-input-border);
+  border-radius: var(--radius);
+  padding: 0 14px;
+  transition: var(--transition);
+}
+
+.search-field:focus-within {
+  border-color: var(--color-orange);
+  box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.1);
+}
+
+.search-field .icon {
+  color: var(--color-orange);
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.search-field input,
+.search-field select {
+  border: none;
+  background: transparent;
+  padding: 10px 0;
+  font-size: 14px;
+  flex: 1;
+  outline: none;
+  width: 100%;
+  color: var(--color-text);
+}
+
+.search-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.search-toggle .toggle-slider {
+  width: 36px;
+  height: 20px;
+}
+.search-toggle .toggle-slider::after {
+  width: 16px;
+  height: 16px;
+}
+.search-toggle input:checked + .toggle-slider::after {
+  left: 18px;
+}
+
+.search-bar .btn {
+  padding: 10px 32px;
+}
+
+/* Seções de eventos */
+.events-section {
+  padding: 50px 0;
+}
+
+.events-section + .events-section {
+  padding-top: 0;
+}
+
+.events-section h2 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: var(--color-text);
+}
+
+/* Carrossel de eventos em destaque (cartazes verticais) */
+.destaque-carrossel {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.destaque-track-wrap {
+  overflow: hidden;
+}
+
+.destaque-track {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.destaque-card {
+  flex: 0 0 calc((100% - 72px) / 4);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  cursor: pointer;
+  background: var(--color-white);
+}
+
+.destaque-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.destaque-card img {
+  width: 100%;
+  aspect-ratio: 3 / 4.6;
+  object-fit: cover;
+  display: block;
+}
+
+/* Overlay com botão "Saiba mais" — aparece no hover do card */
+.destaque-card {
+  position: relative;
+}
+
+.destaque-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 22px;
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0) 45%, rgba(20, 20, 20, 0.78) 100%);
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.destaque-card:hover .destaque-overlay,
+.destaque-card:focus-within .destaque-overlay {
+  opacity: 1;
+}
+
+.destaque-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-orange);
+  color: var(--color-white);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  padding: 12px 26px;
+  border-radius: 999px;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 10px 24px rgba(255, 102, 0, 0.45);
+  transform: translateY(18px);
+  opacity: 0;
+  pointer-events: auto;
+  transition:
+    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) 0.08s,
+    opacity 0.3s ease 0.08s,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.destaque-card:hover .destaque-btn,
+.destaque-card:focus-within .destaque-btn {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.destaque-btn:hover {
+  background: #e65a00;
+  box-shadow: 0 12px 28px rgba(230, 90, 0, 0.55);
+}
+
+.destaque-btn:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+.destaque-btn i {
+  font-size: 12px;
+  transition: transform 0.25s ease;
+}
+
+.destaque-btn:hover i {
+  transform: translateX(4px);
+}
+
+/* Em dispositivos sem hover (touch), o card inteiro continua clicável */
+@media (hover: none) {
+  .destaque-overlay { display: none; }
+}
+
+.destaque-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-white);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  color: var(--color-dark);
+  font-size: 18px;
+  transition: var(--transition);
+  border: none;
+}
+
+.destaque-arrow:hover {
+  background: var(--color-orange);
+  color: var(--color-white);
+}
+
+.destaque-arrow.prev { left: -22px; }
+.destaque-arrow.next { right: -22px; }
+
+.destaque-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.destaque-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #cfcfcf;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  padding: 0;
+}
+
+.destaque-dot.active {
+  background: var(--color-orange);
+  width: 26px;
+  border-radius: 5px;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.event-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.event-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.event-card-img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+}
+
+.event-card-body {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.event-card-tag {
+  font-size: 11px;
+  color: var(--color-text);
+  text-transform: none;
+  border-style: solid;
+  border-color: #838383;
+  border-width: 1px;
+  border-radius: 5px;
+  width: 75px;
+  display: flex;
+  padding: 2px;
+  margin-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.event-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.3;
+  margin-bottom: 12px;
+  min-height: 40px;
+}
+
+.event-card-info {
+  font-size: 12px;
+  color: var(--color-text);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.event-card-info i {
+  color: var(--color-orange);
+  width: 12px;
+  text-align: center;
+}
+
+.event-card-btn {
+  margin-top: 14px;
+  padding: 10px;
+  border-radius: var(--radius);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--color-white);
+  transition: var(--transition);
+}
+
+.event-card-btn.last {
+  background: var(--color-orange);
+}
+.event-card-btn.sold-out {
+  background: #b9b9b9;
+}
+.event-card-btn.pre-sale {
+  background: #b9b9b9;
+}
+.event-card-btn.open {
+  background: var(--color-orange);
+}
+
+.event-card:hover .event-card-btn.open,
+.event-card:hover .event-card-btn.last {
+  background: #e65a00;
+}
+
+/* ==========================================================================
+   RESPONSIVO — HOME
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .events-grid { grid-template-columns: repeat(2, 1fr); }
+  .destaque-card { flex: 0 0 calc((100% - 24px) / 2); }
+  .destaque-arrow.prev { left: 6px; }
+  .destaque-arrow.next { right: 6px; }
+}
+
+@media (max-width: 768px) {
+  .search-bar {
+    grid-template-columns: 1fr;
+    margin: -26px auto 0;
+    padding: 14px;
+    gap: 10px;
+    border-radius: var(--radius);
+  }
+  .search-field input,
+  .search-field select { padding: 13px 0; }
+  .search-bar .btn { width: 100%; padding: 14px; }
+
+  .events-section { padding: 40px 0; }
+  .events-section h2 { font-size: 22px; margin-bottom: 22px; }
+
+  .events-grid { gap: 14px; }
+  .event-card-img { height: 150px; }
+  .event-card-title { font-size: 14px; min-height: 0; }
+  .event-card-body { padding: 14px; }
+
+  .destaque-arrow { width: 38px; height: 38px; font-size: 15px; }
+}
+
+@media (max-width: 600px) {
+  .destaque-card { flex: 0 0 100%; }
+}
+
+@media (max-width: 480px) {
+  .events-grid { grid-template-columns: 1fr; }
+  .event-card-img { height: 190px; }
+}

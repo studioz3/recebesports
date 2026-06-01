@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscrição — Pagamento — RecebeSports</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/inscricao.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="assets/logo.svg" alt="Recebe Sports">
+      </a>
+      <nav class="main-nav">
+        <a href="resultados.html">Resultados</a>
+        <a href="quem-somos.html">Quem somos</a>
+        <a href="organizadores.html">Para organizadores</a>
+      </nav>
+      <div class="nav-buttons">
+        <a href="login-organizador.html" class="btn-nav btn-nav-organizador">Área do Organizador</a>
+        <a href="login.html" class="btn-nav btn-nav-atleta">Área do Atleta</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- BANNER DO EVENTO -->
+  <section class="insc-banner">
+    <img src="assets/banner-evento.jpg" alt="5K Pela Paz no Trânsito">
+  </section>
+  <div class="insc-evento-nome">5K Pela Paz no Trânsito</div>
+
+  <!-- CONTEÚDO -->
+  <section class="insc-content">
+    <div class="container">
+
+      <!-- Stepper de 4 passos -->
+      <div class="insc-steps">
+        <div class="insc-step done">
+          <div class="insc-dot">
+            <span class="step-number">1</span>
+            <i class="fas fa-check step-check"></i>
+          </div>
+          <div class="insc-label">Participação</div>
+        </div>
+        <div class="insc-connector done"></div>
+        <div class="insc-step done">
+          <div class="insc-dot">
+            <span class="step-number">2</span>
+            <i class="fas fa-check step-check"></i>
+          </div>
+          <div class="insc-label">Dados da inscrição</div>
+        </div>
+        <div class="insc-connector active"></div>
+        <div class="insc-step active">
+          <div class="insc-dot">
+            <span class="step-number">3</span>
+            <i class="fas fa-check step-check"></i>
+          </div>
+          <div class="insc-label">Pagamento</div>
+        </div>
+        <div class="insc-connector"></div>
+        <div class="insc-step">
+          <div class="insc-dot">
+            <span class="step-number">4</span>
+            <i class="fas fa-check step-check"></i>
+          </div>
+          <div class="insc-label">Concluído</div>
+        </div>
+      </div>
+
+      <!-- Título do checkout -->
+      <div class="checkout-header">
+        <h1><i class="fas fa-clipboard-check"></i> Resumo da sua Inscrição</h1>
+        <p>Confira os detalhes, complete os dados de contato e escolha a forma de pagamento.</p>
+      </div>
+
+      <!-- ============================================================
+           PAINEL 1 — RESUMO DOS ATLETAS
+           ============================================================ -->
+      <div class="painel checkout-painel">
+        <div class="painel-header">
+          <span><i class="fas fa-users" style="margin-right:8px"></i>Detalhes da inscrição</span>
+          <span class="painel-header-sub" id="painelHeaderSub"></span>
+        </div>
+        <div class="painel-body" id="atletasBody"></div>
+      </div>
+
+      <!-- ============================================================
+           PAINEL 2 — FORMA DE PAGAMENTO
+           ============================================================ -->
+      <div class="painel checkout-painel">
+        <div class="painel-header">
+          <span><i class="fas fa-credit-card" style="margin-right:8px"></i>Como você prefere pagar?</span>
+        </div>
+        <div class="painel-body">
+          <div class="pagamento-opcoes">
+
+            <label class="pagamento-opcao" data-metodo="pix">
+              <input type="radio" name="pagamento" value="pix" checked onchange="setPagamento('pix')">
+              <div class="pagamento-radio"></div>
+              <div class="pagamento-info">
+                <div class="pagamento-nome">PIX</div>
+                <div class="pagamento-desc">Pagamento instantâneo • Confirmação imediata</div>
+              </div>
+              <div class="pagamento-icone pagamento-icone-pix">
+                <i class="fab fa-pix"></i>
+              </div>
+            </label>
+
+            <label class="pagamento-opcao" data-metodo="cartao">
+              <input type="radio" name="pagamento" value="cartao" onchange="setPagamento('cartao')">
+              <div class="pagamento-radio"></div>
+              <div class="pagamento-info">
+                <div class="pagamento-nome">Cartão de crédito</div>
+                <div class="pagamento-desc">Em até 12x • Visa, Master, Elo, Hiper</div>
+              </div>
+              <div class="pagamento-icone">
+                <i class="far fa-credit-card"></i>
+              </div>
+            </label>
+
+            <label class="pagamento-opcao" data-metodo="boleto">
+              <input type="radio" name="pagamento" value="boleto" onchange="setPagamento('boleto')">
+              <div class="pagamento-radio"></div>
+              <div class="pagamento-info">
+                <div class="pagamento-nome">Boleto bancário</div>
+                <div class="pagamento-desc">Confirmação em até 1 dia útil</div>
+              </div>
+              <div class="pagamento-icone">
+                <i class="fas fa-barcode"></i>
+              </div>
+            </label>
+
+          </div>
+
+          <!-- Detalhes do método selecionado -->
+          <div class="pagamento-detalhes" id="pagamentoDetalhes"></div>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           PAINEL 3 — CUPOM DE DESCONTO
+           ============================================================ -->
+      <div class="painel checkout-painel">
+        <div class="painel-header">
+          <span><i class="fas fa-tags" style="margin-right:8px"></i>Tem um cupom de desconto?</span>
+        </div>
+        <div class="painel-body">
+          <div class="cupom-form">
+            <input type="text" class="form-control" placeholder="Digite o código do cupom" id="cupomInput">
+            <button class="btn btn-primary cupom-btn" onclick="aplicarCupom()">
+              <i class="fas fa-check"></i> Aplicar
+            </button>
+          </div>
+          <div id="cupomMensagem"></div>
+          <div class="cupom-dica">
+            <i class="fas fa-circle-info"></i>
+            Cupons válidos no protótipo: <code>RECEBE10</code> (10% off), <code>BLACK15</code> (15% off), <code>FRETE</code> (R$ 20 off)
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           TOTAL
+           ============================================================ -->
+      <div class="checkout-total">
+        <div class="checkout-total-linha">
+          <span>Subtotal</span>
+          <span id="subtotalVal">R$ 0,00</span>
+        </div>
+        <div class="checkout-total-linha">
+          <span>Taxa de conveniência</span>
+          <span id="taxaVal">R$ 0,00</span>
+        </div>
+        <div class="checkout-total-linha desconto" id="linhaCupom" style="display:none;">
+          <span><i class="fas fa-tag"></i> Cupom <strong id="cupomTag"></strong></span>
+          <span class="desconto-valor" id="descontoCupomVal">- R$ 0,00</span>
+        </div>
+        <div class="checkout-total-final">
+          <span>Total</span>
+          <strong id="totalFinalVal">R$ 0,00</strong>
+        </div>
+        <div class="checkout-total-info">
+          <i class="fas fa-user-group"></i> Inscrição para <span id="qtdAtletas">0</span> atletas
+        </div>
+      </div>
+
+      <!-- AÇÕES -->
+      <div class="insc-acoes">
+        <a href="inscricao-detalhes.html" class="btn btn-secondary">
+          <i class="fas fa-arrow-left" style="margin-right:8px"></i> Voltar
+        </a>
+        <button class="btn btn-primary btn-disabled" id="btnConfirmar" onclick="confirmarInscricao()">
+          <i class="fas fa-lock" style="margin-right:8px"></i> Confirmar Inscrição
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><img src="assets/icon-instagram.svg" alt=""></a>
+        <a href="#" aria-label="Whatsapp"><img src="assets/icon-whatsapp.svg" alt=""></a>
+        <a href="#" aria-label="Facebook"><img src="assets/icon-facebook.svg" alt=""></a>
+      </div>
+      <div class="footer-logo">
+        <img src="assets/logo.svg" alt="Recebe Sports">
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h4>Atletas</h4>
+          <ul>
+            <li><a href="login.html">Acessar</a></li>
+            <li><a href="cadastro-1.html">Crie sua conta</a></li>
+            <li><a href="resultados.html">Resultados</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Organizadores</h4>
+          <ul>
+            <li><a href="organizadores.html">Serviços Oferecidos</a></li>
+            <li><a href="organizador-criar-1.html">Crie sua Conta</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Institucional</h4>
+          <ul>
+            <li><a href="quem-somos.html">Quem Somos</a></li>
+            <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
+            <li><a href="termos-de-uso.html">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2013 - 2026 - Recebe Digital - CNPJ: 12.345.678/0001-99 - Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/global.js"></script>
+  <script>
+    /* =====================================================================
+       DADOS — Em produção viriam do passo anterior (localStorage/state)
+       Mock representando o que o usuário escolheu na tela de inscrição.
+       ===================================================================== */
+
+    let atletas = [
+      {
+        id: 'voce',
+        nome: 'João da Silva Guerreiro Goulart Marinho',
+        tipo: 'voce',
+        modalidade: 'Caminhada',
+        modalidadeIcone: 'fa-person-walking',
+        kit: 'KIT Premium',
+        kitValor: 119.00,
+        kitItens: ['Camiseta dry-fit', 'Boné esportivo', 'Sacola sustentável', 'Número de peito', 'Medalha personalizada'],
+        opcoes: [
+          { label: 'Tamanho da camiseta', valor: 'M' },
+          { label: 'Cor do boné',          valor: 'Preto' }
+        ],
+        adicionais: [
+          { label: 'Garrafa térmica 500ml', valor: 35.00 }
+        ],
+        // Dados de contato editáveis
+        equipe: '',
+        celular: '(14) 99109-3801',
+        email: 'joao.silva@email.com'
+      },
+      {
+        id: 'amigo_1',
+        nome: 'Mario Marinho',
+        tipo: 'amigo',
+        modalidade: 'Corrida 5 KM',
+        modalidadeIcone: 'fa-person-running',
+        kit: 'KIT Participação',
+        kitValor: 93.00,
+        kitItens: ['Número de peito', 'Chip de cronometragem', 'Medalha de participação'],
+        opcoes: [],
+        adicionais: [
+          { label: 'Sacola sustentável', valor: 15.00 }
+        ],
+        equipe: 'PELLAH DISTRIBUIDORA',
+        celular: '(14) 99876-4666',
+        email: ''
+      }
+    ];
+
+    let metodoPagamento = 'pix';
+    let cupom = null;          // { codigo, tipo: 'percent'|'fixed', valor, label }
+    const TAXA_CONVENIENCIA = 7.90;
+
+    const CUPONS_VALIDOS = {
+      'RECEBE10': { tipo: 'percent', valor: 10, label: 'RECEBE10 — 10% off' },
+      'BLACK15':  { tipo: 'percent', valor: 15, label: 'BLACK15 — 15% off' },
+      'FRETE':    { tipo: 'fixed',   valor: 20, label: 'FRETE — R$ 20 off' }
+    };
+
+    const moeda = v => 'R$ ' + v.toFixed(2).replace('.', ',');
+
+    /* =====================================================================
+       CÁLCULOS
+       ===================================================================== */
+
+    function subtotalAtleta(a) {
+      return a.kitValor + a.adicionais.reduce((s, ad) => s + ad.valor, 0);
+    }
+
+    function subtotalGeral() {
+      return atletas.reduce((s, a) => s + subtotalAtleta(a), 0);
+    }
+
+    function descontoPix(sub) {
+      return 0;
+    }
+
+    function descontoCupom(sub) {
+      if (!cupom) return 0;
+      return cupom.tipo === 'percent' ? sub * (cupom.valor / 100) : cupom.valor;
+    }
+
+    function totalFinal() {
+      const sub = subtotalGeral();
+      return Math.max(0, sub + TAXA_CONVENIENCIA - descontoPix(sub) - descontoCupom(sub));
+    }
+
+    /* =====================================================================
+       VALIDAÇÃO
+       ===================================================================== */
+
+    function atletaDadosOk(a) {
+      // Celular e e-mail são obrigatórios
+      return !!(a.celular && a.email && a.email.includes('@'));
+    }
+
+    function pagamentoDadosOk() {
+      if (metodoPagamento === 'pix' || metodoPagamento === 'boleto') return true;
+      if (metodoPagamento === 'cartao') {
+        const nome = document.getElementById('cartaoNome');
+        const numero = document.getElementById('cartaoNumero');
+        const validade = document.getElementById('cartaoValidade');
+        const cvv = document.getElementById('cartaoCVV');
+        if (!nome || !numero || !validade || !cvv) return false;
+        return nome.value.trim() && numero.value.replace(/\s/g, '').length >= 13
+            && validade.value.length === 5 && cvv.value.length >= 3;
+      }
+      return false;
+    }
+
+    function tudoOk() {
+      const todosAtletasOk = atletas.every(atletaDadosOk);
+      return todosAtletasOk && pagamentoDadosOk();
+    }
+
+    /* =====================================================================
+       RENDER — ATLETAS
+       ===================================================================== */
+
+    function renderAtletas() {
+      const body = document.getElementById('atletasBody');
+      body.innerHTML = atletas.map((a, i) => {
+        const sub = subtotalAtleta(a);
+
+        const opcoesHtml = a.opcoes.length === 0 ? '' : `
+          <div class="detalhe-linha">
+            <i class="fas fa-sliders"></i>
+            <div>
+              ${a.opcoes.map(op => `<span class="detalhe-tag"><strong>${op.label}:</strong> ${op.valor}</span>`).join('')}
+            </div>
+          </div>`;
+
+        const adicionaisHtml = a.adicionais.length === 0 ? '' : `
+          <div class="detalhe-linha">
+            <i class="fas fa-plus-circle"></i>
+            <div class="detalhe-adicionais">
+              ${a.adicionais.map(ad => `
+                <div class="adicional-item">
+                  <span>${ad.label}</span>
+                  <span class="adicional-valor">+ ${moeda(ad.valor)}</span>
+                </div>`).join('')}
+            </div>
+          </div>`;
+
+        const statusOk = atletaDadosOk(a);
+
+        return `
+          <div class="checkout-atleta ${statusOk ? 'completo' : 'incompleto'}">
+            <div class="checkout-atleta-topo">
+              <div class="checkout-atleta-info">
+                <div class="checkout-atleta-rotulo">
+                  ${a.tipo === 'voce' ? '<i class="fas fa-user"></i> Você' : '<i class="fas fa-user-plus"></i> Amigo'}
+                  ${statusOk
+                    ? '<span class="check-mini"><i class="fas fa-check-circle"></i> Dados completos</span>'
+                    : '<span class="check-mini pendente"><i class="fas fa-circle-exclamation"></i> Complete os dados</span>'}
+                </div>
+                <div class="checkout-atleta-nome">${a.nome}</div>
+                <div class="checkout-atleta-modalidade">
+                  <i class="fas ${a.modalidadeIcone}"></i>
+                  ${a.modalidade}
+                  <span class="bullet">•</span>
+                  <strong>${a.kit}</strong>
+                </div>
+              </div>
+              <div class="checkout-atleta-valor-box">
+                <div class="checkout-atleta-valor-label">Subtotal</div>
+                <div class="checkout-atleta-valor">${moeda(sub)}</div>
+              </div>
+            </div>
+
+            <div class="checkout-detalhes">
+              ${opcoesHtml}
+              ${adicionaisHtml}
+            </div>
+
+            <div class="checkout-campos">
+              <div class="form-group">
+                <label class="form-label">Equipe</label>
+                <input type="text" class="form-control" value="${a.equipe || ''}"
+                       placeholder="Informe sua equipe (opcional)"
+                       oninput="atualizarCampo(${i}, 'equipe', this.value)">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Celular <span class="obrig">*</span></label>
+                <input type="tel" class="form-control" value="${a.celular || ''}"
+                       placeholder="(00) 00000-0000"
+                       oninput="atualizarCampo(${i}, 'celular', this.value)">
+              </div>
+              <div class="form-group">
+                <label class="form-label">E-mail <span class="obrig">*</span></label>
+                <input type="email" class="form-control ${a.email && !a.email.includes('@') ? 'erro' : ''}" value="${a.email || ''}"
+                       placeholder="seu@email.com"
+                       oninput="atualizarCampo(${i}, 'email', this.value)">
+              </div>
+            </div>
+          </div>`;
+      }).join('');
+
+      document.getElementById('painelHeaderSub').textContent =
+        atletas.length === 1 ? '1 atleta' : `${atletas.length} atletas`;
+    }
+
+    function atualizarCampo(i, campo, valor) {
+      atletas[i][campo] = valor;
+      // Atualiza apenas o badge de status, não re-renderiza tudo (não perde foco)
+      const cards = document.querySelectorAll('.checkout-atleta');
+      const card = cards[i];
+      if (!card) return;
+      const ok = atletaDadosOk(atletas[i]);
+      card.classList.toggle('completo', ok);
+      card.classList.toggle('incompleto', !ok);
+      const mini = card.querySelector('.check-mini');
+      if (mini) {
+        if (ok) {
+          mini.classList.remove('pendente');
+          mini.innerHTML = '<i class="fas fa-check-circle"></i> Dados completos';
+        } else {
+          mini.classList.add('pendente');
+          mini.innerHTML = '<i class="fas fa-circle-exclamation"></i> Complete os dados';
+        }
+      }
+      atualizarBotaoConfirmar();
+    }
+
+    /* =====================================================================
+       RENDER — PAGAMENTO
+       ===================================================================== */
+
+    function renderPagamentoDetalhes() {
+      const box = document.getElementById('pagamentoDetalhes');
+
+      if (metodoPagamento === 'pix') {
+        box.innerHTML = `
+          <div class="pag-detalhe pag-pix">
+            <div class="pag-pix-info">
+              <h4><i class="fab fa-pix"></i> Pagamento via PIX</h4>
+              <p>Após confirmar a inscrição, geraremos um QR Code e o código copia-e-cola.</p>
+              <ul>
+                <li><i class="fas fa-bolt"></i> Confirmação instantânea</li>
+                <li><i class="fas fa-clock"></i> Você terá 30 minutos para concluir o pagamento</li>
+              </ul>
+            </div>
+            <div class="pag-pix-qr">
+              <div class="qr-mock">
+                <i class="fas fa-qrcode"></i>
+                <span>QR Code gerado após confirmação</span>
+              </div>
+            </div>
+          </div>`;
+      }
+
+      else if (metodoPagamento === 'cartao') {
+        box.innerHTML = `
+          <div class="pag-detalhe pag-cartao">
+            <h4><i class="far fa-credit-card"></i> Dados do cartão</h4>
+            <div class="cartao-bandeiras">
+              <i class="fab fa-cc-visa" title="Visa"></i>
+              <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+              <i class="fab fa-cc-amex" title="Amex"></i>
+              <i class="fab fa-cc-discover" title="Discover"></i>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Nome impresso no cartão <span class="obrig">*</span></label>
+              <input type="text" class="form-control" id="cartaoNome" placeholder="Como aparece no cartão" oninput="atualizarBotaoConfirmar()">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Número do cartão <span class="obrig">*</span></label>
+              <input type="text" class="form-control" id="cartaoNumero" placeholder="0000 0000 0000 0000"
+                     maxlength="19" oninput="formatarCartao(this); atualizarBotaoConfirmar()">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Validade <span class="obrig">*</span></label>
+                <input type="text" class="form-control" id="cartaoValidade" placeholder="MM/AA"
+                       maxlength="5" oninput="formatarValidade(this); atualizarBotaoConfirmar()">
+              </div>
+              <div class="form-group">
+                <label class="form-label">CVV <span class="obrig">*</span></label>
+                <input type="text" class="form-control" id="cartaoCVV" placeholder="000"
+                       maxlength="4" oninput="this.value=this.value.replace(/\\D/g,''); atualizarBotaoConfirmar()">
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label">Parcelamento</label>
+              <select class="form-control" id="cartaoParcelas">
+                ${gerarParcelas()}
+              </select>
+            </div>
+          </div>`;
+      }
+
+      else if (metodoPagamento === 'boleto') {
+        box.innerHTML = `
+          <div class="pag-detalhe pag-boleto">
+            <h4><i class="fas fa-barcode"></i> Pagamento via Boleto</h4>
+            <p>O boleto será gerado após a confirmação da inscrição e enviado para o seu e-mail.</p>
+            <ul>
+              <li><i class="fas fa-clock"></i> Vencimento em 3 dias úteis</li>
+              <li><i class="fas fa-check"></i> Confirmação em até 1 dia útil após o pagamento</li>
+              <li><i class="fas fa-triangle-exclamation"></i> Sua vaga só será garantida após a compensação</li>
+            </ul>
+            <div class="boleto-aviso">
+              <i class="fas fa-info-circle"></i>
+              Em eventos com vagas limitadas, recomendamos PIX para garantia imediata.
+            </div>
+          </div>`;
+      }
+
+      atualizarBotaoConfirmar();
+    }
+
+    function gerarParcelas() {
+      const total = totalFinal();
+      let opts = `<option value="1">1x de ${moeda(total)} sem juros</option>`;
+      for (let n = 2; n <= 12; n++) {
+        const v = total / n;
+        opts += `<option value="${n}">${n}x de ${moeda(v)} ${n <= 6 ? 'sem juros' : 'com juros'}</option>`;
+      }
+      return opts;
+    }
+
+    function setPagamento(metodo) {
+      metodoPagamento = metodo;
+      // Atualizar visual das opções
+      document.querySelectorAll('.pagamento-opcao').forEach(el => {
+        el.classList.toggle('ativa', el.dataset.metodo === metodo);
+      });
+      renderPagamentoDetalhes();
+      renderTotal();
+    }
+
+    function formatarCartao(input) {
+      let v = input.value.replace(/\D/g, '').substring(0, 16);
+      input.value = v.replace(/(\d{4})(?=\d)/g, '$1 ');
+    }
+
+    function formatarValidade(input) {
+      let v = input.value.replace(/\D/g, '');
+      if (v.length >= 3) v = v.substring(0,2) + '/' + v.substring(2,4);
+      input.value = v;
+    }
+
+    /* =====================================================================
+       CUPOM
+       ===================================================================== */
+
+    function aplicarCupom() {
+      const input = document.getElementById('cupomInput');
+      const msg = document.getElementById('cupomMensagem');
+      const codigo = input.value.trim().toUpperCase();
+
+      if (!codigo) {
+        msg.innerHTML = `<div class="cupom-msg erro"><i class="fas fa-circle-xmark"></i> Digite um código.</div>`;
+        return;
+      }
+
+      if (cupom && cupom.codigo === codigo) {
+        msg.innerHTML = `<div class="cupom-msg info"><i class="fas fa-info-circle"></i> Este cupom já está aplicado.</div>`;
+        return;
+      }
+
+      const dados = CUPONS_VALIDOS[codigo];
+      if (!dados) {
+        msg.innerHTML = `<div class="cupom-msg erro"><i class="fas fa-circle-xmark"></i> Cupom inválido ou expirado.</div>`;
+        cupom = null;
+        renderTotal();
+        return;
+      }
+
+      cupom = { codigo, ...dados };
+      msg.innerHTML = `
+        <div class="cupom-msg sucesso">
+          <i class="fas fa-circle-check"></i>
+          Cupom <strong>${codigo}</strong> aplicado com sucesso!
+          <button class="cupom-remover" onclick="removerCupom()">Remover</button>
+        </div>`;
+      renderTotal();
+    }
+
+    function removerCupom() {
+      cupom = null;
+      document.getElementById('cupomInput').value = '';
+      document.getElementById('cupomMensagem').innerHTML = '';
+      renderTotal();
+    }
+
+    /* =====================================================================
+       RENDER — TOTAL
+       ===================================================================== */
+
+    function renderTotal() {
+      const sub = subtotalGeral();
+      const descCup = descontoCupom(sub);
+      const total = totalFinal();
+
+      document.getElementById('subtotalVal').textContent = moeda(sub);
+      document.getElementById('taxaVal').textContent = moeda(TAXA_CONVENIENCIA);
+      document.getElementById('qtdAtletas').textContent = atletas.length;
+
+      const linhaCup = document.getElementById('linhaCupom');
+      if (descCup > 0 && cupom) {
+        document.getElementById('cupomTag').textContent = cupom.codigo;
+        document.getElementById('descontoCupomVal').textContent = '- ' + moeda(descCup);
+        linhaCup.style.display = 'flex';
+      } else {
+        linhaCup.style.display = 'none';
+      }
+
+      document.getElementById('totalFinalVal').textContent = moeda(total);
+
+      // Atualiza opções de parcelamento se for cartão
+      const sel = document.getElementById('cartaoParcelas');
+      if (sel) sel.innerHTML = gerarParcelas();
+    }
+
+    /* =====================================================================
+       BOTÃO CONFIRMAR
+       ===================================================================== */
+
+    function atualizarBotaoConfirmar() {
+      const btn = document.getElementById('btnConfirmar');
+      btn.classList.toggle('btn-disabled', !tudoOk());
+    }
+
+    function confirmarInscricao() {
+      // Validações
+      const todosOk = atletas.every(atletaDadosOk);
+      if (!todosOk) {
+        showToast('Preencha celular e e-mail de todos os atletas', 'info');
+        return;
+      }
+      if (!pagamentoDadosOk()) {
+        showToast('Complete os dados do pagamento', 'info');
+        return;
+      }
+      // Sucesso — gera número de inscrição e leva o método escolhido para a conclusão
+      const numeroInscricao = String(Math.floor(Math.random() * 9000000000) + 1000000000);
+      showToast('Processando seu pagamento...', 'sucesso');
+      setTimeout(() => {
+        window.location = 'inscricao-concluido.html?metodo=' + encodeURIComponent(metodoPagamento) + '&insc=' + numeroInscricao;
+      }, 1200);
+    }
+
+    /* =====================================================================
+       LISTENER GERAL para termo
+       ===================================================================== */
+    document.addEventListener('change', e => {
+      atualizarBotaoConfirmar();
+    });
+
+    /* =====================================================================
+       INIT
+       ===================================================================== */
+    renderAtletas();
+    setPagamento('pix');
+  </script>
+</body>
+</html>

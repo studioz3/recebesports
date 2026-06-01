@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Inscrição — Confirma dados — RecebeSports</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/inscricao.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="assets/logo.svg" alt="Recebe Sports">
+      </a>
+      <nav class="main-nav">
+        <a href="resultados.html">Resultados</a>
+        <a href="quem-somos.html">Quem somos</a>
+        <a href="organizadores.html">Para organizadores</a>
+      </nav>
+      <div class="nav-buttons">
+        <a href="login-organizador.html" class="btn-nav btn-nav-organizador">Área do Organizador</a>
+        <a href="login.html" class="btn-nav btn-nav-atleta">Área do Atleta</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- BANNER DO EVENTO -->
+  <section class="insc-banner">
+    <img src="assets/banner-evento.jpg" alt="5K Pela Paz no Trânsito">
+  </section>
+  <div class="insc-evento-nome">5K Pela Paz no Trânsito</div>
+
+  <!-- CONTEÚDO -->
+  <section class="insc-content">
+    <div class="container">
+
+      <div class="insc-steps">
+        <div class="insc-step done">
+          <div class="insc-dot">
+            <span class="step-number">1</span>
+            <i class="fas fa-check step-check"></i>
+          </div>
+          <div class="insc-label">Participação</div>
+        </div>
+        <div class="insc-connector done"></div>
+        <div class="insc-step active">
+          <div class="insc-dot">
+            <span class="step-number">2</span>
+            <i class="fas fa-check step-check"></i>
+          </div>
+          <div class="insc-label">Dados da inscrição</div>
+        </div>
+        <div class="insc-connector"></div>
+        <div class="insc-step">
+          <div class="insc-dot">
+            <span class="step-number">3</span>
+            <i class="fas fa-check step-check"></i>
+          </div>
+          <div class="insc-label">Pagamento</div>
+        </div>
+        <div class="insc-connector"></div>
+        <div class="insc-step">
+          <div class="insc-dot">
+            <span class="step-number">4</span>
+            <i class="fas fa-check step-check"></i>
+          </div>
+          <div class="insc-label">Concluído</div>
+        </div>
+      </div>
+
+      <div class="insc-grid">
+        <!-- Coluna esquerda -->
+        <div>
+          <div class="painel" id="detalhesPainel">
+            <div class="painel-header">
+              <span>Detalhes</span>
+              <span class="painel-header-sub" id="painelHeaderSub"></span>
+            </div>
+
+            <!-- Abas de participantes -->
+            <div class="insc-tabs" id="inscTabs"></div>
+
+            <div class="painel-body" id="detalhesBody"></div>
+          </div>
+
+          <div class="insc-termos" id="inscTermos" style="display:none;">
+            <label class="toggle-switch">
+              <input type="checkbox" id="aceitoPriv">
+              <span class="toggle-slider"></span>
+              <span>Li e concordo com o <a href="politica-de-privacidade.html">Termo de Responsabilidade</a></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Coluna direita -->
+        <div>
+          <div class="painel">
+            <div class="painel-header">Resumo</div>
+            <div class="painel-body" id="resumoBody"></div>
+          </div>
+          <div class="resumo-total-box" id="resumoTotal" style="display:none;"></div>
+        </div>
+      </div>
+
+      <div class="insc-acoes">
+        <a href="inscricao-participante.html" class="btn btn-secondary"><i class="fas fa-arrow-left" style="margin-right:8px"></i> Voltar</a>
+        <button class="btn btn-primary btn-disabled" id="btnContinuar" onclick="continuar()">Continuar</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MODAL MEUS AMIGOS -->
+  <div class="modal-overlay" id="modalAmigos" onclick="if(event.target===this)fecharModal()">
+    <div class="modal-amigos">
+      <h3>Meus amigos</h3>
+      <div id="modalCorpo"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><img src="assets/icon-instagram.svg" alt=""></a>
+        <a href="#" aria-label="Whatsapp"><img src="assets/icon-whatsapp.svg" alt=""></a>
+        <a href="#" aria-label="Facebook"><img src="assets/icon-facebook.svg" alt=""></a>
+      </div>
+      <div class="footer-logo">
+        <img src="assets/logo.svg" alt="Recebe Sports">
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h4>Atletas</h4>
+          <ul>
+            <li><a href="login.html">Acessar</a></li>
+            <li><a href="cadastro-1.html">Crie sua conta</a></li>
+            <li><a href="resultados.html">Resultados</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Organizadores</h4>
+          <ul>
+            <li><a href="organizadores.html">Serviços Oferecidos</a></li>
+            <li><a href="organizador-criar-1.html">Crie sua Conta</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Institucional</h4>
+          <ul>
+            <li><a href="quem-somos.html">Quem Somos</a></li>
+            <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
+            <li><a href="termos-de-uso.html">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2013 - 2026 - Recebe Digital - CNPJ: 12.345.678/0001-99 - Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/global.js"></script>
+  <script>
+    /* =====================================================================
+       MODELO DE DADOS
+       ===================================================================== */
+
+    // Tamanhos de camiseta padrão
+    const TAMANHOS_CAMISA = ['PP', 'P', 'M', 'G', 'GG', 'XGG'];
+
+    /**
+     * Estrutura de cada modalidade:
+     * - kits: lista de kits disponíveis para essa modalidade
+     *   - id, nome, valor, descricao
+     *   - itens: lista de itens já inclusos no kit (apenas exibição)
+     *   - opcoes: configurações obrigatórias (ex: tamanho de camisa, cor de boné)
+     *   - adicionais: itens opcionais com preço extra que o atleta pode marcar
+     */
+    const MODALIDADES = {
+      '5km': {
+        label: 'Corrida 5 KM',
+        icone: 'fa-person-running',
+        kits: [
+          {
+            id: 'participacao',
+            nome: 'KIT Participação',
+            valor: 93.00,
+            descricao: 'Para quem só quer cruzar a linha de chegada.',
+            itens: ['Número de peito', 'Chip de cronometragem', 'Medalha de participação'],
+            opcoes: [],
+            adicionais: [
+              { id: 'camisa_evento', label: 'Camiseta oficial do evento', valor: 39.00, comTamanho: true },
+              { id: 'sacola',        label: 'Sacola sustentável',         valor: 15.00 }
+            ]
+          },
+          {
+            id: 'premium',
+            nome: 'KIT Premium',
+            valor: 159.00,
+            descricao: 'Kit completo com camiseta técnica, boné e brindes.',
+            itens: ['Camiseta dry-fit', 'Boné esportivo', 'Sacola', 'Número de peito', 'Chip', 'Medalha personalizada'],
+            opcoes: [
+              { id: 'tamanho_camisa', label: 'Tamanho da camiseta', tipo: 'select', valores: TAMANHOS_CAMISA },
+              { id: 'cor_bone',       label: 'Cor do boné',          tipo: 'select', valores: ['Preto', 'Branco', 'Laranja'] }
+            ],
+            adicionais: [
+              { id: 'garrafa',  label: 'Garrafa térmica 500ml', valor: 35.00 },
+              { id: 'meias',    label: 'Par de meias técnicas',  valor: 22.00 }
+            ]
+          }
+        ]
+      },
+
+      '21km': {
+        label: 'Corrida 21 KM',
+        icone: 'fa-medal',
+        kits: [
+          {
+            id: 'essencial',
+            nome: 'KIT Essencial',
+            valor: 129.00,
+            descricao: 'Camiseta, sacola e cronometragem para sua meia-maratona.',
+            itens: ['Camiseta evento', 'Sacola', 'Número de peito', 'Chip', 'Medalha'],
+            opcoes: [
+              { id: 'tamanho_camisa', label: 'Tamanho da camiseta', tipo: 'select', valores: TAMANHOS_CAMISA }
+            ],
+            adicionais: [
+              { id: 'bone',    label: 'Boné esportivo',        valor: 25.00 },
+              { id: 'garrafa', label: 'Garrafa térmica 500ml', valor: 35.00 }
+            ]
+          },
+          {
+            id: 'premium',
+            nome: 'KIT Premium 21K',
+            valor: 219.00,
+            descricao: 'Kit VIP com camiseta técnica dry-fit, boné e brindes especiais.',
+            itens: ['Camiseta dry-fit premium', 'Boné técnico', 'Sacola', 'Garrafa', 'Número de peito', 'Chip', 'Medalha banhada'],
+            opcoes: [
+              { id: 'tamanho_camisa', label: 'Tamanho da camiseta', tipo: 'select', valores: TAMANHOS_CAMISA },
+              { id: 'cor_bone',       label: 'Cor do boné',          tipo: 'select', valores: ['Preto', 'Branco', 'Laranja', 'Azul-marinho'] }
+            ],
+            adicionais: [
+              { id: 'meias',     label: 'Par de meias técnicas',  valor: 22.00 },
+              { id: 'corta_vento', label: 'Corta-vento personalizado', valor: 89.00, comTamanho: true }
+            ]
+          }
+        ]
+      },
+
+      'caminhada': {
+        label: 'Caminhada',
+        icone: 'fa-person-walking',
+        kits: [
+          {
+            id: 'start',
+            nome: 'KIT Start',
+            valor: 59.00,
+            descricao: 'Comece sua jornada com o essencial. Monte seu kit do seu jeito.',
+            imagem: 'assets/img_kit_start.jpg',
+            itens: ['Número de peito', 'Medalha de participação'],
+            opcoes: [],
+            adicionais: [
+              { id: 'camisa_evento', label: 'Camiseta oficial do evento', valor: 39.00, comTamanho: true },
+              { id: 'sacola',        label: 'Sacola sustentável',          valor: 15.00 },
+              { id: 'bone',          label: 'Boné do evento',              valor: 25.00 },
+              { id: 'garrafa',       label: 'Garrafa squeeze 500ml',       valor: 28.00 },
+              { id: 'cordao',        label: 'Cordão porta-medalha',        valor:  8.00 }
+            ]
+          },
+          {
+            id: 'premium',
+            nome: 'KIT Premium',
+            valor: 119.00,
+            descricao: 'Kit completo com camiseta dry-fit, boné, sacola e brindes especiais.',
+            imagem: 'assets/img_kit_premium.jpg',
+            itens: ['Camiseta dry-fit', 'Boné esportivo', 'Sacola sustentável', 'Número de peito', 'Medalha personalizada'],
+            opcoes: [
+              { id: 'tamanho_camisa', label: 'Tamanho da camiseta', tipo: 'select', valores: TAMANHOS_CAMISA },
+              { id: 'cor_bone',       label: 'Cor do boné',          tipo: 'select', valores: ['Preto', 'Branco', 'Laranja'] }
+            ],
+            adicionais: [
+              { id: 'garrafa_termica', label: 'Garrafa térmica 500ml',  valor: 35.00 },
+              { id: 'meias',           label: 'Par de meias técnicas',   valor: 22.00 },
+              { id: 'viseira',         label: 'Viseira solar bordada',   valor: 28.00 },
+              { id: 'kit_familia',     label: 'Kit família (medalha extra para acompanhante)', valor: 19.00 }
+            ]
+          }
+        ]
+      }
+    };
+
+    /* =====================================================================
+       ESTADO DA APLICAÇÃO
+       ===================================================================== */
+
+    // Cada participante tem sua própria inscrição.
+    // O participante 0 é sempre o usuário logado (você).
+    let participantes = [
+      {
+        id: 'voce',
+        nome: 'João da Silva Guerreiro Goulart Marinho',
+        tipo: 'voce',
+        modalidade: null,
+        kitId: null,
+        opcoes: {},        // { tamanho_camisa: 'M', cor_bone: 'Preto' }
+        adicionais: {}     // { sacola: true, bone: false, camisa_evento: { selecionado: true, tamanho: 'M' } }
+      }
+    ];
+
+    // Aba ativa
+    let abaAtiva = 0;
+
+    // Catálogo de amigos cadastrados disponíveis para inclusão
+    let amigosCadastrados = [
+      { nome: 'Leonidas Manson Lemon da Cunha', nasc: '24/05/1982', email: 'leoesparta@gmail.com' },
+      { nome: 'Mario Marinho',                  nasc: '24/05/1982', email: 'mario@gmail.com'      },
+      { nome: 'Juliana Ana Gourlart',           nasc: '24/05/1982', email: 'juliana@gmail.com'    }
+    ];
+
+    let modalEstado = 'lista';
+
+    const moeda = v => 'R$ ' + v.toFixed(2).replace('.', ',');
+
+    /* =====================================================================
+       UTILITÁRIOS DE CÁLCULO
+       ===================================================================== */
+
+    function getKit(p) {
+      if (!p.modalidade || !p.kitId) return null;
+      return MODALIDADES[p.modalidade].kits.find(k => k.id === p.kitId);
+    }
+
+    function calcularSubtotal(p) {
+      const kit = getKit(p);
+      if (!kit) return 0;
+      let total = kit.valor;
+      (kit.adicionais || []).forEach(ad => {
+        const sel = p.adicionais[ad.id];
+        if (sel && (sel === true || sel.selecionado)) total += ad.valor;
+      });
+      return total;
+    }
+
+    function calcularTotalGeral() {
+      return participantes.reduce((s, p) => s + calcularSubtotal(p), 0);
+    }
+
+    function inscricaoCompleta(p) {
+      const kit = getKit(p);
+      if (!kit) return false;
+      // Todas as opções obrigatórias precisam estar preenchidas
+      for (const op of (kit.opcoes || [])) {
+        if (!p.opcoes[op.id]) return false;
+      }
+      // Adicionais com tamanho selecionado precisam de tamanho escolhido
+      for (const ad of (kit.adicionais || [])) {
+        if (ad.comTamanho) {
+          const sel = p.adicionais[ad.id];
+          if (sel && sel.selecionado && !sel.tamanho) return false;
+        }
+      }
+      return true;
+    }
+
+    function todasInscricoesCompletas() {
+      return participantes.length > 0 && participantes.every(inscricaoCompleta);
+    }
+
+    /* =====================================================================
+       RENDER — ABAS DE PARTICIPANTES
+       ===================================================================== */
+
+    function renderTabs() {
+      const tabs = document.getElementById('inscTabs');
+      tabs.innerHTML = participantes.map((p, i) => {
+        const completo = inscricaoCompleta(p);
+        const cls = ['insc-tab'];
+        if (i === abaAtiva) cls.push('ativa');
+        if (completo)       cls.push('completa');
+        const icone = completo
+          ? '<i class="fas fa-check-circle"></i>'
+          : (p.tipo === 'voce'
+              ? '<i class="fas fa-user"></i>'
+              : '<i class="fas fa-user-plus"></i>');
+
+        const nomeCurto = p.tipo === 'voce' ? 'Você' : primeiroENome(p.nome);
+        const remover = p.tipo === 'amigo'
+          ? `<span class="insc-tab-remove" onclick="event.stopPropagation();removerParticipante(${i})" title="Remover atleta"><i class="fas fa-times"></i></span>`
+          : '';
+
+        return `
+          <div class="${cls.join(' ')}" onclick="trocarAba(${i})">
+            ${icone}
+            <span class="insc-tab-nome">${nomeCurto}</span>
+            ${remover}
+          </div>`;
+      }).join('');
+
+      // Botão "+ atleta" no fim das abas
+      tabs.innerHTML += `
+        <div class="insc-tab-add" onclick="abrirModalAmigos()" title="Inscrever mais atleta">
+          <i class="fas fa-plus"></i>
+        </div>`;
+    }
+
+    function primeiroENome(nomeCompleto) {
+      const partes = nomeCompleto.split(' ').filter(Boolean);
+      if (partes.length <= 2) return nomeCompleto;
+      return partes[0] + ' ' + partes[1];
+    }
+
+    function trocarAba(i, opts) {
+      abaAtiva = i;
+      renderTudo();
+
+      // Quando vier de um link/CTA externo (ex.: "Configurar agora →"),
+      // rola suavemente até centralizar o painel "Detalhes" no viewport.
+      if (opts && opts.scroll) {
+        setTimeout(() => {
+          const alvo = document.getElementById('detalhesPainel');
+          if (alvo) {
+            alvo.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // Pequeno destaque visual ao chegar (reaproveita o pulse já existente)
+            alvo.classList.add('resumo-atualizado');
+            setTimeout(() => alvo.classList.remove('resumo-atualizado'), 700);
+          }
+        }, 100);
+      }
+    }
+
+    /* =====================================================================
+       RENDER — DETALHES (coluna esquerda)
+       ===================================================================== */
+
+    function renderDetalhes() {
+      const body = document.getElementById('detalhesBody');
+      const p = participantes[abaAtiva];
+      if (!p) { body.innerHTML = ''; return; }
+
+      // Subtítulo do painel
+      document.getElementById('painelHeaderSub').textContent =
+        p.tipo === 'voce' ? 'Sua inscrição' : `Inscrição de ${primeiroENome(p.nome)}`;
+
+      // ---- 1) Sem modalidade: listar modalidades ----
+      if (!p.modalidade) {
+        body.innerHTML = `
+          <p class="passo-instrucao">Escolha a modalidade que <strong>${p.tipo === 'voce' ? 'você' : primeiroENome(p.nome)}</strong> vai participar:</p>
+          ${Object.entries(MODALIDADES).map(([k, m]) => `
+            <div class="modalidade-row">
+              <span class="nome"><i class="fas ${m.icone}" style="margin-right:10px;color:var(--color-orange)"></i>${m.label}</span>
+              <button class="btn-selecionar" onclick="selecionarModalidade('${k}')">Selecionar</button>
+            </div>`).join('')}`;
+        return;
+      }
+
+      const modalidade = MODALIDADES[p.modalidade];
+
+      // ---- 2) Com modalidade, sem kit: escolher kit ----
+      if (!p.kitId) {
+        body.innerHTML = `
+          <div class="modalidade-sel">
+            <span><i class="fas ${modalidade.icone}" style="margin-right:8px"></i>${modalidade.label}</span>
+            <button class="fechar-sel" onclick="resetarParticipante()" aria-label="Remover modalidade">&times;</button>
+          </div>
+
+          <p class="passo-instrucao">Escolha o KIT que melhor combina com você:</p>
+
+          <div class="kit-opcoes">
+            ${modalidade.kits.map(k => `
+              <div class="kit-card" onclick="selecionarKit('${k.id}')">
+                ${k.imagem ? `
+                <div class="kit-card-imagem">
+                  <img src="${k.imagem}" alt="${k.nome}">
+                </div>` : ''}
+                <div class="kit-card-topo">
+                  <div>
+                    <div class="kit-card-nome">${k.nome}</div>
+                    <div class="kit-card-desc">${k.descricao}</div>
+                  </div>
+                  <div class="kit-card-valor">${moeda(k.valor)}</div>
+                </div>
+                <ul class="kit-card-itens">
+                  ${k.itens.map(i => `<li><i class="fas fa-check"></i> ${i}</li>`).join('')}
+                </ul>
+                <button class="btn-selecionar btn-selecionar-kit">Selecionar este KIT</button>
+              </div>`).join('')}
+          </div>`;
+        return;
+      }
+
+      // ---- 3) Com modalidade e kit: configurar opções + adicionais ----
+      const kit = getKit(p);
+
+      const opcoesHtml = (kit.opcoes || []).length === 0 ? '' : `
+        <div class="kit-bloco">
+          <div class="kit-bloco-titulo"><i class="fas fa-sliders"></i> Configure seu KIT</div>
+          ${kit.opcoes.map(op => `
+            <div class="kit-opcao-row">
+              <label class="kit-opcao-label">${op.label} <span class="obrig">*</span></label>
+              <select class="form-control kit-opcao-select" onchange="setOpcao('${op.id}', this.value)">
+                <option value="">Selecione...</option>
+                ${op.valores.map(v => `<option value="${v}" ${p.opcoes[op.id]===v?'selected':''}>${v}</option>`).join('')}
+              </select>
+            </div>`).join('')}
+        </div>`;
+
+      const adicionaisHtml = (kit.adicionais || []).length === 0 ? '' : `
+        <div class="kit-bloco">
+          <div class="kit-bloco-titulo"><i class="fas fa-plus-circle"></i> Adicionais opcionais</div>
+          <p class="kit-bloco-subtitulo">Personalize ainda mais seu KIT. Os valores serão somados ao total.</p>
+          ${kit.adicionais.map(ad => {
+            const sel = p.adicionais[ad.id];
+            const marcado = !!(sel && (sel === true || sel.selecionado));
+            const tamanhoAtual = (sel && sel.tamanho) || '';
+            return `
+              <div class="kit-adicional ${marcado ? 'marcado' : ''}">
+                <label class="kit-adicional-main">
+                  <input type="checkbox" ${marcado ? 'checked' : ''} onchange="toggleAdicional('${ad.id}', this.checked)">
+                  <span class="kit-adicional-info">
+                    <span class="kit-adicional-nome">${ad.label}</span>
+                    <span class="kit-adicional-valor">+ ${moeda(ad.valor)}</span>
+                  </span>
+                </label>
+                ${ad.comTamanho && marcado ? `
+                  <div class="kit-adicional-tamanho">
+                    <label>Tamanho:</label>
+                    <select class="form-control" onchange="setAdicionalTamanho('${ad.id}', this.value)">
+                      <option value="">Selecione...</option>
+                      ${TAMANHOS_CAMISA.map(t => `<option value="${t}" ${tamanhoAtual===t?'selected':''}>${t}</option>`).join('')}
+                    </select>
+                  </div>` : ''}
+              </div>`;
+          }).join('')}
+        </div>`;
+
+      body.innerHTML = `
+        <div class="modalidade-sel">
+          <span><i class="fas ${modalidade.icone}" style="margin-right:8px"></i>${modalidade.label}</span>
+          <button class="fechar-sel" onclick="resetarParticipante()" aria-label="Remover modalidade">&times;</button>
+        </div>
+
+        <div class="kit-selecionado">
+          <div class="kit-selecionado-topo">
+            <div>
+              <div class="kit-selecionado-rotulo">KIT selecionado</div>
+              <div class="kit-selecionado-nome">${kit.nome}</div>
+              <div class="kit-selecionado-desc">${kit.descricao}</div>
+            </div>
+            <div class="kit-selecionado-acoes">
+              <div class="kit-valor-base">${moeda(kit.valor)}</div>
+              <button class="btn-trocar-kit" onclick="trocarKit()"><i class="fas fa-exchange-alt"></i> Trocar KIT</button>
+            </div>
+          </div>
+          <ul class="kit-card-itens">
+            ${kit.itens.map(i => `<li><i class="fas fa-check"></i> ${i}</li>`).join('')}
+          </ul>
+        </div>
+
+        ${opcoesHtml}
+        ${adicionaisHtml}
+
+        <div class="kit-subtotal">
+          <span>Subtotal desta inscrição</span>
+          <strong>${moeda(calcularSubtotal(p))}</strong>
+        </div>`;
+    }
+
+    /* =====================================================================
+       RENDER — RESUMO (coluna direita)
+       ===================================================================== */
+
+    function renderResumo() {
+      const body = document.getElementById('resumoBody');
+      const totalBox = document.getElementById('resumoTotal');
+
+      let html = '';
+      participantes.forEach((p, i) => {
+        const kit = getKit(p);
+        const ativa = i === abaAtiva;
+        const completa = inscricaoCompleta(p);
+
+        let detalhesKit = '';
+        if (kit) {
+          // Opções escolhidas
+          const opcoesTxt = (kit.opcoes || []).map(op => {
+            const v = p.opcoes[op.id];
+            return v ? `<li>${op.label}: <strong>${v}</strong></li>` : `<li class="pend">${op.label}: <em>pendente</em></li>`;
+          }).join('');
+
+          // Adicionais marcados
+          const adsTxt = (kit.adicionais || [])
+            .filter(ad => {
+              const s = p.adicionais[ad.id];
+              return s && (s === true || s.selecionado);
+            })
+            .map(ad => {
+              const s = p.adicionais[ad.id];
+              const tam = (s && s.tamanho) ? ` <small>(${s.tamanho})</small>` : '';
+              return `<li>+ ${ad.label}${tam} <span class="ad-valor">${moeda(ad.valor)}</span></li>`;
+            }).join('');
+
+          detalhesKit = `
+            <div class="resumo-modalidade">
+              <i class="fas ${MODALIDADES[p.modalidade].icone}"></i>
+              ${MODALIDADES[p.modalidade].label}
+            </div>
+            <div class="resumo-kit-linha">
+              <span><strong>${kit.nome}</strong></span>
+              <span class="resumo-valor">${moeda(kit.valor)}</span>
+            </div>
+            ${opcoesTxt ? `<ul class="resumo-opcoes">${opcoesTxt}</ul>` : ''}
+            ${adsTxt   ? `<ul class="resumo-adicionais">${adsTxt}</ul>` : ''}
+            <div class="resumo-subtotal">
+              Subtotal <strong>${moeda(calcularSubtotal(p))}</strong>
+            </div>`;
+        } else {
+          detalhesKit = `
+            <div class="resumo-pendente">
+              <i class="fas fa-circle-exclamation"></i>
+              Modalidade e KIT ainda não selecionados.
+              <button class="link-acao" onclick="trocarAba(${i}, {scroll: true})">Configurar agora →</button>
+            </div>`;
+        }
+
+        const removerBtn = p.tipo === 'amigo'
+          ? `<button class="btn-remover" onclick="removerParticipante(${i})" aria-label="Remover amigo"><i class="fas fa-trash"></i></button>`
+          : '';
+
+        const statusBadge = completa
+          ? `<span class="status-badge completo"><i class="fas fa-check"></i> Pronto</span>`
+          : `<span class="status-badge pendente"><i class="fas fa-clock"></i> A configurar</span>`;
+
+        html += `
+          <div class="resumo-pessoa ${ativa ? 'ativa' : ''}" onclick="trocarAba(${i})">
+            <div class="resumo-pessoa-topo">
+              <div>
+                <div class="resumo-rotulo">${p.tipo === 'voce' ? 'Você' : 'Amigo'}:</div>
+                <div class="resumo-nome">${p.nome}</div>
+              </div>
+              <div class="resumo-pessoa-acoes">
+                ${statusBadge}
+                ${removerBtn}
+              </div>
+            </div>
+            ${detalhesKit}
+          </div>`;
+      });
+
+      html += `<button class="btn-mais-atleta" onclick="abrirModalAmigos()"><i class="fas fa-user-plus" style="margin-right:8px"></i>Inscrever mais atleta</button>`;
+      body.innerHTML = html;
+
+      // Total geral
+      const total = calcularTotalGeral();
+      if (total > 0) {
+        totalBox.innerHTML = `
+          <div class="resumo-total-linha">
+            <span>Total geral (${participantes.length} ${participantes.length === 1 ? 'atleta' : 'atletas'})</span>
+            <strong>${moeda(total)}</strong>
+          </div>`;
+        totalBox.style.display = 'block';
+      } else {
+        totalBox.style.display = 'none';
+      }
+    }
+
+    /* =====================================================================
+       RENDER GERAL
+       ===================================================================== */
+
+    function renderTudo() {
+      renderTabs();
+      renderDetalhes();
+      renderResumo();
+
+      const todasOk = todasInscricoesCompletas();
+      document.getElementById('inscTermos').style.display = todasOk ? 'flex' : 'none';
+      document.getElementById('btnContinuar').classList.toggle('btn-disabled', !todasOk);
+    }
+
+    /* =====================================================================
+       AÇÕES DO USUÁRIO
+       ===================================================================== */
+
+    function selecionarModalidade(k) {
+      const p = participantes[abaAtiva];
+      p.modalidade = k;
+      p.kitId = null;
+      p.opcoes = {};
+      p.adicionais = {};
+      // Se a modalidade só tem 1 kit, já seleciona automaticamente
+      const kits = MODALIDADES[k].kits;
+      if (kits.length === 1) p.kitId = kits[0].id;
+      renderTudo();
+      
+      // Scroll suave até o resumo e adiciona animação de pulse
+      setTimeout(() => {
+        const resumo = document.querySelector('.insc-grid > div:last-child .painel');
+        if (resumo) {
+          resumo.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          resumo.classList.add('resumo-atualizado');
+          setTimeout(() => resumo.classList.remove('resumo-atualizado'), 600);
+        }
+      }, 100);
+    }
+
+    function selecionarKit(kitId) {
+      const p = participantes[abaAtiva];
+      p.kitId = kitId;
+      p.opcoes = {};
+      p.adicionais = {};
+      renderTudo();
+      
+      // Adiciona animação de pulse no resumo
+      setTimeout(() => {
+        const resumo = document.querySelector('.insc-grid > div:last-child .painel');
+        if (resumo) {
+          resumo.classList.add('resumo-atualizado');
+          setTimeout(() => resumo.classList.remove('resumo-atualizado'), 600);
+        }
+      }, 100);
+    }
+
+    function trocarKit() {
+      const p = participantes[abaAtiva];
+      p.kitId = null;
+      p.opcoes = {};
+      p.adicionais = {};
+      renderTudo();
+    }
+
+    function resetarParticipante() {
+      const p = participantes[abaAtiva];
+      p.modalidade = null;
+      p.kitId = null;
+      p.opcoes = {};
+      p.adicionais = {};
+      renderTudo();
+    }
+
+    function setOpcao(opId, valor) {
+      const p = participantes[abaAtiva];
+      if (valor) p.opcoes[opId] = valor;
+      else delete p.opcoes[opId];
+      renderTudo();
+    }
+
+    function toggleAdicional(adId, marcado) {
+      const p = participantes[abaAtiva];
+      if (marcado) {
+        // Verifica se este adicional pede tamanho
+        const kit = getKit(p);
+        const ad = kit.adicionais.find(a => a.id === adId);
+        p.adicionais[adId] = ad.comTamanho
+          ? { selecionado: true, tamanho: '' }
+          : { selecionado: true };
+      } else {
+        delete p.adicionais[adId];
+      }
+      renderTudo();
+    }
+
+    function setAdicionalTamanho(adId, tamanho) {
+      const p = participantes[abaAtiva];
+      if (p.adicionais[adId]) {
+        p.adicionais[adId].tamanho = tamanho;
+      }
+      renderTudo();
+    }
+
+    function removerParticipante(i) {
+      if (participantes[i].tipo === 'voce') return;
+      if (!confirm(`Remover ${participantes[i].nome} da inscrição?`)) return;
+      participantes.splice(i, 1);
+      if (abaAtiva >= participantes.length) abaAtiva = participantes.length - 1;
+      if (abaAtiva < 0) abaAtiva = 0;
+      renderTudo();
+    }
+
+    function continuar() {
+      console.log('✅ Função continuar() chamada');
+      
+      const btnContinuar = document.getElementById('btnContinuar');
+      
+      if (!todasInscricoesCompletas()) {
+        console.log('❌ Inscrições incompletas');
+        showToast('Configure modalidade e KIT para todos os atletas', 'info');
+        
+        // Animação de shake no botão
+        btnContinuar.classList.add('shake');
+        setTimeout(() => btnContinuar.classList.remove('shake'), 400);
+        return;
+      }
+      
+      console.log('✅ Inscrições completas');
+      
+      const ok = document.getElementById('aceitoPriv').checked;
+      
+      console.log('Termos aceitos:', ok);
+      
+      if (!ok) { 
+        console.log('❌ Termos não aceitos');
+        showToast('Aceite o Termo de Responsabilidade', 'info');
+        
+        // Animação de shake no botão
+        btnContinuar.classList.add('shake');
+        setTimeout(() => btnContinuar.classList.remove('shake'), 400);
+        return; 
+      }
+      
+      console.log('🚀 Redirecionando para inscricao-pagamento.html...');
+      window.location.href = 'inscricao-pagamento.html';
+    }
+
+    /* =====================================================================
+       MODAL — MEUS AMIGOS
+       ===================================================================== */
+
+    function abrirModalAmigos() {
+      modalEstado = 'lista';
+      renderModal();
+      document.getElementById('modalAmigos').classList.add('aberto');
+    }
+
+    function fecharModal() {
+      document.getElementById('modalAmigos').classList.remove('aberto');
+    }
+
+    function renderModal() {
+      const corpo = document.getElementById('modalCorpo');
+
+      if (modalEstado === 'form') {
+        corpo.innerHTML = `
+          <div class="modal-painel modal-form">
+            <div class="form-group">
+              <label class="form-label">Nome Completo <span class="obrig">*</span></label>
+              <input type="text" class="form-control" id="amNome" placeholder="Nome completo do amigo">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">CPF <span class="obrig">*</span></label>
+                <input type="text" class="form-control" placeholder="123.456.789-00">
+              </div>
+              <div class="form-group">
+                <label class="form-label">RG <span class="obrig">*</span></label>
+                <input type="text" class="form-control" placeholder="12.345.678-00">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Data de Nascimento <span class="obrig">*</span></label>
+                <input type="text" class="form-control" placeholder="00/00/1900">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Gênero <span class="obrig">*</span></label>
+                <select class="form-control">
+                  <option value="">Escolher gênero</option>
+                  <option>Masculino</option><option>Feminino</option>
+                  <option>Prefiro não informar</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Apelido</label>
+                <input type="text" class="form-control" placeholder="Apelido do amigo">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Equipe</label>
+                <input type="text" class="form-control" placeholder="Nome da equipe se tiver">
+              </div>
+            </div>
+            <div class="form-row" style="margin-bottom:0;">
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label">Celular</label>
+                <input type="text" class="form-control" placeholder="(15) 99644-4373">
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label">E-mail</label>
+                <input type="text" class="form-control" placeholder="email@dominio.com.br">
+              </div>
+            </div>
+          </div>
+          <div class="modal-acoes">
+            <button class="btn btn-secondary" onclick="modalEstado='lista'; renderModal()">Voltar</button>
+            <button class="btn btn-primary" onclick="salvarAmigo()">Salvar amigo</button>
+          </div>`;
+        return;
+      }
+
+      // estado 'lista'
+      let painel;
+      if (amigosCadastrados.length === 0) {
+        painel = `
+          <div class="modal-painel">
+            <div class="modal-vazio">
+              <h4>Nenhum amigo registrado</h4>
+              <p>Clique no botão <strong>"Adicionar novo amigo"</strong> abaixo para cadastrar um novo amigo</p>
+            </div>
+          </div>`;
+      } else {
+        painel = `
+          <p class="modal-instrucao">Selecione um amigo para incluir na inscrição. Depois você poderá configurar o KIT dele.</p>
+          <div class="modal-busca">
+            <div class="campo">
+              <i class="fas fa-running"></i>
+              <input type="text" placeholder="Pesquise o nome do amigo...">
+            </div>
+            <button class="btn btn-primary" onclick="showToast('Busca de amigos (protótipo)','info')">Procurar</button>
+          </div>
+          <div class="modal-painel">
+            ${amigosCadastrados.map((a, i) => {
+              const jaIncluso = participantes.some(p => p.nome === a.nome);
+              return `
+              <div class="amigo-row ${jaIncluso ? 'incluso' : ''}">
+                <div class="amigo-nome">${a.nome}</div>
+                <div class="amigo-dados">
+                  <strong>Data Nascimento:</strong> ${a.nasc}<br>
+                  <strong>E-mail:</strong> ${a.email}
+                </div>
+                ${jaIncluso
+                  ? `<button class="btn-incluir incluso-btn" disabled><i class="fas fa-check"></i> Incluído</button>`
+                  : `<button class="btn-incluir" onclick="incluirAmigo(${i})">Incluir atleta</button>`}
+              </div>`;
+            }).join('')}
+          </div>`;
+      }
+
+      corpo.innerHTML = painel + `
+        <div class="modal-acoes">
+          <button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>
+          <button class="btn btn-primary" onclick="modalEstado='form'; renderModal()">Adicionar novo amigo</button>
+        </div>`;
+    }
+
+    function salvarAmigo() {
+      const campo = document.getElementById('amNome');
+      const nome = (campo && campo.value || '').trim();
+      amigosCadastrados.push({
+        nome: nome || 'Novo Amigo',
+        nasc: '00/00/0000',
+        email: 'amigo@email.com'
+      });
+      showToast('Amigo salvo com sucesso!');
+      modalEstado = 'lista';
+      renderModal();
+    }
+
+    function incluirAmigo(i) {
+      const a = amigosCadastrados[i];
+      if (participantes.some(p => p.nome === a.nome)) {
+        showToast('Esse atleta já está na inscrição', 'info');
+        return;
+      }
+      participantes.push({
+        id: 'amigo_' + Date.now(),
+        nome: a.nome,
+        tipo: 'amigo',
+        modalidade: null,
+        kitId: null,
+        opcoes: {},
+        adicionais: {}
+      });
+      abaAtiva = participantes.length - 1;
+      fecharModal();
+      renderTudo();
+      showToast(a.nome.split(' ')[0] + ' incluído. Configure o KIT dele agora.');
+    }
+
+    /* =====================================================================
+       INIT
+       ===================================================================== */
+    renderTudo();
+  </script>
+</body>
+</html>

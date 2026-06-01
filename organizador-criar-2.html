@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro — RecebeSports</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/organizador.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="assets/logo.svg" alt="Recebe Sports">
+      </a>
+      <nav class="main-nav">
+        <a href="resultados.html">Resultados</a>
+        <a href="quem-somos.html">Quem somos</a>
+        <a href="organizadores.html">Para organizadores</a>
+      </nav>
+      <div class="nav-buttons">
+        <a href="login-organizador.html" class="btn-nav btn-nav-organizador">Área do Organizador</a>
+        <a href="login.html" class="btn-nav btn-nav-atleta">Área do Atleta</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="org-hero-banner">
+    <h1>Complete seu cadastro</h1>
+  </div>
+
+  <!-- FLUXO -->
+  <section class="org-flow">
+    <div class="container">
+
+      <!-- Progresso -->
+      <div class="org-steps">
+        <div class="org-step done">
+          <div class="org-dot"></div>
+          <div class="org-label">Registro</div>
+        </div>
+        <div class="org-step active">
+          <div class="org-dot"></div>
+          <div class="org-label">Cadastro</div>
+        </div>
+        <div class="org-step">
+          <div class="org-dot"></div>
+          <div class="org-label">Concluído</div>
+        </div>
+      </div>
+
+      <form id="formCadastro" class="org-card">
+        
+        <!-- DADOS DA EMPRESA -->
+        <h2>Dados da Empresa</h2>
+        <p>Preencha as informações da sua empresa ou negócio</p>
+
+        <div class="form-row" style="margin-top: 24px;">
+          <div class="form-group">
+            <label class="form-label">Tipo de Pessoa *</label>
+            <select class="form-control" id="tipoPessoa" required>
+              <option value="">Selecione...</option>
+              <option value="juridica">Jurídica</option>
+              <option value="fisica">Física</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">CNPJ *</label>
+            <input type="text" class="form-control" id="cnpj" placeholder="00.000.000/0000-00" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nome Fantasia *</label>
+            <input type="text" class="form-control" id="nomeFantasia" placeholder="Nome comercial" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Razão Social *</label>
+            <input type="text" class="form-control" id="razaoSocial" placeholder="Razão social completa" required>
+          </div>
+        </div>
+
+        <!-- Endereço -->
+        <h3 style="font-size: 18px; font-weight: 700; margin: 32px 0 16px; color: var(--color-black);">Endereço</h3>
+        
+        <div class="form-row-3">
+          <div class="form-group">
+            <label class="form-label">CEP *</label>
+            <input type="text" class="form-control" id="cep" placeholder="00000-000" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Endereço *</label>
+            <input type="text" class="form-control" id="endereco" placeholder="Rua, Avenida..." required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Número *</label>
+            <input type="text" class="form-control" id="numero" placeholder="Nº" required>
+          </div>
+        </div>
+
+        <div class="form-row-3">
+          <div class="form-group">
+            <label class="form-label">Bairro *</label>
+            <input type="text" class="form-control" id="bairro" placeholder="Bairro" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Cidade *</label>
+            <select class="form-control" id="cidade" required>
+              <option value="">Selecione...</option>
+              <option value="sao-paulo">São Paulo</option>
+              <option value="rio-janeiro">Rio de Janeiro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">UF *</label>
+            <select class="form-control" id="uf" required>
+              <option value="">UF</option>
+              <option value="SP">SP</option>
+              <option value="RJ">RJ</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Complemento</label>
+          <input type="text" class="form-control" id="complemento" placeholder="Apto, Sala...">
+        </div>
+
+        <!-- Representante Legal -->
+        <h3 style="font-size: 18px; font-weight: 700; margin: 32px 0 16px; color: var(--color-black);">Representante Legal</h3>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nome Completo *</label>
+            <input type="text" class="form-control" id="nomeRepresentante" placeholder="Nome completo" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">CPF *</label>
+            <input type="text" class="form-control" id="cpfRepresentante" placeholder="000.000.000-00" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">E-mail *</label>
+            <input type="email" class="form-control" id="emailRepresentante" placeholder="email@exemplo.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Celular *</label>
+            <input type="tel" class="form-control" id="celularRepresentante" placeholder="(00) 00000-0000" required>
+          </div>
+        </div>
+
+        <!-- Mídias Sociais -->
+        <h3 style="font-size: 18px; font-weight: 700; margin: 32px 0 16px; color: var(--color-black);">Mídias Sociais</h3>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Facebook</label>
+            <input type="text" class="form-control" id="facebook" placeholder="facebook.com/sua-pagina">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Instagram</label>
+            <input type="text" class="form-control" id="instagram" placeholder="@seu_perfil">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Twitter/X</label>
+            <input type="text" class="form-control" id="twitter" placeholder="@seu_usuario">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Site</label>
+            <input type="url" class="form-control" id="site" placeholder="www.seusite.com.br">
+          </div>
+        </div>
+
+        <div class="org-aceite-item" style="margin-top: 8px;">
+          <input type="checkbox" id="mostrarMidias">
+          <label for="mostrarMidias" style="cursor: pointer;">Mostrar mídias sociais na página do evento</label>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 40px 0 32px;">
+
+        <!-- DADOS BANCÁRIOS -->
+        <h2>Dados Bancários</h2>
+        <p>Informações para recebimento dos pagamentos</p>
+
+        <div class="form-row" style="margin-top: 24px;">
+          <div class="form-group">
+            <label class="form-label">Tipo de Pessoa *</label>
+            <select class="form-control" id="tipoPessoaBanco" required>
+              <option value="">Selecione...</option>
+              <option value="fisica">Física</option>
+              <option value="juridica">Jurídica</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">CPF do Beneficiário *</label>
+            <input type="text" class="form-control" id="cpfBeneficiario" placeholder="000.000.000-00" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Nome do Beneficiário *</label>
+          <input type="text" class="form-control" id="nomeBeneficiario" placeholder="Nome completo" required>
+        </div>
+
+        <div class="form-row-3">
+          <div class="form-group">
+            <label class="form-label">Banco *</label>
+            <select class="form-control" id="banco" required>
+              <option value="">Selecione...</option>
+              <option value="001">001 - Banco do Brasil</option>
+              <option value="033">033 - Santander</option>
+              <option value="104">104 - Caixa Econômica</option>
+              <option value="237">237 - Bradesco</option>
+              <option value="341">341 - Itaú</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Agência *</label>
+            <input type="text" class="form-control" id="agencia" placeholder="0000" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Conta *</label>
+            <input type="text" class="form-control" id="conta" placeholder="00000-0" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Chave PIX 1</label>
+            <input type="text" class="form-control" id="chavePix1" placeholder="CPF, E-mail, Celular ou Chave">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Chave PIX 2</label>
+            <input type="text" class="form-control" id="chavePix2" placeholder="CPF, E-mail, Celular ou Chave">
+          </div>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 40px 0 32px;">
+
+        <!-- CONTATO -->
+        <h2>Contato</h2>
+        <p>Formas de contato com sua empresa</p>
+
+        <div class="form-row" style="margin-top: 24px;">
+          <div class="form-group">
+            <label class="form-label">E-mail *</label>
+            <input type="email" class="form-control" id="emailContato" placeholder="contato@empresa.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Celular 1 *</label>
+            <input type="tel" class="form-control" id="celular1" placeholder="(00) 00000-0000" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Celular 2</label>
+            <input type="tel" class="form-control" id="celular2" placeholder="(00) 00000-0000">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Telefone</label>
+            <input type="tel" class="form-control" id="telefone" placeholder="(00) 0000-0000">
+          </div>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 40px 0 32px;">
+
+        <!-- USUÁRIO PARA ACESSO -->
+        <h2>Usuário para Acesso</h2>
+        <p>Credenciais de acesso ao sistema</p>
+
+        <div class="form-row" style="margin-top: 24px;">
+          <div class="form-group">
+            <label class="form-label">Nome *</label>
+            <input type="text" class="form-control" id="nomeUsuario" placeholder="Nome do usuário" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">CPF *</label>
+            <input type="text" class="form-control" id="cpfUsuario" placeholder="000.000.000-00" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">E-mail *</label>
+            <input type="email" class="form-control" id="emailUsuario" placeholder="usuario@email.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Senha de Acesso *</label>
+            <input type="password" class="form-control" id="senhaUsuario" placeholder="••••••••" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Cargo *</label>
+            <input type="text" class="form-control" id="cargo" placeholder="Cargo do usuário" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Telefone *</label>
+            <input type="tel" class="form-control" id="telefoneUsuario" placeholder="(00) 00000-0000" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Remal</label>
+          <input type="text" class="form-control" id="remal" placeholder="Remal">
+        </div>
+
+        <!-- Ações -->
+        <div class="org-acoes">
+          <a href="organizador-criar-1.html" class="btn btn-secondary">Voltar</a>
+          <button type="submit" class="btn btn-primary">Concluir Cadastro</button>
+        </div>
+
+      </form>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><img src="assets/icon-instagram.svg" alt=""></a>
+        <a href="#" aria-label="Whatsapp"><img src="assets/icon-whatsapp.svg" alt=""></a>
+        <a href="#" aria-label="Facebook"><img src="assets/icon-facebook.svg" alt=""></a>
+      </div>
+      <div class="footer-logo">
+        <img src="assets/logo.svg" alt="Recebe Sports">
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h4>Atletas</h4>
+          <ul>
+            <li><a href="login.html">Acessar</a></li>
+            <li><a href="cadastro-1.html">Crie sua conta</a></li>
+            <li><a href="resultados.html">Resultados</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Organizadores</h4>
+          <ul>
+            <li><a href="organizadores.html">Serviços Oferecidos</a></li>
+            <li><a href="organizador-criar-1.html">Crie sua Conta</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Institucional</h4>
+          <ul>
+            <li><a href="quem-somos.html">Quem Somos</a></li>
+            <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
+            <li><a href="termos-de-uso.html">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2013 - 2026 - Recebe Digital - CNPJ: 12.345.678/0001-99 - Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!-- BARRA FIXA SUPORTE AO CLIENTE -->
+  <button class="suporte-bar" onclick="showToast('Abrindo canal de suporte ao cliente...', 'info')">
+    <i class="fab fa-whatsapp"></i> Suporte ao cliente
+  </button>
+
+  <script src="js/global.js"></script>
+  <script src="js/organizador-criar-2.js"></script>
+</body>
+</html>

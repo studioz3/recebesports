@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recebe Digital — Muito além da linha de chegada</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="has-suporte-bar">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="assets/logo.svg" alt="Recebe Sports">
+      </a>
+      <nav class="main-nav">
+        <a href="resultados.html">Resultados</a>
+        <a href="quem-somos.html">Quem somos</a>
+        <a href="organizadores.html">Para organizadores</a>
+      </nav>
+      <div class="nav-buttons">
+        <a href="login-organizador.html" class="btn-nav btn-nav-organizador">Área do Organizador</a>
+        <a href="login.html" class="btn-nav btn-nav-atleta">Área do Atleta</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO — CARROSSEL DE BANNERS -->
+  <section class="home-hero">
+    <div class="hero-track" id="heroTrack">
+      <a href="inscricao-1.html" class="hero-slide" aria-hidden="true" tabindex="-1">
+        <img src="assets/banner-home.jpg" alt="">
+      </a>
+      <a href="inscricao-1.html" class="hero-slide">
+        <img src="assets/banner-home.jpg" alt="5K Pela Paz no Trânsito — Abertura 15/05 às 14h — Inscreva-se">
+      </a>
+      <a href="inscricao-1.html" class="hero-slide">
+        <img src="assets/banner-home2.jpg" alt="5K Pela Paz no Trânsito — Abertura 15/05 às 14h — Inscreva-se">
+      </a>
+      <a href="inscricao-1.html" class="hero-slide">
+        <img src="assets/banner-home3.jpg" alt="5K Pela Paz no Trânsito — Abertura 15/05 às 14h — Inscreva-se">
+      </a>
+      <a href="inscricao-1.html" class="hero-slide">
+        <img src="assets/banner-home4.jpg" alt="5K Pela Paz no Trânsito — Abertura 15/05 às 14h — Inscreva-se">
+      </a>
+      <a href="inscricao-1.html" class="hero-slide" aria-hidden="true" tabindex="-1">
+        <img src="assets/banner-home.jpg" alt="">
+      </a>
+    </div>
+    <button class="hero-arrow prev" onclick="moverHero(-1)" aria-label="Banner anterior">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="hero-arrow next" onclick="moverHero(1)" aria-label="Próximo banner">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+    <div class="hero-dots" id="heroDots"></div>
+  </section>
+
+  <!-- SEARCH BAR -->
+  <div class="container">
+    <div class="search-bar">
+      <div class="search-field">
+        <i class="fas fa-running icon"></i>
+        <input type="text" placeholder="Nome do evento" id="searchEvento">
+      </div>
+      <div class="search-field">
+        <i class="fas fa-map-marker-alt icon"></i>
+        <select id="searchEstado">
+          <option value="">Cidade e Estado</option>
+          <option>Sorocaba-SP</option>
+          <option>Bauru-SP</option>
+          <option>São José dos Campos-SP</option>
+          <option>Rio de Janeiro-RJ</option>
+          <option>Pedrosa-MG</option>
+          <option>Brasilia-DF</option>
+          <option>Parana-RS</option>
+        </select>
+      </div>
+      <div class="search-field">
+        <i class="far fa-calendar icon"></i>
+        <input type="text" placeholder="Data" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
+      </div>
+      <div class="search-field">
+        <i class="fas fa-medal icon"></i>
+        <select id="searchModalidade">
+          <option value="">Modalide</option>
+          <option>Corrida de Rua</option>
+          <option>MTB</option>
+          <option>Triathlon</option>
+          <option>Natação</option>
+          <option>Trail Run</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" onclick="searchEvents(this)">Procurar</button>
+    </div>
+  </div>
+
+  <!-- EVENTOS EM DESTAQUE -->
+  <section class="events-section">
+    <div class="container">
+      <h2>Eventos em destaque</h2>
+      <div class="destaque-carrossel">
+        <button class="destaque-arrow prev" onclick="moverDestaque(-1)" aria-label="Anterior">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="destaque-track-wrap">
+          <div class="destaque-track" id="destaqueTrack"></div>
+        </div>
+        <button class="destaque-arrow next" onclick="moverDestaque(1)" aria-label="Próximo">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+      <div class="destaque-dots" id="destaqueDots"></div>
+    </div>
+  </section>
+
+  <!-- PRÓXIMOS EVENTOS -->
+  <section class="events-section">
+    <div class="container">
+      <div class="events-grid" id="proximosEventos"></div>
+      <div class="events-grid" id="proximosEventos2"></div>
+    </div>
+  </section>
+
+  <!-- TODOS OS EVENTOS -->
+  <section class="events-section">
+    <div class="container">
+      <div class="events-grid" id="todosEventos"></div>
+      <div class="events-grid" id="todosEventos2"></div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS PARA ATLETAS -->
+  <section class="servicos-atletas">
+    <div class="container">
+      <div>
+        <h2><span class="label">Mais serviços</span> para o atleta</h2>
+        <ul class="servicos-list">
+          <li>Confirmação de inscrição por WhatsApp e e-mail</li>
+          <li>Gestão de dados</li>
+          <li>Comprovantes de pagamento</li>
+          <li>Histórico de resultados</li>
+          <li>Confirmação de pagamento por WhatsApp e e-mail</li>
+          <li>Histórico de inscrições</li>
+        </ul>
+        <a href="cadastro-1.html" class="btn btn-primary" onclick="event.preventDefault(); showToast('Abrindo suporte ao atleta...', 'info')">
+          Cadastre-se
+        </a>
+      </div>
+      <div class="servicos-mockup">
+        <img src="assets/mockup-atleta.png" alt="Mockup celular atleta">
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><img src="assets/icon-instagram.svg" alt=""></a>
+        <a href="#" aria-label="Whatsapp"><img src="assets/icon-whatsapp.svg" alt=""></a>
+        <a href="#" aria-label="Facebook"><img src="assets/icon-facebook.svg" alt=""></a>
+      </div>
+      <div class="footer-logo">
+        <img src="assets/logo.svg" alt="Recebe Sports">
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h4>Atletas</h4>
+          <ul>
+            <li><a href="login.html">Acessar</a></li>
+            <li><a href="cadastro-1.html">Crie sua conta</a></li>
+            <li><a href="resultados.html">Resultados</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Organizadores</h4>
+          <ul>
+            <li><a href="organizadores.html">Serviços Oferecidos</a></li>
+            <li><a href="organizador-criar-1.html">Crie sua Conta</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Institucional</h4>
+          <ul>
+            <li><a href="quem-somos.html">Quem Somos</a></li>
+            <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
+            <li><a href="termos-de-uso.html">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2013 - 2026 - Recebe Digital - CNPJ: 12.345.678/0001-99 - Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!-- BARRA FIXA SUPORTE AO CLIENTE -->
+  <button class="suporte-bar" onclick="showToast('Abrindo canal de suporte ao cliente...', 'info')">
+    <i class="fab fa-whatsapp"></i> Suporte ao Atleta
+  </button>
+
+  <script src="js/global.js"></script>
+  <script>
+    // Dados fictícios dos eventos
+    const eventos = [
+      { img: 'assets/card-evento1.jpg', tag: 'Corrida', titulo: '19º Corrida União Europeia Sunset Edition Ultimate', data: '09/05/2026 - 17:00', local: 'Brasília - DF', status: 'last', label: 'Divulgação' },
+      { img: 'assets/card-evento2.jpg', tag: 'Bike', titulo: 'Corrida FENAE do Pessoal da Caixa', data: '09/05/2026 - 17:00', local: 'Brasília - DF', status: 'sold-out', label: 'Encerradas' },
+      { img: 'assets/card-evento3.jpg', tag: 'Natação', titulo: 'Natação nacional da Família', data: '09/05/2026 - 17:00', local: 'Brasília - DF', status: 'pre-sale', label: 'Em breve' },
+      { img: 'assets/card-evento4.jpg', tag: 'Triathlon', titulo: 'Curves RUN 2026 - Só para Mulheres', data: '09/05/2026 - 17:00', local: 'Brasília - DF', status: 'open', label: 'Inscrições aberta' }
+    ];
+
+    function renderEvents(containerId) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      container.innerHTML = eventos.map(e => `
+        <div class="event-card" onclick="window.location='detalhe-evento.html'">
+          <img src="${e.img}" class="event-card-img" alt="${e.titulo}">
+          <div class="event-card-body">
+            <div class="event-card-tag">${e.tag}</div>
+            <div class="event-card-title">${e.titulo}</div>
+            <div class="event-card-info"><i class="far fa-calendar"></i> ${e.data}</div>
+            <div class="event-card-info"><i class="fas fa-map-marker-alt"></i> ${e.local}</div>
+            <div class="event-card-btn ${e.status}">${e.label}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    ['proximosEventos', 'proximosEventos2', 'todosEventos', 'todosEventos2'].forEach(renderEvents);
+
+    // Carrossel de eventos em destaque (cartazes)
+    const cartazes = [
+      'assets/cartaz-destaque-1.jpg',
+      'assets/cartaz-destaque-2.jpg',
+      'assets/cartaz-destaque-3.jpg',
+      'assets/cartaz-destaque-4.jpg',
+      'assets/cartaz-destaque-1.jpg',
+      'assets/cartaz-destaque-2.jpg',
+      'assets/cartaz-destaque-3.jpg',
+      'assets/cartaz-destaque-4.jpg'
+    ];
+    let destaqueIdx = 0;
+
+    // Quantidade de cartazes visíveis varia conforme a largura da tela
+    function getVisiveis() {
+      if (window.innerWidth <= 600) return 1;
+      if (window.innerWidth <= 900) return 2;
+      return 4;
+    }
+
+    function renderDestaques() {
+      const track = document.getElementById('destaqueTrack');
+      track.innerHTML = cartazes.map(src => `
+        <div class="destaque-card" onclick="window.location='detalhe-evento.html'">
+          <img src="${src}" alt="Evento em destaque">
+          <div class="destaque-overlay">
+            <a href="detalhe-evento.html" class="destaque-btn" onclick="event.stopPropagation()">
+              Saiba mais <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      `).join('');
+
+      const totalPaginas = Math.max(1, cartazes.length - getVisiveis() + 1);
+      const dots = document.getElementById('destaqueDots');
+      dots.innerHTML = '';
+      for (let i = 0; i < totalPaginas; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'destaque-dot' + (i === 0 ? ' active' : '');
+        dot.onclick = () => irParaDestaque(i);
+        dots.appendChild(dot);
+      }
+      if (destaqueIdx > totalPaginas - 1) destaqueIdx = totalPaginas - 1;
+    }
+
+    function atualizarDestaque() {
+      const track = document.getElementById('destaqueTrack');
+      const card = track.querySelector('.destaque-card');
+      if (!card) return;
+      const cardW = card.offsetWidth + 24;
+      track.style.transform = `translateX(-${destaqueIdx * cardW}px)`;
+      document.querySelectorAll('.destaque-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === destaqueIdx);
+      });
+    }
+
+    function moverDestaque(dir) {
+      const max = cartazes.length - getVisiveis();
+      destaqueIdx = Math.min(Math.max(destaqueIdx + dir, 0), max);
+      atualizarDestaque();
+    }
+
+    function irParaDestaque(i) {
+      destaqueIdx = i;
+      atualizarDestaque();
+    }
+
+    renderDestaques();
+
+    // Ao redimensionar, recalcula nº de cards visíveis, dots e posição
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        renderDestaques();
+        atualizarDestaque();
+      }, 150);
+    });
+
+    function searchEvents(btn) {
+      fakeLoadingButton(btn, () => showToast('Busca atualizada!'), 'Buscando...');
+    }
+
+    // ===== Carrossel do banner hero (loop infinito) =====
+    // Estrutura no DOM: [clone-fim][slide1][slide2][slide3][clone-início]
+    const HERO_REAIS = 3;
+    const heroTrack = document.getElementById('heroTrack');
+    const heroTotal = heroTrack.children.length; // 5 (3 reais + 2 clones)
+    let heroIdx = 1;                              // começa no 1º slide real
+    let heroAnimando = false;
+    let heroTimer;
+
+    function posicionarHero(animar) {
+      heroTrack.style.transition = animar
+        ? 'transform 0.7s cubic-bezier(0.45, 0, 0.15, 1)'
+        : 'none';
+      heroTrack.style.transform = `translateX(-${heroIdx * 100}%)`;
+    }
+
+    function sincronizarHeroDots() {
+      const ativo = ((heroIdx - 1) % HERO_REAIS + HERO_REAIS) % HERO_REAIS;
+      document.querySelectorAll('#heroDots button').forEach((d, i) => {
+        d.classList.toggle('active', i === ativo);
+      });
+    }
+
+    function moverHero(dir) {
+      if (heroAnimando) return;
+      heroAnimando = true;
+      heroIdx += dir;
+      posicionarHero(true);
+      sincronizarHeroDots();
+      reiniciarHeroAuto();
+    }
+
+    function irParaHero(i) {
+      if (heroAnimando || i + 1 === heroIdx) return;
+      heroIdx = i + 1;
+      posicionarHero(true);
+      sincronizarHeroDots();
+      reiniciarHeroAuto();
+    }
+
+    // Ao terminar a transição, faz o "salto" invisível nos clones
+    heroTrack.addEventListener('transitionend', () => {
+      if (heroIdx === heroTotal - 1) { heroIdx = 1; posicionarHero(false); }
+      else if (heroIdx === 0) { heroIdx = HERO_REAIS; posicionarHero(false); }
+      heroAnimando = false;
+    });
+
+    function reiniciarHeroAuto() {
+      clearInterval(heroTimer);
+      heroTimer = setInterval(() => moverHero(1), 5000);
+    }
+
+    // Monta os indicadores (1 por slide real)
+    (function montarHeroDots() {
+      const dots = document.getElementById('heroDots');
+      for (let i = 0; i < HERO_REAIS; i++) {
+        const b = document.createElement('button');
+        if (i === 0) b.className = 'active';
+        b.setAttribute('aria-label', 'Ir para o banner ' + (i + 1));
+        b.addEventListener('click', () => irParaHero(i));
+        dots.appendChild(b);
+      }
+    })();
+
+    posicionarHero(false);
+    reiniciarHeroAuto();
+  </script>
+</body>
+</html>
