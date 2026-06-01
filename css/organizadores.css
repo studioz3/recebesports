@@ -37,7 +37,7 @@
 }
 
 .solucao-bloco.dark {
-  background: var(--color-dark) url('../assets/bg-marketing.jpg') center/cover no-repeat;
+  background: url('../assets/bg-marketing.jpg') center/cover no-repeat;
   background-blend-mode: overlay;
   position: relative;
 }
