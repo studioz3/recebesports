@@ -642,3 +642,467 @@
     margin: 17px 6px 0;
   }
 }
+
+/* ==========================================================================
+   MEUS DADOS — Cards e seções (Dados pessoais, Emergência, Saúde)
+   ========================================================================== */
+.dados-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 26px 28px;
+  border: 1px solid #eee;
+}
+
+.dados-section {
+  margin-top: 34px;
+}
+
+.dados-section-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.dados-section-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 102, 0, 0.10);
+  color: var(--color-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.dados-section-head h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.dados-section-head p {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: var(--color-gray-text);
+  line-height: 1.4;
+}
+
+.dados-subtitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-orange);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 4px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid rgba(255, 102, 0, 0.15);
+}
+.dados-subtitle:not(:first-child) {
+  margin-top: 26px;
+}
+
+.plat-content textarea.form-control {
+  resize: vertical;
+  min-height: 84px;
+  line-height: 1.5;
+}
+
+.dados-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+.dados-actions .btn {
+  padding: 14px 64px;
+}
+
+/* ==========================================================================
+   ABAS DE FILTRO (inscrições / histórico)
+   ========================================================================== */
+.insc-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.insc-tab {
+  padding: 9px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-gray-text);
+  background: var(--color-white);
+  border: 1px solid var(--color-input-border);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.insc-tab:hover {
+  border-color: var(--color-orange);
+  color: var(--color-orange);
+}
+
+.insc-tab.active {
+  background: var(--color-orange);
+  border-color: var(--color-orange);
+  color: var(--color-white);
+}
+
+/* ==========================================================================
+   MINHAS INSCRIÇÕES — Cards de evento
+   ========================================================================== */
+.insc-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.insc-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  border: 1px solid #eee;
+  transition: var(--transition);
+  animation: fadeInUp 0.5s ease both;
+}
+
+.insc-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.insc-card-banner {
+  height: 130px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.insc-card-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,34,72,0.05) 0%, rgba(0,34,72,0.55) 100%);
+}
+
+.insc-modalidade,
+.insc-status {
+  position: absolute;
+  z-index: 2;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.insc-modalidade {
+  top: 14px;
+  left: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--color-dark);
+}
+
+.insc-status {
+  top: 14px;
+  right: 14px;
+  color: var(--color-white);
+}
+.insc-status.confirmada { background: #16a34a; }
+.insc-status.pendente   { background: #f59e0b; }
+.insc-status.concluida  { background: var(--color-dark); }
+
+.insc-card-body {
+  padding: 20px 24px 22px;
+}
+
+.insc-card-head {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.insc-card-title h3 {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+
+.insc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  font-size: 13px;
+  color: var(--color-gray-text);
+  margin-bottom: 10px;
+}
+.insc-meta i {
+  color: var(--color-orange);
+  margin-right: 4px;
+}
+
+/* Resumo em grade (número de inscrição + infos) */
+.insc-resumo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: #ececec;
+  border: 1px solid #ececec;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.insc-resumo-item {
+  background: #fafafa;
+  padding: 12px 14px;
+}
+
+.insc-resumo-item .rotulo {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-gray-text);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 4px;
+}
+
+.insc-resumo-item strong {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.insc-resumo-item strong.destaque {
+  color: var(--color-orange);
+  letter-spacing: 0.01em;
+}
+.insc-resumo-item strong.pago { color: #16a34a; font-size: 14px; }
+.insc-resumo-item strong.aguardando { color: #d97706; font-size: 14px; }
+
+.insc-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.insc-countdown {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-gray-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.insc-countdown i { color: var(--color-orange); }
+.insc-countdown.alerta { color: #d97706; }
+.insc-countdown.alerta i { color: #d97706; }
+.insc-countdown.ok { color: #16a34a; }
+.insc-countdown.ok i { color: #16a34a; }
+
+.insc-acoes {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.insc-acoes .btn {
+  padding: 11px 20px;
+  font-size: 13px;
+  gap: 8px;
+}
+
+/* ==========================================================================
+   HISTÓRICO DE RESULTADOS
+   ========================================================================== */
+.hist-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.hist-stat {
+  background: var(--color-white);
+  border: 1px solid #eee;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.hist-stat-icon {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: rgba(255, 102, 0, 0.10);
+  color: var(--color-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+}
+
+.hist-stat strong {
+  display: block;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.hist-stat small {
+  font-size: 12px;
+  color: var(--color-gray-text);
+}
+
+.hist-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.hist-card {
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  background: var(--color-white);
+  border: 1px solid #eee;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: var(--transition);
+  animation: fadeInUp 0.5s ease both;
+}
+
+.hist-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.hist-card-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--color-white);
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+}
+.hist-card-modal i { font-size: 26px; }
+.hist-card-modal.corrida   { background: linear-gradient(160deg, #ff7a1a, #e65a00); }
+.hist-card-modal.bike      { background: linear-gradient(160deg, #2bb673, #16894f); }
+.hist-card-modal.triathlon { background: linear-gradient(160deg, #2f93c9, #1f6d97); }
+
+.hist-card-main {
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hist-card-info h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 7px;
+}
+
+.hist-card-info .insc-meta { margin-bottom: 10px; }
+.hist-card-info .dist-pills { margin-bottom: 4px; }
+
+.hist-card-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-top: 12px;
+}
+
+.hist-metric .rotulo {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-gray-text);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 3px;
+}
+
+.hist-metric strong {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.hist-metric.destaque strong { color: var(--color-orange); }
+.hist-metric .medal-prata  { color: #8a8f98; }
+.hist-metric .medal-bronze { color: #b06a32; }
+
+.hist-card-cta {
+  display: flex;
+  align-items: center;
+  padding: 0 22px;
+  border-left: 1px solid #f0f0f0;
+}
+.hist-card-cta .btn {
+  padding: 11px 22px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   RESPONSIVO — Inscrições / Histórico / Meus dados
+   ========================================================================== */
+@media (max-width: 980px) {
+  .hist-stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 760px) {
+  .insc-resumo { grid-template-columns: repeat(2, 1fr); }
+
+  .hist-card { grid-template-columns: 1fr; }
+  .hist-card-modal {
+    flex-direction: row;
+    padding: 10px;
+    gap: 10px;
+  }
+  .hist-card-modal i { font-size: 18px; }
+  .hist-card-cta {
+    border-left: none;
+    border-top: 1px solid #f0f0f0;
+    padding: 14px 22px;
+  }
+  .hist-card-cta .btn { width: 100%; }
+}
+
+@media (max-width: 600px) {
+  .dados-card { padding: 20px 18px; }
+  .dados-actions .btn { width: 100%; padding: 14px; }
+
+  .insc-card-head { flex-direction: column; gap: 12px; }
+  .insc-resumo { grid-template-columns: 1fr 1fr; }
+  .insc-card-footer { flex-direction: column; align-items: stretch; }
+  .insc-acoes { flex-direction: column; }
+  .insc-acoes .btn { width: 100%; }
+
+  .hist-stats { grid-template-columns: 1fr; }
+  .hist-card-stats { gap: 16px; }
+}
