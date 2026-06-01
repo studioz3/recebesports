@@ -9,7 +9,7 @@
   --color-orange: #FF6600;
   --color-orange-soft: rgba(255, 102, 0, 0.5);
   --color-dark: #002248;
-  --color-cyan: #58C6C7;
+  --color-cyan: #284a70;
   --color-bg-light: #F4F4F4;
   --color-white: #FFFFFF;
   --color-black: #0b1727;
@@ -158,13 +158,13 @@ input, select, textarea {
 }
 
 .btn-nav-organizador {
-  background: var(--color-black);
+  background: var(--color-orange);
   color: var(--color-white);
   border: 1px solid var(--color-black);
 }
 
 .btn-nav-organizador:hover {
-  background: #002248;
+  background: var(--color-cyan);
   transform: translateY(-1px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
