@@ -133,25 +133,54 @@
     </div>
   </section>
 
-  <!-- SERVIÇOS PARA ATLETAS -->
-  <section class="servicos-atletas">
+  <!-- SERVIÇOS — ATLETA + ORGANIZADOR -->
+  <section class="servicos-dual">
     <div class="container">
-      <div>
-        <h2><span class="label">Mais serviços</span> para o atleta</h2>
-        <ul class="servicos-list">
-          <li>Confirmação de inscrição por WhatsApp e e-mail</li>
-          <li>Gestão de dados</li>
-          <li>Comprovantes de pagamento</li>
-          <li>Histórico de resultados</li>
-          <li>Confirmação de pagamento por WhatsApp e e-mail</li>
-          <li>Histórico de inscrições</li>
-        </ul>
-        <a href="cadastro-1.html" class="btn btn-primary" onclick="event.preventDefault(); showToast('Abrindo suporte ao atleta...', 'info')">
-          Cadastre-se
-        </a>
-      </div>
-      <div class="servicos-mockup">
-        <img src="assets/mockup-atleta.png" alt="Mockup celular atleta">
+      <div class="servicos-grid">
+
+        <!-- ATLETA -->
+        <div class="servico-painel servico-atleta">
+          <span class="servico-tag"><i class="fas fa-person-running"></i> Para o atleta</span>
+          <h2><span class="label">Mais serviços</span> para o atleta</h2>
+          <ul class="servicos-list">
+            <li>Confirmação de inscrição por WhatsApp e e-mail</li>
+            <li>Gestão de dados</li>
+            <li>Comprovantes de pagamento</li>
+            <li>Histórico de resultados</li>
+            <li>Confirmação de pagamento por WhatsApp e e-mail</li>
+            <li>Histórico de inscrições</li>
+          </ul>
+          <a href="cadastro-1.html" class="btn btn-primary">
+            <i class="fas fa-user-plus"></i> Cadastre-se
+          </a>
+          <div class="servico-mockup mockup-celular">
+            <img src="assets/mockup-atleta.png" alt="Aplicativo do atleta">
+          </div>
+        </div>
+
+        <!-- DIVISOR -->
+        <div class="servico-divisor" aria-hidden="true"></div>
+
+        <!-- ORGANIZADOR -->
+        <div class="servico-painel servico-organizador">
+          <span class="servico-tag"><i class="fas fa-chart-line"></i> Para o organizador</span>
+          <h2><span class="label">Mais serviços</span> para o organizador</h2>
+          <ul class="servicos-list">
+            <li>Gestão de inscritos e pagamentos</li>
+            <li>Divulgação de eventos e marketing</li>
+            <li>Relatórios e dashboards de desempenho</li>
+            <li>Comunicação direta via WhatsApp e e-mail</li>
+            <li>Criação de lotes e precificação flexível</li>
+            <li>Controle de acesso e kits de evento</li>
+          </ul>
+          <a href="organizador-criar-1.html" class="btn btn-primary">
+            <i class="fas fa-calendar-plus"></i> Crie seu Evento
+          </a>
+          <div class="servico-mockup mockup-laptop">
+            <img src="assets/mockup-financeira.png" alt="Dashboard do organizador">
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
