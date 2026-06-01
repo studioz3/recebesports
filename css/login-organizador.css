@@ -27,7 +27,7 @@ input{font-family:inherit;font-size:inherit;color:inherit}
 /* ============ LADO MARCA (esquerda) ============ */
 .brand{
   position:relative;overflow:hidden;
-  background:radial-gradient(120% 90% at 12% 8%,#2A1B12 0%,var(--ink-900) 46%,#101113 100%);
+  background:radial-gradient(120% 90% at 12% 8%,var(--color-cyan) 0%,var(--ink-900) 46%,var(--color-dark) 100%);
   color:#fff;display:flex;flex-direction:column;padding:46px 54px;
 }
 .brand::before{ /* glow */
