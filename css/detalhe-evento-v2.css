@@ -194,6 +194,7 @@
   position: relative; background: var(--v2-surface);
   border: 1px solid var(--v2-line); border-radius: var(--v2-radius);
   overflow: hidden; transition: transform .25s ease, box-shadow .25s ease;
+  display: flex; flex-direction: column;
 }
 .v2-kit:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
 .v2-kit--featured { border-color: var(--v2-amber); box-shadow: 0 12px 40px rgba(255,102,0,.15); }
@@ -205,10 +206,28 @@
 }
 .v2-kit__img { aspect-ratio: 16/11; overflow: hidden; background: var(--v2-canvas); }
 .v2-kit__img img { width: 100%; height: 100%; object-fit: cover; }
-.v2-kit__body { padding: 26px 28px 30px; }
+.v2-kit__body { padding: 26px 28px 30px; display: flex; flex-direction: column; flex: 1; }
 .v2-kit__name { font-size: 22px; font-weight: 800; color: var(--v2-ink); letter-spacing: -.01em; }
-.v2-kit__price { font-size: 15px; color: var(--v2-amber); font-weight: 700; margin-top: 2px; }
-.v2-kit__list { list-style: none; padding: 0; margin: 18px 0 24px; }
+
+/* bloco de preço em destaque */
+.v2-kit__priceblock {
+  margin-top: 14px; padding: 16px 18px;
+  background: var(--v2-canvas); border: 1px solid var(--v2-line);
+  border-radius: var(--v2-radius-sm);
+}
+.v2-kit--featured .v2-kit__priceblock {
+  background: rgba(255,102,0,.06); border-color: rgba(255,102,0,.25);
+}
+.v2-kit__from { font-size: 12px; font-weight: 600; color: var(--v2-ink-soft); text-transform: uppercase; letter-spacing: .08em; }
+.v2-kit__price { font-size: 40px; font-weight: 800; color: var(--v2-ink); letter-spacing: -.02em; line-height: 1; margin: 2px 0 8px; }
+.v2-kit__price small { font-size: 18px; font-weight: 700; color: var(--v2-ink-soft); }
+.v2-kit__lote {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 12.5px; font-weight: 700; color: var(--v2-amber);
+}
+.v2-kit__lote i { font-size: 12px; }
+
+.v2-kit__list { list-style: none; padding: 0; margin: 20px 0 24px; }
 .v2-kit__list li {
   display: flex; align-items: flex-start; gap: 10px;
   font-size: 15px; color: var(--v2-ink-soft); padding: 7px 0; line-height: 1.4;
@@ -219,10 +238,20 @@
   font-size: 15px; font-weight: 700; padding: 14px; border-radius: 100px;
   border: none; cursor: pointer; text-decoration: none;
   background: var(--v2-ink); color: #fff; transition: opacity .2s ease, transform .2s ease;
+  margin-top: auto;
 }
 .v2-kit--featured .v2-kit__btn { background: var(--v2-amber); }
 .v2-kit__btn:hover { transform: translateY(-2px); }
 .v2-kit__btn.is-sold { background: #d6dae0; color: #8a939e; cursor: not-allowed; }
+
+/* nota do próximo lote */
+.v2-kits__note {
+  text-align: center; margin: 32px auto 0; max-width: 620px;
+  font-size: 14px; color: var(--v2-ink-soft);
+  display: flex; align-items: center; justify-content: center; gap: 9px;
+}
+.v2-kits__note i { color: var(--v2-amber); }
+.v2-kits__note strong { color: var(--v2-ink); }
 
 /* ---------- LOTES (timeline pricing) ---------- */
 .v2-lotes { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
