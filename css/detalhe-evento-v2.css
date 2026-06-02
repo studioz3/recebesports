@@ -11,7 +11,7 @@
   --v2-surface: #ffffff;
   --v2-canvas: #f6f7f9;
   --v2-amber: var(--color-orange);
-  --v2-teal: #58C6C7;
+  --v2-amber: #58C6C7;
   --v2-radius: 18px;
   --v2-radius-sm: 12px;
   background: var(--v2-canvas);
@@ -74,7 +74,7 @@
 }
 .v2-hero__badge .dot {
   width: 7px; height: 7px; border-radius: 50%;
-  background: var(--v2-teal); box-shadow: 0 0 0 4px rgba(88,198,199,.3);
+  background: var(--v2-amber); box-shadow: 0 0 0 4px rgba(88,198,199,.3);
 }
 .v2-hero h1 {
   font-size: 64px; line-height: .98; font-weight: 800;
@@ -95,7 +95,7 @@
   display: inline-flex; align-items: center; gap: 9px;
   font-size: 15px; font-weight: 600; color: rgba(255,255,255,.92);
 }
-.v2-hero__meta i { color: var(--v2-teal); font-size: 16px; }
+.v2-hero__meta i { color: var(--v2-amber); font-size: 16px; }
 
 .v2-hero__cta {
   display: inline-flex; align-items: center; gap: 10px;
@@ -209,7 +209,7 @@
   display: flex; align-items: flex-start; gap: 10px;
   font-size: 15px; color: var(--v2-ink-soft); padding: 7px 0; line-height: 1.4;
 }
-.v2-kit__list i { color: var(--v2-teal); margin-top: 3px; font-size: 14px; }
+.v2-kit__list i { color: var(--v2-amber); margin-top: 3px; font-size: 14px; }
 .v2-kit__btn {
   width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   font-size: 15px; font-weight: 700; padding: 14px; border-radius: 100px;
@@ -226,13 +226,13 @@
   background: var(--v2-surface); border: 1px solid var(--v2-line);
   border-radius: var(--v2-radius); padding: 28px 26px; position: relative;
 }
-.v2-lote.is-active { border-color: var(--v2-teal); box-shadow: 0 10px 30px rgba(88,198,199,.18); }
+.v2-lote.is-active { border-color: var(--v2-amber); box-shadow: 0 10px 30px rgba(88,198,199,.18); }
 .v2-lote.is-closed { opacity: .55; }
 .v2-lote__tag {
   font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
   color: var(--v2-ink-soft); margin-bottom: 14px; display: inline-flex; align-items: center; gap: 7px;
 }
-.v2-lote.is-active .v2-lote__tag { color: var(--v2-teal); }
+.v2-lote.is-active .v2-lote__tag { color: var(--v2-amber); }
 .v2-lote__price { font-size: 36px; font-weight: 800; color: var(--v2-ink); letter-spacing: -.02em; }
 .v2-lote__price small { font-size: 16px; font-weight: 600; color: var(--v2-ink-soft); }
 .v2-lote__when { font-size: 14px; color: var(--v2-ink-soft); margin-top: 6px; }
@@ -240,7 +240,7 @@
   margin-top: 18px; font-size: 13px; font-weight: 700;
   display: inline-flex; align-items: center; gap: 7px;
 }
-.v2-lote.is-active .v2-lote__state { color: var(--v2-teal); }
+.v2-lote.is-active .v2-lote__state { color: var(--v2-amber); }
 .v2-lote.is-closed .v2-lote__state { color: var(--v2-ink-soft); }
 
 /* ---------- ATRAÇÕES ---------- */
@@ -289,7 +289,7 @@
   border-bottom: 1px solid var(--v2-line); font-size: 15px; color: var(--v2-ink-soft);
 }
 .v2-route__detail li:last-child { border-bottom: none; }
-.v2-route__detail li i { color: var(--v2-teal); width: 18px; text-align: center; }
+.v2-route__detail li i { color: var(--v2-amber); width: 18px; text-align: center; }
 .v2-route__detail li strong { color: var(--v2-ink); }
 .v2-route__map { border-radius: var(--v2-radius); overflow: hidden; box-shadow: var(--shadow-md); aspect-ratio: 4/3; }
 .v2-route__map iframe { width: 100%; height: 100%; border: 0; }
