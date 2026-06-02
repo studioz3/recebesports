@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maratona Aurora Sorocaba 2026 — RecebeSports</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/detalhe-evento-v2.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="v2">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="assets/logo.svg" alt="Recebe Sports">
+      </a>
+      <nav class="main-nav">
+        <a href="resultados.html">Resultados</a>
+        <a href="quem-somos.html">Quem somos</a>
+        <a href="organizadores.html">Para organizadores</a>
+      </nav>
+      <div class="nav-buttons">
+        <a href="login-organizador.html" class="btn-nav btn-nav-organizador">Área do Organizador</a>
+        <a href="login.html" class="btn-nav btn-nav-atleta">Área do Atleta</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="v2-hero" id="topo">
+    <div class="v2-hero__bg"></div>
+    <div class="v2-hero__scrim"></div>
+    <div class="v2-hero__inner">
+      <span class="v2-hero__badge"><span class="dot"></span> 12ª Edição · Inscrições Abertas</span>
+      <h1>Maratona <span class="accent">Aurora</span> Sorocaba</h1>
+      <p class="v2-hero__sub">Corra o nascer do dia pelas ruas históricas da cidade.</p>
+      <div class="v2-hero__meta">
+        <span><i class="far fa-calendar"></i> 18 de Outubro de 2026</span>
+        <span><i class="fas fa-map-marker-alt"></i> Parque das Águas · Sorocaba — SP</span>
+        <span><i class="fas fa-person-running"></i> 5km · 10km · 21km</span>
+      </div>
+      <a href="inscricao-participante.html" class="v2-hero__cta">
+        Garantir minha vaga <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+    <div class="v2-count" id="v2Count">
+      <div class="v2-count__box"><span class="v2-count__num" data-c="d">--</span><span class="v2-count__label">Dias</span></div>
+      <div class="v2-count__box"><span class="v2-count__num" data-c="h">--</span><span class="v2-count__label">Horas</span></div>
+      <div class="v2-count__box"><span class="v2-count__num" data-c="m">--</span><span class="v2-count__label">Min</span></div>
+      <div class="v2-count__box"><span class="v2-count__num" data-c="s">--</span><span class="v2-count__label">Seg</span></div>
+    </div>
+  </section>
+
+  <!-- SUBNAV STICKY -->
+  <nav class="v2-subnav" id="v2Subnav">
+    <div class="v2-subnav__inner">
+      <a href="#sobre" class="active">Sobre</a>
+      <a href="#kits">Kits</a>
+      <a href="#lotes">Lotes</a>
+      <a href="#atracoes">Atrações</a>
+      <a href="#chegar">Como chegar</a>
+      <a href="#percurso">Percurso</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#faq">Dúvidas</a>
+      <span class="v2-subnav__spacer"></span>
+      <a href="inscricao-participante.html" class="v2-subnav__cta">Inscreva-se</a>
+    </div>
+  </nav>
+
+  <!-- SOBRE -->
+  <section class="v2-section" id="sobre">
+    <div class="v2-wrap">
+      <div class="v2-about v2-reveal">
+        <div class="v2-about__text">
+          <p class="eyebrow">Sobre o evento</p>
+          <h2 class="section-title">Doze anos correndo<br>com a cidade.</h2>
+          <p>A Maratona Aurora nasceu de um grupo de corredores que queria ver o sol subir sobre Sorocaba em movimento. Mais de uma década depois, virou um encontro anual que reúne iniciantes, veteranos e famílias inteiras num percurso que cruza praças, o centro histórico e a orla do parque.</p>
+          <p>Para 2026 ampliamos a estrutura: novos pontos de hidratação, cronometragem por chip, área kids e um pós-prova com música e gastronomia local. Mais que uma prova — uma manhã para celebrar.</p>
+          <div class="v2-about__stats">
+            <div class="v2-stat"><div class="v2-stat__num">8.500</div><div class="v2-stat__label">vagas em 2026</div></div>
+            <div class="v2-stat"><div class="v2-stat__num">3</div><div class="v2-stat__label">distâncias</div></div>
+            <div class="v2-stat"><div class="v2-stat__num">12</div><div class="v2-stat__label">postos de apoio</div></div>
+            <div class="v2-stat"><div class="v2-stat__num">42</div><div class="v2-stat__label">países representados</div></div>
+          </div>
+        </div>
+        <div class="v2-about__media">
+          <img src="assets/cartaz-destaque-2.jpg" alt="Largada da Maratona Aurora">
+          <span class="v2-about__tag"><i class="fas fa-sun"></i> Largada às 06h00</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KITS -->
+  <section class="v2-section v2-section--tint" id="kits">
+    <div class="v2-wrap">
+      <div class="v2-section-head v2-reveal">
+        <p class="eyebrow">Kit do atleta</p>
+        <h2 class="section-title">Escolha o seu kit</h2>
+        <p class="section-lead">Dois pacotes pensados para diferentes perfis de corredor. Retirada na Expo Aurora, na semana da prova.</p>
+      </div>
+      <div class="v2-kits v2-reveal">
+        <div class="v2-kit">
+          <div class="v2-kit__img"><img src="assets/img_kit_start.jpg" alt="Kit Essencial"></div>
+          <div class="v2-kit__body">
+            <div class="v2-kit__name">Kit Essencial</div>
+            <div class="v2-kit__price">a partir de R$ 129</div>
+            <ul class="v2-kit__list">
+              <li><i class="fas fa-check"></i> Camiseta técnica oficial</li>
+              <li><i class="fas fa-check"></i> Número de peito com chip</li>
+              <li><i class="fas fa-check"></i> Medalha de participação</li>
+              <li><i class="fas fa-check"></i> Sacochila do evento</li>
+            </ul>
+            <a href="inscricao-participante.html" class="v2-kit__btn">Escolher Essencial</a>
+          </div>
+        </div>
+        <div class="v2-kit v2-kit--featured">
+          <span class="v2-kit__flag">Mais escolhido</span>
+          <div class="v2-kit__img"><img src="assets/img_kit_premium.jpg" alt="Kit Aurora Premium"></div>
+          <div class="v2-kit__body">
+            <div class="v2-kit__name">Kit Aurora Premium</div>
+            <div class="v2-kit__price">a partir de R$ 199</div>
+            <ul class="v2-kit__list">
+              <li><i class="fas fa-check"></i> Camiseta técnica edição limitada</li>
+              <li><i class="fas fa-check"></i> Número de peito com chip</li>
+              <li><i class="fas fa-check"></i> Medalha premium + viseira</li>
+              <li><i class="fas fa-check"></i> Sacochila + squeeze + meias</li>
+              <li><i class="fas fa-check"></i> Acesso à área lounge pós-prova</li>
+            </ul>
+            <a href="inscricao-participante.html" class="v2-kit__btn">Escolher Premium</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOTES -->
+  <section class="v2-section" id="lotes">
+    <div class="v2-wrap">
+      <div class="v2-section-head v2-reveal">
+        <p class="eyebrow">Inscrição</p>
+        <h2 class="section-title">Lotes e valores</h2>
+        <p class="section-lead">Quanto antes você garante a vaga, melhor o preço. Os lotes viram conforme se esgotam.</p>
+      </div>
+      <div class="v2-lotes v2-reveal">
+        <div class="v2-lote is-closed">
+          <div class="v2-lote__tag"><i class="fas fa-circle"></i> Lote Pioneiro</div>
+          <div class="v2-lote__price"><small>R$</small> 99</div>
+          <div class="v2-lote__when">até 31 de maio</div>
+          <div class="v2-lote__state"><i class="fas fa-lock"></i> Encerrado</div>
+        </div>
+        <div class="v2-lote is-active">
+          <div class="v2-lote__tag"><i class="fas fa-bolt"></i> Lote Atual</div>
+          <div class="v2-lote__price"><small>R$</small> 129</div>
+          <div class="v2-lote__when">até 31 de agosto · ou até esgotar</div>
+          <div class="v2-lote__state"><i class="fas fa-circle-check"></i> Disponível agora</div>
+        </div>
+        <div class="v2-lote">
+          <div class="v2-lote__tag"><i class="far fa-clock"></i> Lote Final</div>
+          <div class="v2-lote__price"><small>R$</small> 159</div>
+          <div class="v2-lote__when">a partir de 1º de setembro</div>
+          <div class="v2-lote__state"><i class="far fa-hourglass"></i> Em breve</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ATRAÇÕES -->
+  <section class="v2-section v2-section--tint" id="atracoes">
+    <div class="v2-wrap">
+      <div class="v2-section-head v2-reveal">
+        <p class="eyebrow">Experiência</p>
+        <h2 class="section-title">Atrações da prova</h2>
+        <p class="section-lead">Muito além da corrida. A manhã inteira pensada para você e sua família.</p>
+      </div>
+      <div class="v2-features v2-reveal">
+        <div class="v2-feature">
+          <div class="v2-feature__img"><img src="assets/card-evento1.jpg" alt="Arena Aurora"></div>
+          <div class="v2-feature__body">
+            <div class="v2-feature__title">Arena Aurora</div>
+            <p class="v2-feature__desc">Palco com DJ, aquecimento coletivo e premiação ao vivo.</p>
+          </div>
+        </div>
+        <div class="v2-feature">
+          <div class="v2-feature__img"><img src="assets/card-evento2.jpg" alt="Espaço Kids"></div>
+          <div class="v2-feature__body">
+            <div class="v2-feature__title">Espaço Kids</div>
+            <p class="v2-feature__desc">Recreação monitorada enquanto você corre tranquilo.</p>
+          </div>
+        </div>
+        <div class="v2-feature">
+          <div class="v2-feature__img"><img src="assets/card-evento3.jpg" alt="Feira Gastronômica"></div>
+          <div class="v2-feature__body">
+            <div class="v2-feature__title">Feira Gastronômica</div>
+            <p class="v2-feature__desc">Produtores locais, cafés especiais e opções saudáveis.</p>
+          </div>
+        </div>
+        <div class="v2-feature">
+          <div class="v2-feature__img"><img src="assets/card-evento4.jpg" alt="Recovery Zone"></div>
+          <div class="v2-feature__body">
+            <div class="v2-feature__title">Recovery Zone</div>
+            <p class="v2-feature__desc">Alongamento guiado e massagem pós-prova gratuita.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO CHEGAR -->
+  <section class="v2-section" id="chegar">
+    <div class="v2-wrap">
+      <div class="v2-section-head v2-reveal">
+        <p class="eyebrow">Logística</p>
+        <h2 class="section-title">Como chegar à arena</h2>
+        <p class="section-lead">A arena fica no Parque das Águas. Planeje sua chegada com antecedência.</p>
+      </div>
+      <div class="v2-getthere v2-reveal">
+        <div class="v2-arrive">
+          <div class="v2-arrive__icon"><i class="fas fa-car"></i></div>
+          <h4>De carro</h4>
+          <p>Estacionamento parceiro a 400m da arena, com vagas limitadas.</p>
+        </div>
+        <div class="v2-arrive">
+          <div class="v2-arrive__icon"><i class="fas fa-bus"></i></div>
+          <h4>De ônibus</h4>
+          <p>Linhas 12, 34 e 56 param em frente ao parque aos finais de semana.</p>
+        </div>
+        <div class="v2-arrive">
+          <div class="v2-arrive__icon"><i class="fas fa-taxi"></i></div>
+          <h4>Táxi / Apps</h4>
+          <p>Ponto de embarque e desembarque sinalizado no Portão B.</p>
+        </div>
+        <div class="v2-arrive">
+          <div class="v2-arrive__icon"><i class="fas fa-bicycle"></i></div>
+          <h4>De bike</h4>
+          <p>Bicicletário gratuito e monitorado durante todo o evento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERCURSO -->
+  <section class="v2-section v2-section--tint" id="percurso">
+    <div class="v2-wrap">
+      <div class="v2-section-head v2-reveal">
+        <p class="eyebrow">Trajeto</p>
+        <h2 class="section-title">Percurso e pontos de apoio</h2>
+      </div>
+      <div class="v2-route v2-reveal">
+        <div class="v2-route__detail">
+          <div class="v2-route__tabs" id="routeTabs">
+            <button class="v2-route__tab active" data-r="5">5 km</button>
+            <button class="v2-route__tab" data-r="10">10 km</button>
+            <button class="v2-route__tab" data-r="21">21 km</button>
+          </div>
+          <div id="routeContent">
+            <!-- preenchido por JS -->
+          </div>
+        </div>
+        <div class="v2-route__map">
+          <iframe src="https://www.google.com/maps?q=Sorocaba+SP&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa do percurso"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section class="v2-section" id="galeria">
+    <div class="v2-wrap">
+      <div class="v2-section-head v2-reveal">
+        <p class="eyebrow">Memórias</p>
+        <h2 class="section-title">Galeria · edição 2025</h2>
+        <p class="section-lead">Um pouco do que você vai viver. Clique para ampliar.</p>
+      </div>
+      <div class="v2-gallery v2-reveal">
+        <a href="#" onclick="return abrirFoto(this)"><img src="assets/cartaz-destaque-1.jpg" alt="Largada 2025"></a>
+        <a href="#" onclick="return abrirFoto(this)"><img src="assets/card-evento1.jpg" alt="Percurso 2025"></a>
+        <a href="#" onclick="return abrirFoto(this)"><img src="assets/card-evento2.jpg" alt="Atletas 2025"></a>
+        <a href="#" onclick="return abrirFoto(this)"><img src="assets/cartaz-destaque-3.jpg" alt="Chegada 2025"></a>
+        <a href="#" onclick="return abrirFoto(this)"><img src="assets/card-evento3.jpg" alt="Premiação 2025"></a>
+        <a href="#" onclick="return abrirFoto(this)"><img src="assets/cartaz-destaque-4.jpg" alt="Arena 2025"></a>
+        <a href="#" onclick="return abrirFoto(this)"><img src="assets/card-evento4.jpg" alt="Público 2025"></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="v2-section v2-section--tint" id="faq">
+    <div class="v2-wrap">
+      <div class="v2-section-head v2-reveal">
+        <p class="eyebrow">Dúvidas frequentes</p>
+        <h2 class="section-title">Perguntas comuns</h2>
+      </div>
+      <div class="v2-faq v2-reveal">
+        <div class="v2-acc">
+          <button class="v2-acc__q">Como retiro o meu kit? <i class="fas fa-plus"></i></button>
+          <div class="v2-acc__a"><p>A retirada acontece na Expo Aurora, na semana da prova, mediante documento com foto e comprovante de inscrição. Terceiros precisam de autorização assinada.</p></div>
+        </div>
+        <div class="v2-acc">
+          <button class="v2-acc__q">Posso transferir minha inscrição? <i class="fas fa-plus"></i></button>
+          <div class="v2-acc__a"><p>Sim. A transferência de titularidade fica disponível na sua Área do Atleta até 15 dias antes do evento, sem custo adicional.</p></div>
+        </div>
+        <div class="v2-acc">
+          <button class="v2-acc__q">Há limite de idade? <i class="fas fa-plus"></i></button>
+          <div class="v2-acc__a"><p>Os 5km são abertos a partir de 12 anos com autorização dos responsáveis. As distâncias de 10km e 21km exigem idade mínima de 18 anos completos no dia da prova.</p></div>
+        </div>
+        <div class="v2-acc">
+          <button class="v2-acc__q">O percurso tem corte de tempo? <i class="fas fa-plus"></i></button>
+          <div class="v2-acc__a"><p>Sim, o tempo limite total é de 3h30 a partir da largada. Os pontos de apoio e o trânsito são liberados gradualmente após esse horário.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPONSORS -->
+  <section class="v2-section">
+    <div class="v2-wrap v2-sponsors v2-reveal">
+      <p class="eyebrow">Quem faz acontecer</p>
+      <h2 class="section-title">Patrocinadores & apoio</h2>
+      <div class="v2-sponsors__group">
+        <div class="v2-sponsors__label">Realização</div>
+        <div class="v2-sponsors__logos">
+          <div class="v2-sponsor-ph">Aurora Run</div>
+          <div class="v2-sponsor-ph">Recebe Sports</div>
+        </div>
+      </div>
+      <div class="v2-sponsors__group">
+        <div class="v2-sponsors__label">Patrocínio</div>
+        <div class="v2-sponsors__logos">
+          <div class="v2-sponsor-ph">Hidravita</div>
+          <div class="v2-sponsor-ph">Passo Certo</div>
+          <div class="v2-sponsor-ph">Banco Sol</div>
+          <div class="v2-sponsor-ph">Vento Esportes</div>
+        </div>
+      </div>
+      <div class="v2-sponsors__group">
+        <div class="v2-sponsors__label">Apoio institucional</div>
+        <div class="v2-sponsors__logos">
+          <div class="v2-sponsor-ph">Prefeitura</div>
+          <div class="v2-sponsor-ph">Secretaria de Esportes</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="v2-finalcta">
+    <div class="v2-finalcta__inner v2-reveal">
+      <h2>Sua melhor manhã do ano começa aqui.</h2>
+      <p>Garanta sua vaga no lote atual antes que ele esgote. Bora correr?</p>
+      <a href="inscricao-participante.html" class="v2-hero__cta">Quero me inscrever <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><img src="assets/icon-instagram.svg" alt=""></a>
+        <a href="#" aria-label="Whatsapp"><img src="assets/icon-whatsapp.svg" alt=""></a>
+        <a href="#" aria-label="Facebook"><img src="assets/icon-facebook.svg" alt=""></a>
+      </div>
+      <div class="footer-logo">
+        <img src="assets/logo.svg" alt="Recebe Sports">
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h4>Atletas</h4>
+          <ul>
+            <li><a href="login.html">Acessar</a></li>
+            <li><a href="cadastro-1.html">Crie sua conta</a></li>
+            <li><a href="resultados.html">Resultados</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Organizadores</h4>
+          <ul>
+            <li><a href="organizadores.html">Serviços Oferecidos</a></li>
+            <li><a href="organizador-criar-1.html">Crie sua Conta</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Institucional</h4>
+          <ul>
+            <li><a href="quem-somos.html">Quem Somos</a></li>
+            <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
+            <li><a href="termos-de-uso.html">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2013 - 2026 - Recebe Digital - CNPJ: 12.345.678/0001-99 - Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/global.js"></script>
+  <script>
+    // ===== COUNTDOWN =====
+    (function () {
+      const alvo = new Date('2026-10-18T06:00:00-03:00').getTime();
+      const els = {
+        d: document.querySelector('[data-c="d"]'),
+        h: document.querySelector('[data-c="h"]'),
+        m: document.querySelector('[data-c="m"]'),
+        s: document.querySelector('[data-c="s"]'),
+      };
+      function tick() {
+        const diff = alvo - Date.now();
+        if (diff <= 0) { Object.values(els).forEach(e => e.textContent = '00'); return; }
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor(diff % 86400000 / 3600000);
+        const m = Math.floor(diff % 3600000 / 60000);
+        const s = Math.floor(diff % 60000 / 1000);
+        els.d.textContent = String(d).padStart(2, '0');
+        els.h.textContent = String(h).padStart(2, '0');
+        els.m.textContent = String(m).padStart(2, '0');
+        els.s.textContent = String(s).padStart(2, '0');
+      }
+      tick(); setInterval(tick, 1000);
+    })();
+
+    // ===== PERCURSO =====
+    const percursos = {
+      '5': {
+        titulo: '5 km · Aurora Fun',
+        itens: [
+          ['fas fa-flag-checkered', '<strong>Distância:</strong> 5 quilômetros'],
+          ['fas fa-road', '<strong>Terreno:</strong> 100% asfalto plano'],
+          ['far fa-clock', '<strong>Tempo médio:</strong> 30–45 min'],
+          ['fas fa-signal', '<strong>Nível:</strong> Iniciante / família'],
+          ['fas fa-droplet', '<strong>Apoio:</strong> hidratação no km 2,5 e na chegada'],
+        ],
+      },
+      '10': {
+        titulo: '10 km · Aurora Run',
+        itens: [
+          ['fas fa-flag-checkered', '<strong>Distância:</strong> 10 quilômetros'],
+          ['fas fa-road', '<strong>Terreno:</strong> asfalto (85%) e orla do parque (15%)'],
+          ['far fa-clock', '<strong>Tempo médio:</strong> 50 min – 1h15'],
+          ['fas fa-signal', '<strong>Nível:</strong> Intermediário'],
+          ['fas fa-droplet', '<strong>Apoio:</strong> hidratação nos km 3, 6 e 9'],
+        ],
+      },
+      '21': {
+        titulo: '21 km · Meia Aurora',
+        itens: [
+          ['fas fa-flag-checkered', '<strong>Distância:</strong> 21,1 km (meia maratona)'],
+          ['fas fa-road', '<strong>Terreno:</strong> asfalto (70%), centro histórico (20%), orla (10%)'],
+          ['far fa-clock', '<strong>Tempo médio:</strong> 1h45 – 2h45'],
+          ['fas fa-signal', '<strong>Nível:</strong> Avançado'],
+          ['fas fa-droplet', '<strong>Apoio:</strong> hidratação a cada 3 km + gel no km 12'],
+          ['fas fa-kit-medical', '<strong>Posto médico:</strong> km 10 e chegada'],
+        ],
+      },
+    };
+    function renderPercurso(key) {
+      const d = percursos[key];
+      const lis = d.itens.map(([ic, txt]) => `<li><i class="${ic}"></i> ${txt}</li>`).join('');
+      document.getElementById('routeContent').innerHTML =
+        `<h3>${d.titulo}</h3><ul>${lis}</ul>`;
+    }
+    document.getElementById('routeTabs').addEventListener('click', (e) => {
+      const btn = e.target.closest('.v2-route__tab');
+      if (!btn) return;
+      document.querySelectorAll('.v2-route__tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderPercurso(btn.dataset.r);
+    });
+    renderPercurso('5');
+
+    // ===== FAQ =====
+    document.querySelectorAll('.v2-acc__q').forEach(q => {
+      q.addEventListener('click', () => {
+        const acc = q.parentElement;
+        const a = acc.querySelector('.v2-acc__a');
+        const open = acc.classList.toggle('open');
+        a.style.maxHeight = open ? a.scrollHeight + 'px' : null;
+      });
+    });
+
+    // ===== GALERIA (placeholder) =====
+    function abrirFoto() {
+      if (typeof showToast === 'function') showToast('Galeria ampliada em breve 📸', 'info');
+      return false;
+    }
+
+    // ===== SUBNAV ACTIVE + SCROLL SPY =====
+    const links = [...document.querySelectorAll('.v2-subnav a[href^="#"]')];
+    const secoes = links.map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+    function spy() {
+      let cur = secoes[0];
+      const y = window.scrollY + 120;
+      secoes.forEach(s => { if (s.offsetTop <= y) cur = s; });
+      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + cur.id));
+    }
+    window.addEventListener('scroll', spy, { passive: true });
+    links.forEach(l => l.addEventListener('click', e => {
+      const t = document.querySelector(l.getAttribute('href'));
+      if (t) { e.preventDefault(); window.scrollTo({ top: t.offsetTop - 70, behavior: 'smooth' }); }
+    }));
+
+    // ===== REVEAL ON SCROLL =====
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: .12 });
+    document.querySelectorAll('.v2-reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
