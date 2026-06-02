@@ -44,8 +44,8 @@
 }
 .v2-hero__bg {
   position: absolute; inset: 0;
-  background-image: url('../assets/banner-evento.jpg');
-  background-size: cover; background-position: center;
+  background-image: url('../assets/v2-hero-aurora.jpg');
+  background-size: cover; background-position: center bottom;
   transform: scale(1.05);
   filter: saturate(1.05);
 }
