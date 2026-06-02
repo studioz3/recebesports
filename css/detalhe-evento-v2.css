@@ -97,7 +97,7 @@
   display: inline-flex; align-items: center; gap: 9px;
   font-size: 15px; font-weight: 600; color: rgba(255,255,255,.92);
 }
-.v2-hero__meta i { color: var(--v2-teal); font-size: 16px; }
+.v2-hero__meta i { color: var(--v2-amber); font-size: 16px; }
 
 .v2-hero__cta {
   display: inline-flex; align-items: center; gap: 10px;
