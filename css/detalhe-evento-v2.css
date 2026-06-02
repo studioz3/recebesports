@@ -110,7 +110,7 @@
 
 /* countdown */
 .v2-count {
-  position: absolute; right: 32px; bottom: 56px; z-index: 3;
+  z-index: 3; margin-top: 40px;
   display: flex; gap: 10px;
 }
 .v2-count__box {
