@@ -30,7 +30,9 @@
 
   <!-- HERO -->
   <section class="v2-hero" id="topo">
-    <div class="v2-hero__bg"></div>
+    <video class="v2-hero__bg" autoplay muted loop playsinline poster="assets/v2-hero-poster.jpg">
+      <source src="assets/v2-hero.mp4" type="video/mp4">
+    </video>
     <div class="v2-hero__scrim"></div>
     <div class="v2-hero__inner">
       <span class="v2-hero__badge"><span class="dot"></span> 12ª Edição · Inscrições Abertas</span>
@@ -41,15 +43,17 @@
         <span><i class="fas fa-map-marker-alt"></i> Parque das Águas · Sorocaba — SP</span>
         <span><i class="fas fa-person-running"></i> 5km · 10km · 21km</span>
       </div>
-      <a href="inscricao-participante.html" class="v2-hero__cta">
-        Garantir minha vaga <i class="fas fa-arrow-right"></i>
-      </a>
-    </div>
-    <div class="v2-count" id="v2Count">
-      <div class="v2-count__box"><span class="v2-count__num" data-c="d">--</span><span class="v2-count__label">Dias</span></div>
-      <div class="v2-count__box"><span class="v2-count__num" data-c="h">--</span><span class="v2-count__label">Horas</span></div>
-      <div class="v2-count__box"><span class="v2-count__num" data-c="m">--</span><span class="v2-count__label">Min</span></div>
-      <div class="v2-count__box"><span class="v2-count__num" data-c="s">--</span><span class="v2-count__label">Seg</span></div>
+      <div class="v2-hero__actions">
+        <a href="inscricao-participante.html" class="v2-hero__cta">
+          Garantir minha vaga <i class="fas fa-arrow-right"></i>
+        </a>
+        <div class="v2-count" id="v2Count">
+          <div class="v2-count__box"><span class="v2-count__num" data-c="d">--</span><span class="v2-count__label">Dias</span></div>
+          <div class="v2-count__box"><span class="v2-count__num" data-c="h">--</span><span class="v2-count__label">Horas</span></div>
+          <div class="v2-count__box"><span class="v2-count__num" data-c="m">--</span><span class="v2-count__label">Min</span></div>
+          <div class="v2-count__box"><span class="v2-count__num" data-c="s">--</span><span class="v2-count__label">Seg</span></div>
+        </div>
+      </div>
     </div>
   </section>
 
