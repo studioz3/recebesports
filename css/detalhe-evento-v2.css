@@ -59,6 +59,9 @@
   position: relative; z-index: 2;
   width: 100%; max-width: 1180px; margin: 0 auto;
   padding: 64px 32px 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .v2-hero__badge {
   display: inline-flex; align-items: center; gap: 8px;
@@ -77,6 +80,7 @@
   font-size: 64px; line-height: .98; font-weight: 800;
   letter-spacing: -.03em; margin: 0 0 8px; max-width: 14ch;
   text-shadow: 0 2px 24px rgba(0,0,0,.3);
+  text-align: center;
 }
 .v2-hero h1 .accent { color: var(--v2-amber); }
 .v2-hero__sub {
