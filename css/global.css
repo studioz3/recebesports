@@ -660,8 +660,8 @@ input, select, textarea {
   position: relative;
 }
 .wa-btn svg {
-  width: 32px;
-  height: 32px;
+  width: 60px;
+  height: 60px;
   fill: white;
   flex-shrink: 0;
 }
