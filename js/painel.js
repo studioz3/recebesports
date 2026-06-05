@@ -311,14 +311,14 @@ function vEstatisticas(){
       <div class="card-h">
         <div><div class="ttl">Inscrições por dia</div><div class="sub">Volume diário desde a abertura das inscrições</div></div>
         <div class="row" style="gap:14px">
-          <span class="row" style="gap:6px;font-size:11.5px;font-weight:500;color:var(--tx-2)"><span style="width:14px;height:3px;border-radius:2px;background:var(--brand)"></span>Este evento</span>
-          <span class="row" style="gap:6px;font-size:11.5px;font-weight:500;color:var(--tx-3)"><span style="width:14px;height:0;border-top:2px dashed #C7CCD4"></span>Evento anterior</span>
+          <span class="row" style="gap:6px;font-size:11.5px;font-weight:500;color:var(--tx-2)"><span style="width:14px;height:3px;border-radius:2px;background:var(--brand)"></span>Realizadas</span>
+          <span class="row" style="gap:6px;font-size:11.5px;font-weight:500;color:var(--tx-3)"><span style="width:14px;height:0;border-top:2px dashed #C7CCD4"></span>Pagas</span>
         </div>
       </div>
       <div class="card-b" style="padding:18px 16px 12px">${areaChart(SERIE,{h:286,labels:DAYS,cmp:SERIE_CMP,grad:'#FF6600',line:'#E25600'})}</div>
     </div>
     <div class="card">
-      <div class="card-h"><div class="ttl">Ocupação do Evento</div></div>
+      <div class="card-h"><div class="ttl">Limite Inscrições</div></div>
       <div class="card-b" style="display:flex;flex-direction:column;align-items:center;padding:22px 20px 24px">
         ${gauge(100,{label:'100%',sub:'LIMITE ATINGIDO'})}
         <div class="ev-pill" style="margin-top:14px;border-color:var(--ok-bg);background:var(--ok-bg);color:var(--ok)">

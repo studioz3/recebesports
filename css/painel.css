@@ -394,7 +394,7 @@ textarea.inp{height:auto;padding:11px 13px;resize:vertical;line-height:1.55}
 .sec-tt .ic svg{width:16px;height:16px}
 
 /* progress */
-.bar-track{height:8px;border-radius:6px;background:var(--line-2);overflow:hidden}
+.bar-track{height:5px;border-radius:6px;background:var(--line-2);overflow:hidden}
 .bar-fill{height:100%;border-radius:6px;background:var(--brand)}
 
 /* list-row used in distance/category breakdowns */
@@ -685,7 +685,7 @@ textarea.inp{height:auto;padding:11px 13px;resize:vertical;line-height:1.55}
   width:100%;max-width:240px;
 }
 .gauge-label{
-  font-weight:800;font-size:32px;color:var(--tx-1);
+  font-size:32px;color:var(--tx-1);
   letter-spacing:-.02em;line-height:1;margin-top:10px;
 }
 .gauge-sub{
