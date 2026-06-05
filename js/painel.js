@@ -235,7 +235,7 @@ function avatar(name,bg){
   const init=name.split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();
   return `<span class="avt-s" style="background:${bg}">${init}</span>`;
 }
-const PAL=['#FF6600','#2F6DE0','#27B36B','#9B5DE5','#E0362C','#D98200','#0FB5BA','#E84393'];
+const PAL=['#002248','#002248','#002248','#002248','#002248','#002248','#002248','#002248'];
 const colorFor=s=>PAL[[...s].reduce((a,c)=>a+c.charCodeAt(0),0)%PAL.length];
 
 /* ============================================================
