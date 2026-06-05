@@ -481,7 +481,7 @@ function vFinanceiro(){
         <div class="pm-ic" style="background:#F3ECFB;color:#9B5DE5">${ic('bank')}</div>
         <div class="pm-meta">
           <div class="pm-name">Adiantamentos</div>
-          <div class="pm-count"><a style="color:var(--brand-700);font-weight:600;cursor:pointer">Solicitar adiantamento</a></div>
+          <div class="pm-count">Você tem <span style="opacity:.7">saldo para retirar</span></div>
         </div>
       </div>
       <div class="pm-body">
@@ -524,6 +524,9 @@ function vFinanceiro(){
       <div class="pm-disp-content">
         <div class="pm-disp-val" style="${isNeg?'color:var(--no)':''}"><span class="cur">R$</span>${saldoVal}</div>
         <a class="pm-disp-link">${ic('eye')} Entenda o saldo</a>
+      </div>
+      <div class="pm-disp-content2">
+        <a class="pm-disp-link">${ic('money')} Solicitar saque</a>
       </div>
     </div>`;
 
