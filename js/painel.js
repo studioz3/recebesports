@@ -975,6 +975,10 @@ A retirada dos kits será realizada conforme cronograma divulgado...</textarea>
             ${field('UF',0,`<input class="inp" value="SP">`)}
           </div>
           ${field('Ponto de referência',0,`<input class="inp" value="Em frente ao Ginásio Municipal">`)}
+          <div class="fgrid g-2">
+            ${field('Latitude ',0,`<input class="inp" value="-342.244">`)}
+            ${field('Longitude',0,`<input class="inp" value="102.532">`)}
+          </div>
         </div>
       </div>
     </div>
