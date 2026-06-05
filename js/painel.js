@@ -320,7 +320,15 @@ function vEstatisticas(){
     <div class="card">
       <div class="card-h"><div class="ttl">Limite Inscrições</div></div>
       <div class="card-b" style="display:flex;flex-direction:column;align-items:center;padding:22px 20px 24px">
-        ${gauge(100,{label:'100%',sub:'LIMITE ATINGIDO'})}
+        <div style="width:100%;max-width:260px;text-align:center">
+          <div class="bar-track" style="height:28px;border-radius:8px;margin-top:18px;margin-bottom:14px;background:#EDEFF2">
+            <div class="bar-fill" style="width:100%;background:var(--brand);border-radius:8px;height:100%;display:flex;align-items:center;justify-content:center">
+              <span style="color:#fff;font-weight:700;font-size:13px;font-family:var(--font-d)">100%</span>
+            </div>
+          </div>
+          <div style="font-family:var(--font-d);font-weight:800;font-size:32px;color:var(--tx-1);margin-bottom:2px">100%</div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--tx-3);text-transform:uppercase">Limite atingido</div>
+        </div>
         <div class="ev-pill" style="margin-top:14px;border-color:var(--ok-bg);background:var(--ok-bg);color:var(--ok)">
           ${ic('check')} <span><b class="num">478</b> / 478 vagas</span></div>
         <p class="hint" style="margin-top:12px;text-align:center;max-width:280px">O evento atingiu o número máximo de inscrições permitido.</p>
@@ -545,10 +553,9 @@ function vFinanceiro(){
   </div>
 
   <!-- overview KPIs -->
-  <div class="grid g-5" style="margin-bottom:20px">
+  <div class="grid g-4" style="margin-bottom:20px">
     ${kpi({label:'Total Arrecadado',val:'18.601,60',cur:'R$',icon:'wallet',tint:['#E5F5EC','#1F9D55'],delta:{dir:'up',v:'266 inscr.'},foot:'Bruto do período'})}
     ${kpi({label:'Cortesia',val:'0',icon:'star',tint:['#F3ECFB','#9B5DE5'],foot:'Inscrições gratuitas'})}
-    ${kpi({label:'Rec. Organizador',val:'0,00',cur:'R$',icon:'building',tint:['#E8F0FE','#2F6DE0'],foot:'Recebimentos próprios'})}
     ${kpi({label:'Em Aberto',val:'0,00',cur:'R$',icon:'clock',tint:['#FBEFD9','#D98200'],foot:'Sem pendências'})}
     ${kpi({label:'Bloqueadas',val:'0,00',cur:'R$',icon:'lock',tint:['#FCE9E8','#E03B30'],foot:'Nenhum bloqueio'})}
   </div>
@@ -614,54 +621,51 @@ function vFinanceiro(){
    ============================================================ */
 function vInscricoes(){
   const rows=[
-    ['00414200166','23/04/2026 22:02','91,50','PIX','ok','PAGO','Mariana Rodrigues Duarte','024.889.081-69','F','Hidalgo Treinamento','Corrida 7 KM','P'],
-    ['00414200165','23/04/2026 20:21','91,50','PIX','no','CANCELADA','Laudineia C. da Silva Leal','795.692.261-53','F','Reviva Cascalheira','Caminhada','P'],
-    ['00414200164','22/04/2026 15:33','49,00','Cartão','ok','PAGO','Edson Santana','365.339.801-06','M','Ribas','Corrida 7 KM','GG'],
-    ['00414200163','21/04/2026 20:31','91,50','PIX','ok','PAGO','Carolina Carreira','435.443.418-08','F','Equipe Carreira','Corrida 7 KM','M'],
-    ['00414200162','20/04/2026 22:22','91,50','PIX','ok','PAGO','Tawani H. P. Machado','453.609.648-55','F','Papaléguas','Corrida 7 KM','G'],
-    ['00414200161','20/04/2026 16:57','91,50','PIX','ok','PAGO','Everton Nascimento da Silva','390.933.688-42','M','—','Corrida 7 KM','GG'],
-    ['00414200160','19/04/2026 13:11','91,50','PIX','ok','PAGO','Camila A. A. Guimarães','053.894.481-11','F','—','Corrida 7 KM','PP'],
-    ['00414200159','19/04/2026 12:54','91,50','PIX','warn','ESTORNADA','Otávio V. de Lima Bueno','083.433.911-01','M','—','Corrida 7 KM','P'],
-    ['00414200158','18/04/2026 06:04','91,50','PIX','ok','PAGO','Clodoaldo Araújo Lima','351.097.852-87','M','Nenhuma','Corrida 7 KM','G'],
-    ['00414200157','18/04/2026 02:35','91,50','PIX','ok','PAGO','Brenner Soares','067.241.441-40','M','—','Corrida 7 KM','G'],
+    {ins:'00420700137',dtIns:'22/04/2026 às 13:15:40',vecto:'22/04/2026',baixa:'22/04/2026',val:'66,50',st:'ok',stLbl:'PAGO',pgto:'PIX',pgtoSub:'Pix',nome:'José Pedro Geraldo Nóbrega Curitiba',cpf:'031.686.378-58',sexo:'M',nasc:'25/06/1961',cidade:'Jales/SP',equipe:'—',cel:'(17) 99612-7268',email:'pedrocuritiba_1@hotmail.com',evento:'3ª Corrida e Caminhada Elite Run',dtEvento:'14/06/2026 às 07:30'},
+    {ins:'00420700136',dtIns:'22/04/2026 às 12:39:29',vecto:'22/04/2026',baixa:'22/04/2026',val:'126,50',st:'ok',stLbl:'PAGO',pgto:'PIX',pgtoSub:'Pix',nome:'João Antonio Freitas Furquim',cpf:'052.990.851-41',sexo:'M',nasc:'24/03/1997',cidade:'Aparecida do Taboado/MS',equipe:'Zyla Fit',cel:'(67) 98194-2962',email:'joao_freitas_furquim@hotmail.com',evento:'3ª Corrida e Caminhada Elite Run',dtEvento:'14/06/2026 às 07:30'},
+    {ins:'00420700135',dtIns:'22/04/2026 às 09:18:33',vecto:'22/04/2026',baixa:'22/04/2026',val:'126,50',st:'ok',stLbl:'PAGO',pgto:'PIX',pgtoSub:'Pix',nome:'Lorena Aparecida Ribeiro de Brito',cpf:'040.005.551-11',sexo:'F',nasc:'12/10/1993',cidade:'São Francisco/SP',equipe:'—',cel:'(16) 99255-6809',email:'lorena.fisioterapiapmsf@gmail.com',evento:'3ª Corrida e Caminhada Elite Run',dtEvento:'14/06/2026 às 07:30'},
+    {ins:'00420700134',dtIns:'21/04/2026 às 23:03:15',vecto:'21/04/2026',baixa:'21/04/2026',val:'126,50',st:'ok',stLbl:'PAGO',pgto:'PIX',pgtoSub:'Pix',nome:'José Otávio Alberguini',cpf:'448.084.288-81',sexo:'M',nasc:'22/08/2002',cidade:'Aspásia/SP',equipe:'V360',cel:'(17) 99743-5325',email:'joseotavioa889@gmail.com',evento:'3ª Corrida e Caminhada Elite Run',dtEvento:'14/06/2026 às 07:30'},
+    {ins:'00420700133',dtIns:'21/04/2026 às 21:42:34',vecto:'21/04/2026',baixa:'21/04/2026',val:'126,50',st:'ok',stLbl:'PAGO',pgto:'PIX',pgtoSub:'Pix',nome:'Alexandre Nascimento',cpf:'140.063.808-95',sexo:'M',nasc:'07/09/1974',cidade:'Três Fronteiras/SP',equipe:'Move Sião',cel:'(17) 98152-0360',email:'ale_skeight@hotmail.com',evento:'3ª Corrida e Caminhada Elite Run',dtEvento:'14/06/2026 às 07:30'},
+    {ins:'00420700132',dtIns:'21/04/2026 às 19:37:45',vecto:'21/04/2026',baixa:'21/04/2026',val:'126,50',st:'ok',stLbl:'PAGO',pgto:'PIX',pgtoSub:'Pix',nome:'Dener Rodrigues da Silva',cpf:'346.846.318-93',sexo:'M',nasc:'25/12/1985',cidade:'Rubinéia/SP',equipe:'Nova Aliança Run',cel:'(17) 99225-3488',email:'denerdavi2010@gmail.com',evento:'3ª Corrida e Caminhada Elite Run',dtEvento:'14/06/2026 às 07:30'},
+    {ins:'00420700131',dtIns:'21/04/2026 às 19:16:10',vecto:'21/04/2026',baixa:'21/04/2026',val:'126,50',st:'ok',stLbl:'PAGO',pgto:'PIX',pgtoSub:'Pix',nome:'Joicy Oliveira Machado',cpf:'055.116.591-00',sexo:'F',nasc:'28/02/1997',cidade:'Ilha Solteira/SP',equipe:'—',cel:'(67) 99194-0789',email:'joicyoliveiramachado@gmail.com',evento:'3ª Corrida e Caminhada Elite Run',dtEvento:'14/06/2026 às 07:30'},
+    {ins:'00420700130',dtIns:'20/04/2026 às 14:22:08',vecto:'20/04/2026',baixa:'20/04/2026',val:'126,50',st:'warn',stLbl:'ESTORNADA',pgto:'PIX',pgtoSub:'Pix',nome:'Marcos Henrique Tavares',cpf:'392.118.408-65',sexo:'M',nasc:'15/07/1990',cidade:'Andradina/SP',equipe:'Elite Run',cel:'(18) 99734-5521',email:'marcos.tavares@outlook.com',evento:'3ª Corrida e Caminhada Elite Run',dtEvento:'14/06/2026 às 07:30'},
+    {ins:'00420700129',dtIns:'20/04/2026 às 11:05:33',vecto:'20/04/2026',baixa:'20/04/2026',val:'66,50',st:'no',stLbl:'CANCELADA',pgto:'PIX',pgtoSub:'Pix',nome:'Patrícia Souza Lima',cpf:'281.774.008-19',sexo:'F',nasc:'03/11/1988',cidade:'Santa Fé do Sul/SP',equipe:'Caminheiros',cel:'(17) 99811-3042',email:'patricia.slima@gmail.com',evento:'3ª Corrida e Caminhada Elite Run',dtEvento:'14/06/2026 às 07:30'},
+    {ins:'00420700128',dtIns:'19/04/2026 às 22:44:18',vecto:'19/04/2026',baixa:'19/04/2026',val:'126,50',st:'ok',stLbl:'PAGO',pgto:'Cartão',pgtoSub:'Crédito',nome:'Rafael Borges Monteiro',cpf:'508.223.148-70',sexo:'M',nasc:'10/04/1995',cidade:'Três Lagoas/MS',equipe:'Hidalgo Treinamento',cel:'(67) 99845-2203',email:'rafaelbm95@gmail.com',evento:'3ª Corrida e Caminhada Elite Run',dtEvento:'14/06/2026 às 07:30'},
   ];
-  const st={ok:['ok','PAGO'],no:['no','CANCELADA'],warn:['warn','ESTORNADA']};
   return `
   <div class="card">
     <div class="toolbar">
       <div class="fld" style="flex:1;min-width:320px">
-        <span class="fld-lbl">Evento <span class="req">*</span></span>
-        <select class="sel"><option>4142 · 03/05/2026 · 2ª Cascalheira Trail Run · Três Lagoas/MS</option></select>
+        <span class="fld-lbl">Selecione o Evento <span class="req">*</span></span>
+        <select class="sel"><option>4207 | 14/06/2026 | 3ª Corrida e Caminhada Elite Run | Santa Clara D'Oeste/SP</option></select>
       </div>
       <div class="fld" style="width:230px"><span class="fld-lbl">Filtrar por CPF</span>
         <div class="inp-ic">${ic('search')}<input class="inp" placeholder="000.000.000-00"></div></div>
-      <div class="fld"><span class="fld-lbl">&nbsp;</span><button class="btn btn-pri">${ic('filter')} Buscar</button></div>
+      <div class="fld"><span class="fld-lbl">&nbsp;</span><button class="btn btn-pri">${ic('filter')}</button></div>
     </div>
     <div class="toolbar" style="border-bottom:1px solid var(--line-2)">
-      <span class="tb-count"><b>172</b> inscrições realizadas</span>
-      <span class="row" style="gap:6px">${chip('ok','152 pagas')}${chip('no','15 canceladas')}${chip('warn','5 estornadas')}</span>
+      <span class="tb-count"><b>150</b> Inscrições realizadas</span>
       <span class="tb-spacer"></span>
-      <button class="btn btn-ghost btn-sm">${ic('download')} Exportar</button>
       <button class="btn btn-ghost btn-sm btn-ic">${ic('dots')}</button>
     </div>
     <div class="tbl-wrap"><table class="tbl">
       <thead><tr>
-        <th>Ações</th><th>Inscrição</th><th>Valor</th><th>Status</th><th>Pagamento</th>
-        <th>Atleta</th><th>Equipe</th><th>Categoria</th>
+        <th>Ações</th><th>Inscrição</th><th>Datas</th><th>Valores</th><th>Status</th><th>Forma Pgto.</th>
+        <th>Atleta</th><th>Dados Atleta</th><th>Evento</th>
       </tr></thead>
       <tbody>${rows.map(r=>`<tr>
-        <td><div class="row-acts"><button class="ra">${ic('eye')}</button><button class="ra">${ic('edit')}</button><button class="ra">${ic('dots')}</button></div></td>
-        <td><div class="t-2line"><div class="l1 t-id">#${r[0]}</div><div class="l2">${r[1]}</div></div></td>
-        <td class="t-strong num">R$ ${r[2]}</td>
-        <td>${chip(st[r[4]][0],st[r[4]][1])}</td>
-        <td><span class="row" style="gap:7px"><span class="kpi-ic" style="width:26px;height:26px;border-radius:7px;background:var(--surface-2);color:var(--tx-2)">${ic(r[3]==='Cartão'?'card':'wallet')}</span><span style="font-weight:600">${r[3]}</span></span></td>
-        <td><div class="row" style="gap:9px">${avatar(r[6],colorFor(r[6]))}
-          <div class="t-2line"><div class="l1">${r[6]}</div><div class="l2">CPF ${r[7]} · ${r[8]}</div></div></div></td>
-        <td><span class="tag">${r[9]}</span></td>
-        <td><div class="t-2line"><div class="l1">${r[10]}</div><div class="l2">Camiseta ${r[11]}</div></div></td>
+        <td><select class="sel" style="width:90px;padding:4px 6px;font-size:11px"><option>Opções</option><option>Visualizar</option><option>Editar</option><option>Cancelar</option></select></td>
+        <td><div class="t-2line"><div class="l1 t-id" style="font-size:12px">${r.ins}</div><div class="l2">${r.dtIns}</div></div></td>
+        <td><div class="t-2line"><div class="l2">Vecto: ${r.vecto}</div><div class="l2">Baixa: ${r.baixa}</div></div></td>
+        <td class="t-strong num">R$${r.val}</td>
+        <td>${chip(r.st,r.stLbl)}</td>
+        <td><div class="t-2line"><div class="l1" style="font-weight:600">${r.pgto}</div><div class="l2">${r.pgtoSub}</div></div></td>
+        <td><div class="t-2line"><div class="l1">${r.nome}</div><div class="l2">CPF: ${r.cpf} · Sexo: ${r.sexo}<br>${r.nasc} · ${r.cidade}</div></div></td>
+        <td><div class="t-2line"><div class="l2">Equipe: <b>${r.equipe}</b></div><div class="l2">Cel: ${r.cel}</div><div class="l2">E-mail: ${r.email}</div></div></td>
+        <td><div class="t-2line"><div class="l1" style="font-size:12px">${r.evento}</div><div class="l2">${r.dtEvento}</div></div></td>
       </tr>`).join('')}</tbody>
     </table></div>
-    ${pager(172,10,2)}
+    ${pager(150,10,1)}
   </div>`;
 }
 
@@ -691,7 +695,7 @@ function vCupons(){
     <div class="tbl-wrap"><table class="tbl">
       <thead><tr>
         <th style="width:34px"><span class="ckbox" onclick="this.classList.toggle('on')">${ic('check')}</span></th>
-        <th>Ações</th><th>ID</th><th>Código</th><th>Tipo</th><th>Valor</th><th>Uso</th><th>Disponível</th>
+        <th>Ações</th><th>ID</th><th>Código</th><th>Tipo</th><th>Valor</th><th>Uso</th>
         <th>Evento</th><th>Organizador</th><th>Vigência</th>
       </tr></thead>
       <tbody>${rows.map(r=>{
@@ -708,7 +712,6 @@ function vCupons(){
             <span class="num">${r[4]}/${r[5]}</span><span class="hint">${pct}%</span></div>
           <div class="bar-track" style="height:6px"><div class="bar-fill" style="width:${Math.max(3,pct)}%;background:${pct>=80?'var(--no)':pct>=40?'var(--warn)':'var(--ok)'}"></div></div>
         </td>
-        <td class="t-strong num" style="text-align:center">${r[6]}</td>
         <td><div class="t-2line"><div class="l1">${r[7]}</div><div class="l2">${r[8]}</div></div></td>
         <td class="t-mut">Rogério Onorato</td>
         <td class="t-mut num">16/05 → 19/06/2026</td>
@@ -920,10 +923,13 @@ A retirada dos kits será realizada conforme cronograma divulgado...</textarea>
   <div data-evpanel="kits" style="display:none">
     <div class="grid g-3">
       ${[
-        ['Kit Padrão','Camiseta + número + chip','#FF6600','shirt',420],
-        ['Kit Premium','Camiseta dry-fit + medalha + sacochila','#9B5DE5','trophy',180],
-        ['Kit Caminhada','Camiseta + número','#27B36B','flag',95],
-      ].map(([n,d,c,i,q])=>`
+        ['Kit Padrão','Camiseta + número + chip','#FF6600','shirt',420,500],
+        ['Kit Premium','Camiseta dry-fit + medalha + sacochila','#9B5DE5','trophy',180,250],
+        ['Kit Caminhada','Camiseta + número','#27B36B','flag',95,120],
+      ].map(([n,d,c,i,disp,total])=>{
+        const usado=total-disp;
+        const pct=Math.round(usado/total*100);
+        return `
       <div class="card">
         <div class="card-b">
           <div class="row" style="justify-content:space-between">
@@ -932,10 +938,17 @@ A retirada dos kits será realizada conforme cronograma divulgado...</textarea>
           </div>
           <div style="font-family:var(--font-d);font-weight:700;font-size:16px;margin-top:12px">${n}</div>
           <p class="hint" style="margin-top:2px">${d}</p>
-          <div class="def" style="margin-top:12px;border-bottom:none"><span class="k">Disponíveis</span><span class="v num">${q}</span></div>
-          <div class="bar-track" style="margin-top:4px"><div class="bar-fill" style="width:${q/420*100}%;background:${c}"></div></div>
+          <div class="row" style="justify-content:space-between;margin-top:12px">
+            <span style="font-weight:600;font-size:13px;color:var(--tx-2)">Quantidade</span>
+            <span class="num" style="font-weight:700;font-size:14px">${total}</span>
+          </div>
+          <div class="row" style="justify-content:space-between;margin-top:4px">
+            <span style="font-weight:600;font-size:13px;color:var(--tx-2)">Disponíveis</span>
+            <span class="num" style="font-weight:700;font-size:14px">${disp}</span>
+          </div>
+          <div class="bar-track" style="margin-top:8px"><div class="bar-fill" style="width:${pct}%;background:${c}"></div></div>
         </div>
-      </div>`).join('')}
+      </div>`;}).join('')}
     </div>
     <button class="btn btn-soft" style="margin-top:16px">${ic('plus')} Novo Kit</button>
   </div>
