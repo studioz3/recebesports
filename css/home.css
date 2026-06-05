@@ -101,7 +101,7 @@
   border-radius: var(--radius-lg);
   padding: 0px;
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1fr auto auto;
+  grid-template-columns: 1.6fr 0.3fr auto auto;
   gap: 12px;
   align-items: center;
 }

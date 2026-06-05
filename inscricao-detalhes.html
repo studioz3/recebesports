@@ -35,10 +35,11 @@
   <section class="insc-banner">
     <img src="assets/banner-evento.jpg" alt="5K Pela Paz no Trânsito">
   </section>
-  <div class="insc-evento-nome">5K Pela Paz no Trânsito</div>
+
 
   <!-- CONTEÚDO -->
   <section class="insc-content">
+    <div class="insc-evento-nome">5K Pela Paz no Trânsito</div>
     <div class="container">
 
       <div class="insc-steps">
@@ -90,13 +91,6 @@
             <div class="painel-body" id="detalhesBody"></div>
           </div>
 
-          <div class="insc-termos" id="inscTermos" style="display:none;">
-            <label class="toggle-switch">
-              <input type="checkbox" id="aceitoPriv">
-              <span class="toggle-slider"></span>
-              <span>Li e concordo com o <a href="politica-de-privacidade.html">Termo de Responsabilidade</a></span>
-            </label>
-          </div>
         </div>
 
         <!-- Coluna direita -->
@@ -107,6 +101,14 @@
           </div>
           <div class="resumo-total-box" id="resumoTotal" style="display:none;"></div>
         </div>
+      </div>
+
+      <div class="insc-termos" id="inscTermos" style="display:none;">
+            <label class="toggle-switch">
+              <input type="checkbox" id="aceitoPriv">
+              <span class="toggle-slider"></span>
+              <span>Li e concordo com o <a href="politica-de-privacidade.html">Termo de Responsabilidade</a></span>
+            </label>
       </div>
 
       <div class="insc-acoes">
@@ -407,6 +409,7 @@
       // Botão "+ atleta" no fim das abas
       tabs.innerHTML += `
         <div class="insc-tab-add" onclick="abrirModalAmigos()" title="Inscrever mais atleta">
+          Adicionar mais atleta
           <i class="fas fa-plus"></i>
         </div>`;
     }
