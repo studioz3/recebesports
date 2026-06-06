@@ -157,7 +157,7 @@ function donut(segs,{size=176,center=''}={}){
   return `<svg viewBox="0 0 ${size} ${size}" style="width:${size}px;height:${size}px">
     <circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="#EDEFF2" stroke-width="10"/>
     ${rings}
-    ${center?`<text x="${c}" y="${c-3}" text-anchor="middle" font-size="26" font-weight="800" font-family="Montserrat,sans-serif" fill="#15171C">${center.split('|')[0]}</text>
+    ${center?`<text x="${c}" y="${c-3}" text-anchor="middle" font-size="26" font-weight="normal" font-family="Montserrat,sans-serif" fill="#15171C">${center.split('|')[0]}</text>
     <text x="${c}" y="${c+16}" text-anchor="middle" font-size="11" font-weight="600" fill="#9099A5" font-family="Montserrat,sans-serif">${center.split('|')[1]||''}</text>`:''}
   </svg>`;
 }
@@ -302,7 +302,6 @@ function vEstatisticas(){
     ${kpi({label:'Inscrições Confirmadas',val:'478',icon:'check',tint:['#FFF1E6','#E25600'],delta:{dir:'up',v:'+34 hoje'},foot:'Atualizado há 2 min',spark:SERIE,sparkColor:'#FF6600'})}
     ${kpi({label:'Inscrições em Aberto',val:'0',icon:'inbox',tint:['#E8F0FE','#2F6DE0'],foot:'Nenhum pagamento pendente'})}
     ${kpi({label:'Limite de Inscritos',val:'100%',icon:'target',tint:['#FFF1E6','#E25600'],foot:'478 de 478 vagas preenchidas'})}
-    ${kpi({label:'Receita Confirmada',val:'23.430',cur:'R$',icon:'wallet',tint:['#F3ECFB','#9B5DE5'],delta:{dir:'up',v:'+7,2%'},foot:'Ticket médio R$ 49,02'})}
   </div>
 
   <!-- chart + gauge -->
@@ -326,7 +325,7 @@ function vEstatisticas(){
               <span style="color:#fff;font-weight:700;font-size:13px;font-family:var(--font-d)">100%</span>
             </div>
           </div>
-          <div style="font-family:var(--font-d);font-weight:800;font-size:32px;color:var(--tx-1);margin-bottom:2px">100%</div>
+          <div style="font-family:var(--font-d);font-weight:normal;font-size:32px;color:var(--tx-1);margin-bottom:2px">100%</div>
           <div style="font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--tx-3);text-transform:uppercase">Limite atingido</div>
         </div>
         <div class="ev-pill" style="margin-top:14px;border-color:var(--ok-bg);background:var(--ok-bg);color:var(--ok)">
@@ -555,9 +554,9 @@ function vFinanceiro(){
   <!-- overview KPIs -->
   <div class="grid g-4" style="margin-bottom:20px">
     ${kpi({label:'Total Arrecadado',val:'18.601,60',cur:'R$',icon:'wallet',tint:['#E5F5EC','#1F9D55'],delta:{dir:'up',v:'266 inscr.'},foot:'Bruto do período'})}
-    ${kpi({label:'Cortesia',val:'0',icon:'star',tint:['#F3ECFB','#9B5DE5'],foot:'Inscrições gratuitas'})}
-    ${kpi({label:'Em Aberto',val:'0,00',cur:'R$',icon:'clock',tint:['#FBEFD9','#D98200'],foot:'Sem pendências'})}
-    ${kpi({label:'Bloqueadas',val:'0,00',cur:'R$',icon:'lock',tint:['#FCE9E8','#E03B30'],foot:'Nenhum bloqueio'})}
+    ${kpi({label:'Cortesia',val:'0',icon:'star',tint:['#F3ECFB','#9B5DE5'],delta:{dir:'up',v:'0 inscr.'},foot:'Inscrições gratuitas'})}
+    ${kpi({label:'Em Aberto',val:'0,00',cur:'R$',icon:'clock',tint:['#FBEFD9','#D98200'],delta:{dir:'up',v:'10% mais.'},foot:'Sem pendências'})}
+    ${kpi({label:'Bloqueadas',val:'0,00',cur:'R$',icon:'lock',tint:['#FCE9E8','#E03B30'],delta:{dir:'up',v:'35% mais.'},foot:'Nenhum bloqueio'})}
   </div>
 
   <!-- payment method panels -->
