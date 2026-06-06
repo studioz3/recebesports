@@ -298,7 +298,7 @@ function vEstatisticas(){
   </div>
 
   <!-- KPI row -->
-  <div class="grid g-4" style="margin-bottom:20px">
+  <div class="grid g-3" style="margin-bottom:20px">
     ${kpi({label:'Inscrições Confirmadas',val:'478',icon:'check',tint:['#FFF1E6','#E25600'],delta:{dir:'up',v:'+34 hoje'},foot:'Atualizado há 2 min',spark:SERIE,sparkColor:'#FF6600'})}
     ${kpi({label:'Inscrições em Aberto',val:'0',icon:'inbox',tint:['#E8F0FE','#2F6DE0'],foot:'Nenhum pagamento pendente'})}
     ${kpi({label:'Limite de Inscritos',val:'100%',icon:'target',tint:['#FFF1E6','#E25600'],foot:'478 de 478 vagas preenchidas'})}
