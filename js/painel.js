@@ -1162,9 +1162,9 @@ function vOrganizador(){
         <div class="fpanel-h"><div class="ic">${ic('globe')}</div><div class="tt">Mídias Sociais &amp; Site</div></div>
         <div class="fpanel-b">
           <div class="fgrid g-3">
-            ${social('users','#1877F2','Facebook','/kmseventos')}
-            ${social('image','#E1306C','Instagram','@kmseventos')}
-            ${social('globe','#1DA1F2','Twitter / X','@kmseventos')}
+            ${social('#1877F2','Facebook','/kmseventos')}
+            ${social('#E1306C','Instagram','@kmseventos')}
+            ${social('#1DA1F2','Twitter / X','@kmseventos')}
           </div>
           <div class="fgrid" style="margin-top:15px">
             ${field('Site oficial',0,`<div class="inp-ic"><input class="inp" value="https://www.kmseventos.com.br" style="padding-left:13px;padding-right:36px"><span class="inp-ic-r" style="color:var(--ok)">${ic('globe')}</span></div>`)}
