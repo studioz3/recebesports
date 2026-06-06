@@ -667,7 +667,7 @@ input, select, textarea {
 }
 .wa-btn:hover {
   transform: scale(1.12);
-  box-shadow: 0 10px 30px #002248);
+  box-shadow: 0 10px 30px #002248;
 }
 .wa-btn:active { transform: scale(0.96); }
 .wa-btn::before {
@@ -675,7 +675,7 @@ input, select, textarea {
   position: absolute;
   inset: -4px;
   border-radius: 50%;
-  border: 2px solid #0022485d);
+  border: 2px solid #002248;
   animation: wa-pulse 2.2s ease-out 2s infinite;
 }
 
