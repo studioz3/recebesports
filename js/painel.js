@@ -952,7 +952,7 @@ A retirada dos kits será realizada conforme cronograma divulgado...</textarea>
   </div>
 
   <!-- ===== TAB: INSCRITOS ===== -->
-  <div data-evpanel="inscritos" style="display:none">
+  <div data-evpanel="go('inscricoes')" style="display:none">
     <div class="grid g-4" style="margin-bottom:18px">
       ${kpi({label:'Total de Inscritos',val:'478',icon:'users',tint:['#E5F5EC','#1F9D55']})}
       ${kpi({label:'Pagos',val:'452',icon:'check',tint:['#E8F0FE','#2F6DE0']})}
