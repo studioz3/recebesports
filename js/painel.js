@@ -383,7 +383,7 @@ function vEstatisticas(){
   </div>
 
   <!-- last row -->
-  <div class="grid g-3">
+  <div class="grid g-4">
     <div class="card">
       <div class="card-h"><div class="ttl">Camisetas por Tamanho</div><span class="tag">478 peças</span></div>
       <div class="card-b">${lbar(camisas,147)}</div>
@@ -393,14 +393,14 @@ function vEstatisticas(){
       <div class="card-b">${lbar(cidades,239)}</div>
     </div>
     <div class="card">
-      <div class="card-h"><div class="ttl">Equipes &amp; Estados</div></div>
-      <div class="card-b">
-        <div class="sec-tt" style="font-size:12px;margin:0 0 8px"><span class="bar" style="height:13px"></span>Por Estado</div>
-        ${lbar(estados,264)}
-        <div class="sec-tt" style="font-size:12px;margin:14px 0 8px"><span class="bar" style="height:13px"></span>Top Equipes</div>
-        ${lbar(equipes,31)}
-      </div>
+      <div class="card-h"><div class="ttl">Top Estados</div><span class="tag">31 Estados</span></div>
+      <div class="card-b">${lbar(estados,264)}</div>
     </div>
+    <div class="card">
+      <div class="card-h"><div class="ttl">Top Equipes</div><span class="tag">401 equipes</span></div>
+      <div class="card-b">${lbar(equipes,31)}</div>
+    </div>
+    
   </div>`;
 }
 
