@@ -101,7 +101,7 @@ const NAV=[
 /* ============================================================
    CHART HELPERS  (hand-built SVG)
    ============================================================ */
-function areaChart(data,{h=210,labels=[],grad='#27B36B',line='#002248',cmp=null}={}){
+function areaChart(data,{h=210,labels=[],grad='#27B36B',line='#1F9D55',cmp=null}={}){
   const w=1000,pl=10,pr=10,pt=14,pb=26;
   const max=Math.max(...data,...(cmp||[]))*1.18||1;
   const iw=w-pl-pr,ih=h-pt-pb;
@@ -251,18 +251,18 @@ const SERIE_CMP=[6,8,7,10,9,11,10,13,11,14,12,15,13,16,17,18,20,19,22,24,28,40,5
 function vEstatisticas(){
   const distancias=[
     {n:'Corrida 5 KM',v:366,p:77,c:'#FF6600'},
-    {n:'Corrida 10 KM',v:88,p:18,c:'#002248'},
+    {n:'Corrida 10 KM',v:88,p:18,c:'#2F6DE0'},
     {n:'Caminhada 3 KM',v:24,p:5,c:'#27B36B'},
   ];
   const categorias=[
     {n:'Geral',v:423,p:88,c:'#FF6600'},
-    {n:'60 anos ou mais',v:49,p:10,c:'#002248'},
+    {n:'60 anos ou mais',v:49,p:10,c:'#2F6DE0'},
     {n:'PCD',v:6,p:2,c:'#9B5DE5'},
   ];
   const pgto=[
     {n:'PIX',v:432,p:'90,4%',c:'#27B36B'},
-    {n:'Cartão de Crédito',v:40,p:'8,4%',c:'#002248'},
-    {n:'Boleto',v:6,p:'1,3%',c:'#002248'},
+    {n:'Cartão de Crédito',v:40,p:'8,4%',c:'#2F6DE0'},
+    {n:'Boleto',v:6,p:'1,3%',c:'#D98200'},
   ];
   const camisas=[['M',147],['G',107],['P',82],['BLG',67],['GG',37],['PP',29],['EG',6],['EXG',3]];
   const cidades=[['Três Lagoas/MS',239],['Andradina/SP',106],['Santa Fé do Sul/SP',24],['Castilho/SP',19],['Mirandópolis/SP',16],['Brasilândia/MS',9]];
@@ -300,7 +300,7 @@ function vEstatisticas(){
   <!-- KPI row -->
   <div class="grid g-3" style="margin-bottom:20px">
     ${kpi({label:'Inscrições Confirmadas',val:'478',icon:'check',tint:['#FFF1E6','#E25600'],delta:{dir:'up',v:'+34 hoje'},foot:'Atualizado há 2 min',spark:SERIE,sparkColor:'#FF6600'})}
-    ${kpi({label:'Inscrições em Aberto',val:'0',icon:'inbox',tint:['#E8F0FE','#002248'],foot:'Nenhum pagamento pendente'})}
+    ${kpi({label:'Inscrições em Aberto',val:'0',icon:'inbox',tint:['#E8F0FE','#2F6DE0'],foot:'Nenhum pagamento pendente'})}
     ${kpi({label:'Limite de Inscritos',val:'100%',icon:'target',tint:['#FFF1E6','#E25600'],foot:'478 de 478 vagas preenchidas'})}
   </div>
 
@@ -400,7 +400,6 @@ function vEstatisticas(){
       <div class="card-h"><div class="ttl">Top Equipes</div><span class="tag">401 equipes</span></div>
       <div class="card-b">${lbar(equipes,31)}</div>
     </div>
-    
   </div>`;
 }
 
@@ -464,17 +463,17 @@ function vFinanceiro(){
     </div>`;
 
   const methods=[
-    {name:'Boletos',icon:'doc2',tint:['#E8F0FE','#002248'],
+    {name:'Boletos',icon:'doc2',tint:['#E8F0FE','#2F6DE0'],
       total:{count:5,value:'504,80'},
       estornadas:{count:0,value:'0,00'},
       taxa:'0,00',
       saldo:{count:5,value:'504,80'}},
-    {name:'PIX',icon:'bolt',tint:['#E5F5EC','#002248'],
+    {name:'PIX',icon:'bolt',tint:['#E5F5EC','#1F9D55'],
       total:{count:251,value:'16.831,90'},
       estornadas:{count:4,value:'566,00'},
       taxa:'26,00',
       saldo:{count:247,value:'16.239,90'}},
-    {name:'Cart. Crédito',icon:'card',tint:['#FBEFD9','#002248'],
+    {name:'Cart. Crédito',icon:'card',tint:['#FBEFD9','#D98200'],
       total:{count:10,value:'1.264,90',mainLbl:'Total liberado',extra:'À liberar: 0 · R$ 0,00'},
       estornadas:{count:0,value:'0,00'},
       taxa:'0,00',
@@ -533,7 +532,7 @@ function vFinanceiro(){
         <a class="pm-disp-link">${ic('eye')} Entenda o saldo</a>
       </div>
       <div class="pm-disp-content2">
-        <a class="pm-disp-link">${ic('coin')} Solicitar saque</a>
+        <a class="pm-disp-link">${ic('money')} Solicitar saque</a>
       </div>
     </div>`;
 
@@ -553,9 +552,9 @@ function vFinanceiro(){
 
   <!-- overview KPIs -->
   <div class="grid g-4" style="margin-bottom:20px">
-    ${kpi({label:'Total Arrecadado',val:'18.601,60',cur:'R$',icon:'wallet',tint:['#E5F5EC','#002248'],delta:{dir:'up',v:'266 inscr.'},foot:'Bruto do período'})}
+    ${kpi({label:'Total Arrecadado',val:'18.601,60',cur:'R$',icon:'wallet',tint:['#E5F5EC','#1F9D55'],delta:{dir:'up',v:'266 inscr.'},foot:'Bruto do período'})}
     ${kpi({label:'Cortesia',val:'0',icon:'star',tint:['#F3ECFB','#9B5DE5'],delta:{dir:'up',v:'0 inscr.'},foot:'Inscrições gratuitas'})}
-    ${kpi({label:'Em Aberto',val:'0,00',cur:'R$',icon:'clock',tint:['#FBEFD9','#002248'],delta:{dir:'up',v:'10% mais.'},foot:'Sem pendências'})}
+    ${kpi({label:'Em Aberto',val:'0,00',cur:'R$',icon:'clock',tint:['#FBEFD9','#D98200'],delta:{dir:'up',v:'10% mais.'},foot:'Sem pendências'})}
     ${kpi({label:'Bloqueadas',val:'0,00',cur:'R$',icon:'lock',tint:['#FCE9E8','#E03B30'],delta:{dir:'up',v:'35% mais.'},foot:'Nenhum bloqueio'})}
   </div>
 
@@ -576,11 +575,11 @@ function vFinanceiro(){
     <div class="card">
       <div class="card-h"><div class="ttl">Por Método de Pagamento</div></div>
       <div class="card-b" style="text-align:center">
-        ${donut([{v:16831,color:'#002248'},{v:1265,color:'#002248'},{v:505,color:'#002248'}],{size:168,center:'266|TRANSAÇÕES'})}
+        ${donut([{v:16831,color:'#1F9D55'},{v:1265,color:'#D98200'},{v:505,color:'#2F6DE0'}],{size:168,center:'266|TRANSAÇÕES'})}
         <div style="margin-top:6px">
-          <div class="lrow"><span class="sw" style="background:#002248"></span><span class="ln">PIX</span><span class="lv num">94,4%</span></div>
-          <div class="lrow"><span class="sw" style="background:#002248"></span><span class="ln">Cartão de Crédito</span><span class="lv num">3,8%</span></div>
-          <div class="lrow"><span class="sw" style="background:#002248"></span><span class="ln">Boleto</span><span class="lv num">1,9%</span></div>
+          <div class="lrow"><span class="sw" style="background:#1F9D55"></span><span class="ln">PIX</span><span class="lv num">94,4%</span></div>
+          <div class="lrow"><span class="sw" style="background:#D98200"></span><span class="ln">Cartão de Crédito</span><span class="lv num">3,8%</span></div>
+          <div class="lrow"><span class="sw" style="background:#2F6DE0"></span><span class="ln">Boleto</span><span class="lv num">1,9%</span></div>
         </div>
       </div>
     </div>
@@ -879,7 +878,7 @@ function vEventos(){
           <button class="btn btn-ghost btn-ic btn-sm" style="margin-bottom:1px">${ic('plus')}</button>
         </div>
         <div class="lote-row" style="border-top:1px dashed var(--line)">
-          <span class="lote-tag" style="background:#002248">2º Lote</span>
+          <span class="lote-tag" style="background:#2F6DE0">2º Lote</span>
           ${field('De',0,dateInp('16/06/2026'))}
           <span class="lote-arrow">${ic('arrowR')}</span>
           ${field('Até',0,dateInp('17/10/2026'))}
@@ -955,9 +954,9 @@ A retirada dos kits será realizada conforme cronograma divulgado...</textarea>
   <!-- ===== TAB: INSCRITOS ===== -->
   <div data-evpanel="inscritos" style="display:none">
     <div class="grid g-4" style="margin-bottom:18px">
-      ${kpi({label:'Total de Inscritos',val:'478',icon:'users',tint:['#E5F5EC','#002248']})}
-      ${kpi({label:'Pagos',val:'452',icon:'check',tint:['#E8F0FE','#002248']})}
-      ${kpi({label:'Pendentes',val:'21',icon:'clock',tint:['#FBEFD9','#002248']})}
+      ${kpi({label:'Total de Inscritos',val:'478',icon:'users',tint:['#E5F5EC','#1F9D55']})}
+      ${kpi({label:'Pagos',val:'452',icon:'check',tint:['#E8F0FE','#2F6DE0']})}
+      ${kpi({label:'Pendentes',val:'21',icon:'clock',tint:['#FBEFD9','#D98200']})}
       ${kpi({label:'Cancelados',val:'5',icon:'x',tint:['#FCE9E8','#E03B30']})}
     </div>
     <div class="card"><div class="card-b" style="text-align:center;padding:38px">
