@@ -533,7 +533,7 @@ function vFinanceiro(){
         <a class="pm-disp-link">${ic('eye')} Entenda o saldo</a>
       </div>
       <div class="pm-disp-content2">
-        <a class="pm-disp-link">${ic('money')} Solicitar saque</a>
+        <a class="pm-disp-link">${ic('coin')} Solicitar saque</a>
       </div>
     </div>`;
 
