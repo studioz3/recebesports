@@ -647,14 +647,14 @@ input, select, textarea {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: #25D366;
+  background: #002248;
   color: var(--color-white);
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 22px rgba(37, 211, 102, 0.50);
+  box-shadow: 0 6px 22px #0022484b;
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
   animation: wa-pop-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
   position: relative;
@@ -667,7 +667,7 @@ input, select, textarea {
 }
 .wa-btn:hover {
   transform: scale(1.12);
-  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.65);
+  box-shadow: 0 10px 30px #002248);
 }
 .wa-btn:active { transform: scale(0.96); }
 .wa-btn::before {
@@ -675,7 +675,7 @@ input, select, textarea {
   position: absolute;
   inset: -4px;
   border-radius: 50%;
-  border: 2px solid rgba(37, 211, 102, 0.5);
+  border: 2px solid #0022485d);
   animation: wa-pulse 2.2s ease-out 2s infinite;
 }
 
