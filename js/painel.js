@@ -329,7 +329,7 @@ function vEstatisticas(){
           /* gradient bar track: green→yellow→orange→red spectrum as fixed background */
           return `
           <div style="width:100%;max-width:280px;text-align:center">
-            <div style="position:relative;height:10px;border-radius:100px;background:linear-gradient(90deg,#27B36B 0%,#F5D000 50%,#F5A623 75%,#E03B30 100%);margin:18px 0 8px;overflow:visible">
+            <div style="position:relative;height:10px;border-radius:100px;background:linear-gradient(90deg,#E03B30 0%,#F5A623 25%,#F5D000 50%,#27B36B 100%);margin:18px 0 8px;overflow:visible">
               <div style="position:absolute;inset:0;border-radius:100px;background:#EDEFF2;transform-origin:left;transform:scaleX(${(100-pct)/100});right:0;left:${pct}%"></div>
               <div style="position:absolute;top:50%;left:${pct}%;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid ${gradColor};box-shadow:0 2px 6px rgba(0,0,0,.18)"></div>
             </div>
