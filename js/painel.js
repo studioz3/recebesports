@@ -299,7 +299,7 @@ function vEstatisticas(){
 
   <!-- KPI row -->
   <div class="grid g-3" style="margin-bottom:20px">
-    ${kpi({label:'Inscrições Confirmadas',val:'478',icon:'check',tint:['#FFF1E6','#E25600'],delta:{dir:'up',v:'+34 hoje'},foot:'Atualizado há 2 min',spark:SERIE,sparkColor:'#FF6600'})}
+    ${kpi({label:'Inscrições Confirmadas',val:'478',icon:'check',tint:['#FFF1E6','#E25600'],delta:{dir:'up',v:'+34 hoje'},foot:'Atualizado há 2 min'})}
     ${kpi({label:'Inscrições em Aberto',val:'0',icon:'inbox',tint:['#E8F0FE','#2F6DE0'],foot:'Nenhum pagamento pendente'})}
     ${kpi({label:'Limite de Inscritos',val:'478/478',icon:'target',tint:['#FFF1E6','#E25600'],foot:'vagas preenchidas · 100%'})}
   </div>
@@ -314,7 +314,7 @@ function vEstatisticas(){
           <span class="row" style="gap:6px;font-size:11.5px;font-weight:500;color:var(--tx-3)"><span style="width:14px;height:0;border-top:2px dashed #C7CCD4"></span>Pagas</span>
         </div>
       </div>
-      <div class="card-b" style="padding:18px 16px 12px">${areaChart(SERIE,{h:286,labels:DAYS,cmp:SERIE_CMP,grad:'#FF6600',line:'#E25600'})}</div>
+      <div class="card-b" style="padding:18px 16px 12px">${areaChart(SERIE,{h:286,labels:DAYS,cmp:SERIE_CMP,grad:'#002248',line:'#002248'})}</div>
     </div>
     <div class="card">
       <div class="card-h"><div class="ttl">Limite Inscrições</div></div>
@@ -322,10 +322,10 @@ function vEstatisticas(){
         ${(()=>{
           const pct=100, used=478, total=478;
           /* gradient: 0%=verde puro → 50%=amarelo → 75%=laranja → 100%=vermelho */
-          const gradColor = pct<=25?'#27B36B':pct<=50?'#F5D000':pct<=75?'#F5A623':'#E03B30';
-          const labelColor = pct>=100?'#E03B30':pct>=75?'#F5A623':pct>=50?'#D98200':'#27B36B';
+          const gradColor = pct>=100?'#27B36B':pct>=75?'#F5D000':pct>=50?'#F5A623':'#E03B30';
+          const labelColor = pct>=100?'#27B36B':pct>=75?'#F5D000':pct>=50?'#F5A623':'#E03B30';
           const statusTxt = pct>=100?'LIMITE ATINGIDO':pct>=75?'QUASE NO LIMITE':pct>=50?'ATENÇÃO':'DENTRO DO LIMITE';
-          const statusColor = pct>=100?'var(--no)':pct>=75?'var(--warn)':'var(--ok)';
+          const statusColor = pct>=100?'var(--ok)':pct>=75?'var(--warn)':'var(--no)';
           /* gradient bar track: green→yellow→orange→red spectrum as fixed background */
           return `
           <div style="width:100%;max-width:280px;text-align:center">
@@ -339,7 +339,7 @@ function vEstatisticas(){
             <div style="font-family:var(--font-d);font-weight:700;font-size:36px;color:${labelColor};margin-bottom:3px;line-height:1">${pct}%</div>
             <div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;color:${statusColor};text-transform:uppercase;margin-bottom:14px">${statusTxt}</div>
           </div>
-          <div class="ev-pill" style="border-color:var(--no-bg);background:var(--no-bg);color:var(--no)">
+          <div class="ev-pill" style="border-color:var(--ok-bg);background:var(--ok-bg);color:var(--ok)">
             ${ic('target')} <span><b class="num">${used}</b> / ${total} vagas</span></div>
           <p class="hint" style="margin-top:12px;text-align:center;max-width:280px">O evento atingiu o número máximo de inscrições permitido.</p>`;
         })()}
@@ -1271,7 +1271,7 @@ function reportView(r){
     [r.short+' · fechamento abril','02/05/2026 09:07','XLSX','1,2 MB'],
   ];
   return `
-  <div class="fpanel" style="max-width:760px">
+  <div class="fpanel">
     <div class="fpanel-h"><div class="ic">${ic(r.icon)}</div>
       <div class="tt">${r.title}</div>
       <span class="tb-spacer"></span><span class="tag">${r.fields.filter(f=>f.t!=='toggle').length} filtros</span></div>
