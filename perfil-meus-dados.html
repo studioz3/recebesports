@@ -202,11 +202,48 @@
               <span class="dados-section-icon"><i class="fas fa-heartbeat"></i></span>
               <div>
                 <h2>Perfil de Saúde</h2>
-                <p>Resumo das informações da sua ficha. Edite no menu “Perfil de Saúde”.</p>
+                <p id="saude-subtitle">Resumo das informações da sua ficha. Edite no menu "Perfil de Saúde".</p>
               </div>
             </div>
 
-            <div class="saude-resumo">
+            <!-- ── ESTADO: ficha NÃO preenchida ── -->
+            <div class="saude-resumo" id="saude-vazio">
+              <div class="saude-vazio-wrap">
+                <div class="saude-vazio-icon">
+                  <i class="fas fa-notes-medical"></i>
+                </div>
+                <div class="saude-vazio-txt">
+                  <strong>Sua ficha de saúde ainda não foi preenchida</strong>
+                  <p>Essas informações podem ser importantes para sua segurança e para apoio em situações de emergência durante eventos esportivos.</p>
+                </div>
+              </div>
+
+              <div class="saude-resumo-grid saude-grid-vazia">
+                <div class="saude-resumo-item saude-item-vazio">
+                  <span class="rotulo">Tipo sanguíneo</span>
+                  <strong class="vazio-dash">—</strong>
+                </div>
+                <div class="saude-resumo-item saude-item-vazio">
+                  <span class="rotulo">Plano de saúde</span>
+                  <strong class="vazio-dash">—</strong>
+                </div>
+                <div class="saude-resumo-item saude-item-vazio">
+                  <span class="rotulo">Alergias</span>
+                  <strong class="vazio-dash">—</strong>
+                </div>
+                <div class="saude-resumo-item saude-item-vazio">
+                  <span class="rotulo">Uso contínuo</span>
+                  <strong class="vazio-dash">—</strong>
+                </div>
+              </div>
+
+              <div class="saude-resumo-actions" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+                <a href="ficha-saude-1.html" class="btn btn-primary"><i class="fas fa-file-medical"></i> Preencher ficha</a>
+              </div>
+            </div>
+
+            <!-- ── ESTADO: ficha PREENCHIDA ── -->
+            <div class="saude-resumo" id="saude-preenchido" style="display:none">
               <div class="saude-resumo-status">
                 <span class="saude-resumo-badge"><i class="fas fa-circle-check"></i> Ficha preenchida</span>
                 <small>Atualizada em 05/05/2026 · válida até 05/05/2027</small>
@@ -238,6 +275,14 @@
                   <input type="file" accept=".pdf,.jpg,.jpeg,.png" style="display:none" onchange="handlePCD(this)">
                 </label>
               </div>
+            </div>
+
+            <!-- toggle só visível no protótipo para demonstração -->
+            <div class="saude-proto-toggle" id="saudeToggleWrap">
+              <button type="button" class="saude-proto-btn" onclick="toggleSaudeEstado()" id="saudeToggleBtn">
+                <i class="fas fa-toggle-off" id="saudeToggleIcon"></i>
+                <span id="saudeToggleTxt">Simular: ficha preenchida</span>
+              </button>
             </div>
           </div>
 
@@ -313,6 +358,90 @@
       display: none;
     }
     #pcd-filename.visible { display: block; }
+
+    /* ── Estado vazio: ficha não preenchida ── */
+    .saude-vazio-wrap {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: #FFF8F0;
+      border: 1.5px dashed #f5c08a;
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin-bottom: 18px;
+    }
+    .saude-vazio-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #FFF1E0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--orange, #e87722);
+      font-size: 18px;
+    }
+    .saude-vazio-txt strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: #1c2b3a;
+      margin-bottom: 4px;
+    }
+    .saude-vazio-txt p {
+      font-size: 13px;
+      color: #5a6a7a;
+      margin: 0;
+      line-height: 1.55;
+    }
+    .saude-item-vazio {
+      opacity: .45;
+    }
+    .vazio-dash {
+      font-size: 20px;
+      color: #b0bac6;
+      letter-spacing: .1em;
+    }
+
+    /* ── Toggle de protótipo ── */
+    .saude-proto-toggle {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px dashed #dde3ec;
+      display: flex;
+      align-items: center;
+    }
+    .saude-proto-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: none;
+      border: 1.5px solid #b0bac6;
+      color: #7a8699;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: border-color .15s, color .15s;
+      letter-spacing: .02em;
+    }
+    .saude-proto-btn:hover {
+      border-color: var(--orange, #e87722);
+      color: var(--orange, #e87722);
+    }
+    .saude-proto-btn i {
+      font-size: 14px;
+      transition: color .15s;
+    }
+    .saude-proto-btn.ativo {
+      border-color: #1f9d55;
+      color: #1f9d55;
+    }
+    .saude-proto-btn.ativo i {
+      color: #1f9d55;
+    }
   </style>
   <script src="js/global.js"></script>
   <script>
@@ -342,6 +471,64 @@
         msg.classList.add('visible');
         showToast('Documento PCD selecionado. Salve para confirmar o envio.');
       }
+    }
+
+    /* ── Toggle protótipo: alterna entre estado vazio e preenchido ── */
+    (function initSaudeEstado() {
+      // Checa parâmetro URL: ?saude=preenchido para iniciar preenchido
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('saude') === 'preenchido') {
+        mostrarPreenchido();
+      }
+      // Padrão: vazio (já configurado no HTML)
+    })();
+
+    function toggleSaudeEstado() {
+      const vazio = document.getElementById('saude-vazio');
+      const preenchido = document.getElementById('saude-preenchido');
+      const btn = document.getElementById('saudeToggleBtn');
+      const icon = document.getElementById('saudeToggleIcon');
+      const txt = document.getElementById('saudeToggleTxt');
+      const subtitle = document.getElementById('saude-subtitle');
+
+      const estaVazio = vazio.style.display !== 'none';
+      if (estaVazio) {
+        mostrarPreenchido();
+      } else {
+        mostrarVazio();
+      }
+    }
+
+    function mostrarPreenchido() {
+      const vazio = document.getElementById('saude-vazio');
+      const preenchido = document.getElementById('saude-preenchido');
+      const btn = document.getElementById('saudeToggleBtn');
+      const icon = document.getElementById('saudeToggleIcon');
+      const txt = document.getElementById('saudeToggleTxt');
+      const subtitle = document.getElementById('saude-subtitle');
+
+      vazio.style.display = 'none';
+      preenchido.style.display = '';
+      btn.classList.add('ativo');
+      icon.className = 'fas fa-toggle-on';
+      txt.textContent = 'Simular: ficha não preenchida';
+      if (subtitle) subtitle.textContent = 'Resumo das informações da sua ficha. Edite no menu "Perfil de Saúde".';
+    }
+
+    function mostrarVazio() {
+      const vazio = document.getElementById('saude-vazio');
+      const preenchido = document.getElementById('saude-preenchido');
+      const btn = document.getElementById('saudeToggleBtn');
+      const icon = document.getElementById('saudeToggleIcon');
+      const txt = document.getElementById('saudeToggleTxt');
+      const subtitle = document.getElementById('saude-subtitle');
+
+      vazio.style.display = '';
+      preenchido.style.display = 'none';
+      btn.classList.remove('ativo');
+      icon.className = 'fas fa-toggle-off';
+      txt.textContent = 'Simular: ficha preenchida';
+      if (subtitle) subtitle.textContent = 'Resumo das informações da sua ficha. Edite no menu "Perfil de Saúde".';
     }
   </script>
 </body>
