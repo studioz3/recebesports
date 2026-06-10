@@ -7,6 +7,179 @@
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/plataforma.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ── Tabela de inscrições ── */
+    .insc-table-wrap { overflow-x: auto; }
+    .insc-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+    .insc-table thead tr {
+      border-bottom: 2px solid var(--border, #e4e8f0);
+    }
+    .insc-table thead th {
+      color: var(--orange, #e87722);
+      font-weight: 700;
+      font-size: 12.5px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      padding: 10px 14px;
+      text-align: left;
+      white-space: nowrap;
+    }
+    .insc-table tbody tr {
+      border-bottom: 1px solid var(--border, #e4e8f0);
+      transition: background .15s;
+    }
+    .insc-table tbody tr:hover { background: #f8f9fb; }
+    .insc-table td {
+      padding: 14px 14px;
+      vertical-align: middle;
+      color: var(--text-dark, #1c2b3a);
+    }
+
+    /* número de inscrição */
+    .insc-num { color: var(--orange, #e87722); font-weight: 700; font-size: 13.5px; display: block; }
+    .insc-date { color: #7a8699; font-size: 11.5px; }
+
+    /* evento */
+    .insc-evt-name { color: var(--orange, #e87722); font-weight: 600; font-size: 13px; }
+    .insc-evt-date { color: #7a8699; font-size: 11.5px; }
+
+    /* modalidade */
+    .insc-modalidade-txt { font-size: 13px; color: #3a4b5c; }
+
+    /* status badge */
+    .badge-status {
+      display: inline-flex; align-items: center;
+      padding: 4px 10px; border-radius: 4px;
+      font-size: 11.5px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .badge-status.cancelada { background: #e03b30; color: #fff; }
+    .badge-status.confirmada { background: #1f9d55; color: #fff; }
+    .badge-status.pendente { background: #d98200; color: #fff; }
+    .badge-status.concluida { background: #2f6de0; color: #fff; }
+
+    /* total */
+    .insc-total-val { font-weight: 600; font-size: 13px; color: #1c2b3a; }
+    .insc-total-sub { font-size: 11.5px; color: #7a8699; }
+
+    /* botão opções */
+    .btn-opcoes {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 12px; border-radius: 5px;
+      border: 1.5px solid #cbd2dc;
+      background: #fff; color: #3a4b5c;
+      font-size: 12.5px; font-weight: 600; cursor: pointer;
+      transition: border-color .15s, background .15s;
+    }
+    .btn-opcoes:hover { border-color: var(--orange, #e87722); color: var(--orange, #e87722); background: #fff8f3; }
+    .btn-opcoes i { font-size: 11px; }
+
+    /* ── Modal de detalhes ── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,.45); z-index: 9999;
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: #fff; border-radius: 10px;
+      width: 100%; max-width: 620px; margin: 16px;
+      box-shadow: 0 12px 48px rgba(0,0,0,.22);
+      overflow: hidden;
+    }
+    .modal-head {
+      padding: 18px 22px 14px;
+      border-bottom: 1px solid #e4e8f0;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+    }
+    .modal-head-left {}
+    .modal-head-title { font-size: 14px; font-weight: 700; color: #1c2b3a; margin-bottom: 3px; }
+    .modal-head-title span { color: var(--orange, #e87722); }
+    .modal-head-meta { font-size: 12.5px; color: #4a5b6c; line-height: 1.6; }
+    .modal-badge-pago {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: #1f9d55; color: #fff;
+      padding: 5px 12px; border-radius: 5px;
+      font-size: 12px; font-weight: 700; white-space: nowrap;
+    }
+    .modal-badge-cancelada {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: #e03b30; color: #fff;
+      padding: 5px 12px; border-radius: 5px;
+      font-size: 12px; font-weight: 700; white-space: nowrap;
+    }
+    .modal-badge-pendente {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: #d98200; color: #fff;
+      padding: 5px 12px; border-radius: 5px;
+      font-size: 12px; font-weight: 700; white-space: nowrap;
+    }
+    .modal-close {
+      background: none; border: none; cursor: pointer; color: #7a8699; padding: 4px;
+      font-size: 18px; line-height: 1; flex-shrink: 0; margin-top: 2px;
+    }
+    .modal-close:hover { color: #1c2b3a; }
+    .modal-body { padding: 18px 22px; }
+    .modal-event-name { font-weight: 700; font-size: 14px; color: #1c2b3a; margin-bottom: 2px; }
+    .modal-event-sub { font-size: 12.5px; color: #7a8699; margin-bottom: 14px; }
+
+    /* tabela interna do modal */
+    .modal-tbl {
+      width: 100%; border-collapse: collapse; font-size: 12.5px;
+      border: 1px solid #e4e8f0; border-radius: 8px; overflow: hidden;
+    }
+    .modal-tbl thead th {
+      background: #f4f6fa; color: #4a5b6c; font-weight: 700;
+      font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em;
+      padding: 8px 12px; text-align: left; border-bottom: 1px solid #e4e8f0;
+    }
+    .modal-tbl tbody td { padding: 10px 12px; color: #1c2b3a; border-bottom: 1px solid #f0f2f7; }
+    .modal-tbl tbody tr:last-child td { border-bottom: none; }
+    .modal-tbl .kit-tag { font-size: 11px; color: #4a5b6c; }
+
+    /* totais do modal */
+    .modal-totais {
+      display: flex; justify-content: flex-end; gap: 32px;
+      padding: 10px 12px; background: #f8f9fb;
+      border-top: 1px solid #e4e8f0;
+      font-size: 12.5px;
+    }
+    .modal-totais .mt-item { display: flex; gap: 10px; }
+    .modal-totais .mt-lbl { color: #7a8699; }
+    .modal-totais .mt-val { font-weight: 700; color: #1c2b3a; }
+    .modal-totais .mt-val.total { color: var(--orange, #e87722); font-size: 14px; }
+
+    /* rodapé info do modal */
+    .modal-info { font-size: 12px; color: #7a8699; margin-top: 14px; line-height: 1.6; }
+    .modal-info b { color: #3a4b5c; }
+
+    /* botões de ação do modal */
+    .modal-foot {
+      padding: 14px 22px;
+      border-top: 1px solid #e4e8f0;
+      display: flex; justify-content: flex-end; gap: 10px; flex-wrap: wrap;
+    }
+    .btn-modal-sec {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border-radius: 6px;
+      border: 1.5px solid #cbd2dc; background: #fff;
+      color: #3a4b5c; font-size: 13px; font-weight: 600; cursor: pointer;
+      transition: all .15s;
+    }
+    .btn-modal-sec:hover { border-color: #8a9ab0; background: #f4f6fa; }
+    .btn-modal-pri {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border-radius: 6px;
+      border: none; background: var(--orange, #e87722);
+      color: #fff; font-size: 13px; font-weight: 600; cursor: pointer;
+      transition: background .15s;
+    }
+    .btn-modal-pri:hover { background: #cf6a1a; }
+  </style>
 </head>
 <body>
 
@@ -34,7 +207,7 @@
 
       <!-- Sidebar -->
       <aside class="plat-sidebar">
-                <ul class="plat-menu">
+        <ul class="plat-menu">
           <li><a href="perfil-minhas-inscricoes.html" class="active">Minhas Inscrições</a></li>
           <li><a href="index.html#proximosEventos">Calendário de Eventos</a></li>
           <li><a href="perfil-historico.html">Histórico de resultados</a></li>
@@ -58,199 +231,302 @@
           <button class="insc-tab" onclick="filtrarInscricoes(this, 'concluidas')">Concluídas</button>
         </div>
 
-        <div class="insc-lista">
+        <!-- Tabela -->
+        <div class="insc-table-wrap">
+          <table class="insc-table">
+            <thead>
+              <tr>
+                <th>Ações</th>
+                <th>Inscrição</th>
+                <th>Evento</th>
+                <th>Modalidade</th>
+                <th>Status</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
 
-          <!-- CARD 1 — Corrida (confirmada / próxima) -->
-          <article class="insc-card" data-status="proximas">
-            <div class="insc-card-banner" style="background-image:url('assets/card-evento1.jpg')">
-              <span class="insc-modalidade"><i class="fas fa-running"></i> Corrida</span>
-              <span class="insc-status confirmada">Confirmada</span>
-            </div>
-            <div class="insc-card-body">
-              <div class="insc-card-head">
-                <div class="data-badge">
-                  <div class="ano">2026</div>
-                  <div class="dia">21</div>
-                  <div class="mes">JUN</div>
-                </div>
-                <div class="insc-card-title">
-                  <h3>Maratona de Sorocaba 2026</h3>
-                  <p class="insc-meta">
-                    <span><i class="fas fa-location-dot"></i> Parque das Águas — Sorocaba/SP</span>
-                    <span><i class="fas fa-clock"></i> Largada às 06h30</span>
-                  </p>
-                  <div class="dist-pills">
-                    <span class="dist-pill laranja">21 km — Meia Maratona</span>
-                  </div>
-                </div>
-              </div>
+              <!-- Linha 1 — Maratona confirmada -->
+              <tr data-status="proximas">
+                <td>
+                  <button class="btn-opcoes" onclick="abrirModal('modal-1')">
+                    <i class="fas fa-bars"></i> Opções
+                  </button>
+                </td>
+                <td>
+                  <span class="insc-num">#RS-2026-04871</span>
+                  <span class="insc-date">21/05/2026 às 14:32:10</span>
+                </td>
+                <td>
+                  <div class="insc-evt-name">Maratona de Sorocaba 2026</div>
+                  <div class="insc-evt-date">21/06/2026 às 06:30</div>
+                </td>
+                <td><span class="insc-modalidade-txt">Corrida de Rua</span></td>
+                <td><span class="badge-status confirmada">Confirmada</span></td>
+                <td>
+                  <div class="insc-total-val">R$ 189,90 para 1 atleta</div>
+                  <div class="insc-total-sub">Pix</div>
+                </td>
+              </tr>
 
-              <div class="insc-resumo">
-                <div class="insc-resumo-item">
-                  <span class="rotulo">Nº de inscrição</span>
-                  <strong class="destaque">#RS-2026-04871</strong>
-                </div>
-                <div class="insc-resumo-item">
-                  <span class="rotulo">Categoria</span>
-                  <strong>F 30–34</strong>
-                </div>
-                <div class="insc-resumo-item">
-                  <span class="rotulo">Nº de peito</span>
-                  <strong>1422</strong>
-                </div>
-                <div class="insc-resumo-item">
-                  <span class="rotulo">Kit</span>
-                  <strong>Premium</strong>
-                </div>
-                <div class="insc-resumo-item">
-                  <span class="rotulo">Valor pago</span>
-                  <strong>R$ 189,90</strong>
-                </div>
-                <div class="insc-resumo-item">
-                  <span class="rotulo">Pagamento</span>
-                  <strong class="pago"><i class="fas fa-circle-check"></i> Aprovado</strong>
-                </div>
-              </div>
+              <!-- Linha 2 — MTB pendente -->
+              <tr data-status="proximas">
+                <td>
+                  <button class="btn-opcoes" onclick="abrirModal('modal-2')">
+                    <i class="fas fa-bars"></i> Opções
+                  </button>
+                </td>
+                <td>
+                  <span class="insc-num">#RS-2026-05120</span>
+                  <span class="insc-date">03/06/2026 às 15:53:28</span>
+                </td>
+                <td>
+                  <div class="insc-evt-name">Desafio MTB Serra Azul</div>
+                  <div class="insc-evt-date">12/07/2026 às 08:00</div>
+                </td>
+                <td><span class="insc-modalidade-txt">Mountain Bike</span></td>
+                <td><span class="badge-status pendente">Aguardando Pgto</span></td>
+                <td>
+                  <div class="insc-total-val">R$ 149,90 para 1 atleta</div>
+                  <div class="insc-total-sub">Pix</div>
+                </td>
+              </tr>
 
-              <div class="insc-card-footer">
-                <span class="insc-countdown"><i class="fas fa-hourglass-half"></i> Faltam 20 dias</span>
-                <div class="insc-acoes">
-                  <button class="btn btn-cyan" onclick="showToast('Gerando comprovante de inscrição...', 'info')"><i class="fas fa-file-arrow-down"></i> Comprovante</button>
-                  <a href="detalhe-evento.html" class="btn btn-primary">Ver evento</a>
-                </div>
-              </div>
-            </div>
-          </article>
+              <!-- Linha 3 — Triathlon concluída -->
+              <tr data-status="concluidas">
+                <td>
+                  <button class="btn-opcoes" onclick="abrirModal('modal-3')">
+                    <i class="fas fa-bars"></i> Opções
+                  </button>
+                </td>
+                <td>
+                  <span class="insc-num">#RS-2026-03044</span>
+                  <span class="insc-date">10/03/2026 às 09:15:44</span>
+                </td>
+                <td>
+                  <div class="insc-evt-name">Triathlon Costa Verde — Sprint</div>
+                  <div class="insc-evt-date">29/03/2026 às 07:00</div>
+                </td>
+                <td><span class="insc-modalidade-txt">Triathlon</span></td>
+                <td><span class="badge-status concluida">Concluída</span></td>
+                <td>
+                  <div class="insc-total-val">R$ 210,00 para 1 atleta</div>
+                  <div class="insc-total-sub">Cartão de Crédito</div>
+                </td>
+              </tr>
 
-          <!-- CARD 2 — Bike (aguardando pagamento / próxima) -->
-          <article class="insc-card" data-status="proximas">
-            <div class="insc-card-banner" style="background-image:url('assets/card-evento2.jpg')">
-              <span class="insc-modalidade"><i class="fas fa-biking"></i> Mountain Bike</span>
-              <span class="insc-status pendente">Aguardando pagamento</span>
-            </div>
-            <div class="insc-card-body">
-              <div class="insc-card-head">
-                <div class="data-badge">
-                  <div class="ano">2026</div>
-                  <div class="dia">12</div>
-                  <div class="mes">JUL</div>
-                </div>
-                <div class="insc-card-title">
-                  <h3>Desafio MTB Serra Azul</h3>
-                  <p class="insc-meta">
-                    <span><i class="fas fa-location-dot"></i> Trilha Serra Azul — Ibiúna/SP</span>
-                    <span><i class="fas fa-clock"></i> Largada às 08h00</span>
-                  </p>
-                  <div class="dist-pills">
-                    <span class="dist-pill verde">45 km — Pro</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="insc-resumo">
-                <div class="insc-resumo-item">
-                  <span class="rotulo">Nº de inscrição</span>
-                  <strong class="destaque">#RS-2026-05120</strong>
-                </div>
-                <div class="insc-resumo-item">
-                  <span class="rotulo">Categoria</span>
-                  <strong>Feminino Sport</strong>
-                </div>
-                <div class="insc-resumo-item">
-                  <span class="rotulo">Nº de placa</span>
-                  <strong>—</strong>
-                </div>
-                <div class="insc-resumo-item">
-                  <span class="rotulo">Kit</span>
-                  <strong>Start</strong>
-                </div>
-                <div class="insc-resumo-item">
-                  <span class="rotulo">Valor</span>
-                  <strong>R$ 149,90</strong>
-                </div>
-                <div class="insc-resumo-item">
-                  <span class="rotulo">Pagamento</span>
-                  <strong class="aguardando"><i class="fas fa-clock"></i> Pix pendente</strong>
-                </div>
-              </div>
-
-              <div class="insc-card-footer">
-                <span class="insc-countdown alerta"><i class="fas fa-triangle-exclamation"></i> Pix expira em 02h14</span>
-                <div class="insc-acoes">
-                  <a href="inscricao-pagamento.html" class="btn btn-primary"><i class="fas fa-qrcode"></i> Pagar agora</a>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- CARD 3 — Triathlon (concluída) -->
-          <article class="insc-card" data-status="concluidas">
-            <div class="insc-card-banner" style="background-image:url('assets/card-evento3.jpg')">
-              <span class="insc-modalidade"><i class="fas fa-medal"></i> Triathlon</span>
-              <span class="insc-status concluida">Concluída</span>
-            </div>
-            <div class="insc-card-body">
-              <div class="insc-card-head">
-                <div class="data-badge">
-                  <div class="ano">2026</div>
-                  <div class="dia">29</div>
-                  <div class="mes">MAR</div>
-                </div>
-                <div class="insc-card-title">
-                  <h3>Triathlon Costa Verde — Sprint</h3>
-                  <p class="insc-meta">
-                    <span><i class="fas fa-location-dot"></i> Praia Grande — Ubatuba/SP</span>
-                    <span><i class="fas fa-clock"></i> Largada às 07h00</span>
-                  </p>
-                  <div class="dist-pills">
-                    <span class="dist-pill azul">750m natação</span>
-                    <span class="dist-pill verde">20 km bike</span>
-                    <span class="dist-pill laranja">5 km corrida</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="insc-resumo">
-                <div class="insc-resumo-item">
-                  <span class="rotulo">Nº de inscrição</span>
-                  <strong class="destaque">#RS-2026-03044</strong>
-                </div>
-                <div class="insc-resumo-item">
-                  <span class="rotulo">Nº de peito</span>
-                  <strong>0987</strong>
-                </div>
-                <div class="insc-resumo-item">
-                  <span class="rotulo">Colocação geral</span>
-                  <strong>112º</strong>
-                </div>
-                <div class="insc-resumo-item">
-                  <span class="rotulo">Tempo final</span>
-                  <strong>1h22m45s</strong>
-                </div>
-                <div class="insc-resumo-item">
-                  <span class="rotulo">Categoria</span>
-                  <strong>3º — F 30–34</strong>
-                </div>
-                <div class="insc-resumo-item">
-                  <span class="rotulo">Pagamento</span>
-                  <strong class="pago"><i class="fas fa-circle-check"></i> Aprovado</strong>
-                </div>
-              </div>
-
-              <div class="insc-card-footer">
-                <span class="insc-countdown ok"><i class="fas fa-flag-checkered"></i> Prova finalizada</span>
-                <div class="insc-acoes">
-                  <a href="perfil-historico.html" class="btn btn-cyan"><i class="fas fa-chart-line"></i> Ver resultado</a>
-                  <button class="btn btn-primary" onclick="showToast('Gerando certificado de participação...', 'info')"><i class="fas fa-award"></i> Certificado</button>
-                </div>
-              </div>
-            </div>
-          </article>
-
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- ─────────── MODAIS ─────────── -->
+
+  <!-- Modal 1: Maratona de Sorocaba -->
+  <div class="modal-overlay" id="modal-1" onclick="fecharModalOverlay(event, 'modal-1')">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div class="modal-head-left">
+          <div class="modal-head-title">Detalhes da Inscrição: <span>#RS-2026-04871</span></div>
+          <div class="modal-head-meta">
+            Responsável: <strong>João Pedro Almeida</strong><br>
+            CPF: 123.456.789-00
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span class="modal-badge-pago"><i class="fas fa-circle-check"></i> PAGO</span>
+          <button class="modal-close" onclick="fecharModal('modal-1')" aria-label="Fechar">&times;</button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-event-name">MARATONA DE SOROCABA 2026 – 21/06/2026</div>
+        <div class="modal-event-sub">Parque das Águas, Sorocaba/SP / Largada às 06h30</div>
+
+        <table class="modal-tbl">
+          <thead>
+            <tr>
+              <th>Atleta</th>
+              <th>Dist./Categoria</th>
+              <th>Camiseta</th>
+              <th>Sexo</th>
+              <th>Kit</th>
+              <th style="text-align:right">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                João Pedro Almeida<br>
+                <span style="font-size:11px;color:#7a8699">CPF: 123.456.789-00</span>
+              </td>
+              <td>
+                MEIA MARATONA 21 KM<br>
+                <span style="font-size:11px;color:#7a8699">F 30–34</span>
+              </td>
+              <td>M</td>
+              <td>M</td>
+              <td><span class="kit-tag">Kit Premium</span></td>
+              <td style="text-align:right;font-weight:700">R$ 189,90</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="modal-totais">
+          <div class="mt-item"><span class="mt-lbl">SubTotal</span><span class="mt-val">R$ 189,90</span></div>
+          <div class="mt-item"><span class="mt-lbl">Taxa de Conveniência</span><span class="mt-val">+ R$ 0,00</span></div>
+          <div class="mt-item"><span class="mt-lbl">Total Geral</span><span class="mt-val total">R$ 189,90</span></div>
+        </div>
+
+        <div class="modal-info">
+          Essa inscrição foi realizada em <b>21 de maio de 2026, quarta-feira, às 14:32:10</b><br>
+          Data do Pagamento: <b>21/05/2026</b>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn-modal-sec" onclick="fecharModal('modal-1')"><i class="fas fa-times"></i> Fechar</button>
+        <button class="btn-modal-sec"><i class="fas fa-print"></i> Imprimir Termo Resp.</button>
+        <button class="btn-modal-pri"><i class="fas fa-file-arrow-down"></i> Imprimir Comprovante</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: MTB pendente -->
+  <div class="modal-overlay" id="modal-2" onclick="fecharModalOverlay(event, 'modal-2')">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div class="modal-head-left">
+          <div class="modal-head-title">Detalhes da Inscrição: <span>#RS-2026-05120</span></div>
+          <div class="modal-head-meta">
+            Responsável: <strong>João Pedro Almeida</strong><br>
+            CPF: 123.456.789-00
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span class="modal-badge-pendente"><i class="fas fa-clock"></i> PIX PENDENTE</span>
+          <button class="modal-close" onclick="fecharModal('modal-2')" aria-label="Fechar">&times;</button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-event-name">DESAFIO MTB SERRA AZUL – 12/07/2026</div>
+        <div class="modal-event-sub">Trilha Serra Azul, Ibiúna/SP / Largada às 08h00</div>
+
+        <table class="modal-tbl">
+          <thead>
+            <tr>
+              <th>Atleta</th>
+              <th>Dist./Categoria</th>
+              <th>Camiseta</th>
+              <th>Sexo</th>
+              <th>Kit</th>
+              <th style="text-align:right">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                João Pedro Almeida<br>
+                <span style="font-size:11px;color:#7a8699">CPF: 123.456.789-00</span>
+              </td>
+              <td>
+                45 KM – PRO<br>
+                <span style="font-size:11px;color:#7a8699">Feminino Sport</span>
+              </td>
+              <td>P</td>
+              <td>F</td>
+              <td><span class="kit-tag">Kit Start</span></td>
+              <td style="text-align:right;font-weight:700">R$ 149,90</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="modal-totais">
+          <div class="mt-item"><span class="mt-lbl">SubTotal</span><span class="mt-val">R$ 149,90</span></div>
+          <div class="mt-item"><span class="mt-lbl">Taxa de Conveniência</span><span class="mt-val">+ R$ 1,00</span></div>
+          <div class="mt-item"><span class="mt-lbl">Total Geral</span><span class="mt-val total">R$ 150,90</span></div>
+        </div>
+
+        <div class="modal-info">
+          Essa inscrição foi realizada em <b>03 de junho de 2026, terça-feira, às 15:53:28</b><br>
+          <span style="color:#d98200;font-weight:600"><i class="fas fa-triangle-exclamation"></i> Pagamento via Pix expira em breve.</span>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn-modal-sec" onclick="fecharModal('modal-2')"><i class="fas fa-times"></i> Fechar</button>
+        <a href="inscricao-pagamento.html" class="btn-modal-pri"><i class="fas fa-qrcode"></i> Pagar agora</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Triathlon concluída -->
+  <div class="modal-overlay" id="modal-3" onclick="fecharModalOverlay(event, 'modal-3')">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div class="modal-head-left">
+          <div class="modal-head-title">Detalhes da Inscrição: <span>#RS-2026-03044</span></div>
+          <div class="modal-head-meta">
+            Responsável: <strong>João Pedro Almeida</strong><br>
+            CPF: 123.456.789-00
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span class="modal-badge-pago"><i class="fas fa-circle-check"></i> PAGO</span>
+          <button class="modal-close" onclick="fecharModal('modal-3')" aria-label="Fechar">&times;</button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-event-name">TRIATHLON COSTA VERDE — SPRINT – 29/03/2026</div>
+        <div class="modal-event-sub">Praia Grande, Ubatuba/SP / Largada às 07h00</div>
+
+        <table class="modal-tbl">
+          <thead>
+            <tr>
+              <th>Atleta</th>
+              <th>Dist./Categoria</th>
+              <th>Camiseta</th>
+              <th>Sexo</th>
+              <th>Kit</th>
+              <th style="text-align:right">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                João Pedro Almeida<br>
+                <span style="font-size:11px;color:#7a8699">CPF: 123.456.789-00</span>
+              </td>
+              <td>
+                SPRINT (750m + 20km + 5km)<br>
+                <span style="font-size:11px;color:#7a8699">F 30–34 · 3º lugar</span>
+              </td>
+              <td>M</td>
+              <td>M</td>
+              <td><span class="kit-tag">Kit Participação</span></td>
+              <td style="text-align:right;font-weight:700">R$ 210,00</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="modal-totais">
+          <div class="mt-item"><span class="mt-lbl">SubTotal</span><span class="mt-val">R$ 210,00</span></div>
+          <div class="mt-item"><span class="mt-lbl">Taxa de Conveniência</span><span class="mt-val">+ R$ 0,00</span></div>
+          <div class="mt-item"><span class="mt-lbl">Total Geral</span><span class="mt-val total">R$ 210,00</span></div>
+        </div>
+
+        <div class="modal-info">
+          Essa inscrição foi realizada em <b>10 de março de 2026, terça-feira, às 09:15:44</b><br>
+          Data do Pagamento: <b>10/03/2026</b>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn-modal-sec" onclick="fecharModal('modal-3')"><i class="fas fa-times"></i> Fechar</button>
+        <a href="perfil-historico.html" class="btn-modal-sec"><i class="fas fa-chart-line"></i> Ver resultado</a>
+        <button class="btn-modal-sec"><i class="fas fa-print"></i> Imprimir Termo Resp.</button>
+        <button class="btn-modal-pri"><i class="fas fa-award"></i> Certificado</button>
+      </div>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer class="site-footer">
@@ -299,11 +575,37 @@
     function filtrarInscricoes(btn, status) {
       document.querySelectorAll('.insc-tab').forEach(t => t.classList.remove('active'));
       btn.classList.add('active');
-      document.querySelectorAll('.insc-card').forEach(card => {
-        const show = status === 'todas' || card.dataset.status === status;
-        card.style.display = show ? '' : 'none';
+      document.querySelectorAll('.insc-table tbody tr').forEach(row => {
+        const show = status === 'todas' || row.dataset.status === status;
+        row.style.display = show ? '' : 'none';
       });
     }
+
+    function abrirModal(id) {
+      document.getElementById(id).classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function fecharModal(id) {
+      document.getElementById(id).classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function fecharModalOverlay(event, id) {
+      if (event.target === document.getElementById(id)) {
+        fecharModal(id);
+      }
+    }
+
+    // Fechar com Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.open').forEach(m => {
+          m.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      }
+    });
   </script>
 </body>
 </html>

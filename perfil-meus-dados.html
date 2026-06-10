@@ -231,8 +231,12 @@
                 </div>
               </div>
 
-              <div class="saude-resumo-actions">
-                <a href="perfil-saude.html" class="btn btn-primary"><i class="fas fa-heartbeat"></i> Gerenciar Perfil de Saúde</a>
+              <div class="saude-resumo-actions" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+                <a href="ficha-saude-1.html" class="btn btn-primary"><i class="fas fa-heartbeat"></i> Gerenciar Perfil de Saúde</a>
+                <label class="btn btn-secondary" style="cursor:pointer;display:inline-flex;align-items:center;gap:7px" title="Anexar documento PCD">
+                  <i class="fas fa-wheelchair"></i> Documento PCD
+                  <input type="file" accept=".pdf,.jpg,.jpeg,.png" style="display:none" onchange="handlePCD(this)">
+                </label>
               </div>
             </div>
           </div>
@@ -287,6 +291,29 @@
     </div>
   </footer>
 
+  <style>
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid var(--orange, #e87722);
+      color: var(--orange, #e87722);
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: background .15s, color .15s;
+    }
+    .btn-secondary:hover {
+      background: var(--orange, #e87722);
+      color: #fff;
+    }
+    #pcd-filename {
+      font-size: 12.5px;
+      color: #1f9d55;
+      margin-top: 6px;
+      display: none;
+    }
+    #pcd-filename.visible { display: block; }
+  </style>
   <script src="js/global.js"></script>
   <script>
     function atualizarDados(e) {
@@ -294,6 +321,27 @@
       const btn = e.target.querySelector('.dados-actions .btn-primary');
       fakeLoadingButton(btn, () => showToast('Dados atualizados com sucesso!'), 'Salvando...');
       return false;
+    }
+
+    function handlePCD(input) {
+      if (input.files && input.files[0]) {
+        const file = input.files[0];
+        const maxMB = 5;
+        if (file.size > maxMB * 1024 * 1024) {
+          showToast('Arquivo muito grande. Máximo permitido: 5 MB.', 'error');
+          input.value = '';
+          return;
+        }
+        let msg = document.getElementById('pcd-filename');
+        if (!msg) {
+          msg = document.createElement('div');
+          msg.id = 'pcd-filename';
+          input.closest('.saude-resumo-actions').insertAdjacentElement('afterend', msg);
+        }
+        msg.textContent = '✓ Documento anexado: ' + file.name;
+        msg.classList.add('visible');
+        showToast('Documento PCD selecionado. Salve para confirmar o envio.');
+      }
     }
   </script>
 </body>

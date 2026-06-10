@@ -275,7 +275,7 @@ function vEstatisticas(){
         <span style="font-weight:500;font-size:13px;color:var(--tx-2)">${n}</span>
         <span class="num" style="font-weight:600;font-size:13px">${fmt?fmt(v):v}</span>
       </div>
-      <div class="bar-track"><div class="bar-fill" style="width:${Math.max(4,v/max*100)}%;background:var(--brand)"></div></div>
+      <div class="bar-track"><div class="bar-fill" style="width:${Math.max(4,v/max*100)}%;background:#002248"></div></div>
     </div>`).join('');
 
   return `
@@ -301,7 +301,7 @@ function vEstatisticas(){
   <div class="grid g-3" style="margin-bottom:20px">
     ${kpi({label:'Inscrições Confirmadas',val:'478',icon:'check',tint:['#FFF1E6','#E25600'],delta:{dir:'up',v:'+34 hoje'},foot:'Atualizado há 2 min',spark:SERIE,sparkColor:'#FF6600'})}
     ${kpi({label:'Inscrições em Aberto',val:'0',icon:'inbox',tint:['#E8F0FE','#2F6DE0'],foot:'Nenhum pagamento pendente'})}
-    ${kpi({label:'Limite de Inscritos',val:'100%',icon:'target',tint:['#FFF1E6','#E25600'],foot:'478 de 478 vagas preenchidas'})}
+    ${kpi({label:'Limite de Inscritos',val:'478/478',icon:'target',tint:['#FFF1E6','#E25600'],foot:'vagas preenchidas · 100%'})}
   </div>
 
   <!-- chart + gauge -->
@@ -319,18 +319,30 @@ function vEstatisticas(){
     <div class="card">
       <div class="card-h"><div class="ttl">Limite Inscrições</div></div>
       <div class="card-b" style="display:flex;flex-direction:column;align-items:center;padding:22px 20px 24px">
-        <div style="width:100%;max-width:260px;text-align:center">
-          <div class="bar-track" style="height:28px;border-radius:8px;margin-top:18px;margin-bottom:14px;background:#EDEFF2">
-            <div class="bar-fill" style="width:100%;background:var(--brand);border-radius:8px;height:100%;display:flex;align-items:center;justify-content:center">
-              <span style="color:#fff;font-weight:700;font-size:13px;font-family:var(--font-d)">100%</span>
+        ${(()=>{
+          const pct=100, used=478, total=478;
+          /* gradient: 0%=verde puro → 50%=amarelo → 75%=laranja → 100%=vermelho */
+          const gradColor = pct<=25?'#27B36B':pct<=50?'#F5D000':pct<=75?'#F5A623':'#E03B30';
+          const labelColor = pct>=100?'#E03B30':pct>=75?'#F5A623':pct>=50?'#D98200':'#27B36B';
+          const statusTxt = pct>=100?'LIMITE ATINGIDO':pct>=75?'QUASE NO LIMITE':pct>=50?'ATENÇÃO':'DENTRO DO LIMITE';
+          const statusColor = pct>=100?'var(--no)':pct>=75?'var(--warn)':'var(--ok)';
+          /* gradient bar track: green→yellow→orange→red spectrum as fixed background */
+          return `
+          <div style="width:100%;max-width:280px;text-align:center">
+            <div style="position:relative;height:10px;border-radius:100px;background:linear-gradient(90deg,#27B36B 0%,#F5D000 50%,#F5A623 75%,#E03B30 100%);margin:18px 0 8px;overflow:visible">
+              <div style="position:absolute;inset:0;border-radius:100px;background:#EDEFF2;transform-origin:left;transform:scaleX(${(100-pct)/100});right:0;left:${pct}%"></div>
+              <div style="position:absolute;top:50%;left:${pct}%;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid ${gradColor};box-shadow:0 2px 6px rgba(0,0,0,.18)"></div>
             </div>
+            <div style="display:flex;justify-content:space-between;font-size:10px;color:#9099A5;font-weight:600;letter-spacing:.03em;margin-bottom:16px">
+              <span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span>
+            </div>
+            <div style="font-family:var(--font-d);font-weight:700;font-size:36px;color:${labelColor};margin-bottom:3px;line-height:1">${pct}%</div>
+            <div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;color:${statusColor};text-transform:uppercase;margin-bottom:14px">${statusTxt}</div>
           </div>
-          <div style="font-family:var(--font-d);font-weight:normal;font-size:32px;color:var(--tx-1);margin-bottom:2px">100%</div>
-          <div style="font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--tx-3);text-transform:uppercase">Limite atingido</div>
-        </div>
-        <div class="ev-pill" style="margin-top:14px;border-color:var(--ok-bg);background:var(--ok-bg);color:var(--ok)">
-          ${ic('check')} <span><b class="num">478</b> / 478 vagas</span></div>
-        <p class="hint" style="margin-top:12px;text-align:center;max-width:280px">O evento atingiu o número máximo de inscrições permitido.</p>
+          <div class="ev-pill" style="border-color:var(--no-bg);background:var(--no-bg);color:var(--no)">
+            ${ic('target')} <span><b class="num">${used}</b> / ${total} vagas</span></div>
+          <p class="hint" style="margin-top:12px;text-align:center;max-width:280px">O evento atingiu o número máximo de inscrições permitido.</p>`;
+        })()}
       </div>
     </div>
   </div>
@@ -1259,43 +1271,31 @@ function reportView(r){
     [r.short+' · fechamento abril','02/05/2026 09:07','XLSX','1,2 MB'],
   ];
   return `
-  <div class="form-2col">
-    <!-- filters -->
-    <div class="fpanel">
-      <div class="fpanel-h"><div class="ic">${ic(r.icon)}</div>
-        <div class="tt">${r.title}</div>
-        <span class="tb-spacer"></span><span class="tag">${r.fields.filter(f=>f.t!=='toggle').length} filtros</span></div>
-      <div class="fpanel-b">
-        <p class="hint" style="margin:-2px 0 16px;line-height:1.55">${r.desc}</p>
-        <div class="fgrid g-2">
-          ${r.fields.map(repField).join('')}
-        </div>
-
-        <div class="sec-tt" style="font-size:13px;margin:22px 0 12px">
-          <span class="ic">${ic('download')}</span>Formato de saída
-        </div>
-        <div class="rep-fmt">
-          <label class="fmt-chip on" onclick="pickFmt(this)">${ic('doc2')}PDF</label>
-          <label class="fmt-chip" onclick="pickFmt(this)">${ic('hash')}Excel</label>
-          <label class="fmt-chip" onclick="pickFmt(this)">${ic('list')}CSV</label>
-          <label class="fmt-chip" onclick="pickFmt(this)">${ic('print')}Imprimir</label>
-        </div>
-
-        <div class="row" style="justify-content:flex-end;gap:9px;margin-top:22px;
-          padding-top:18px;border-top:1px solid var(--line-2)">
-          <button class="btn btn-ghost">${ic('refresh')} Limpar filtros</button>
-          <button class="btn btn-pri">${ic('file')} Gerar Relatório</button>
-        </div>
+  <div class="fpanel" style="max-width:760px">
+    <div class="fpanel-h"><div class="ic">${ic(r.icon)}</div>
+      <div class="tt">${r.title}</div>
+      <span class="tb-spacer"></span><span class="tag">${r.fields.filter(f=>f.t!=='toggle').length} filtros</span></div>
+    <div class="fpanel-b">
+      <p class="hint" style="margin:-2px 0 16px;line-height:1.55">${r.desc}</p>
+      <div class="fgrid g-2">
+        ${r.fields.map(repField).join('')}
       </div>
-    </div>
 
-    <!-- aside -->
-    <div class="rep-aside">
-      <div class="rep-sum">
-        <h4>O Relatório Inclui</h4>
-        ${r.includes.map(c=>`<div class="rs-row"><span class="k">${c[0]}</span><span class="v">${c[1]}</span></div>`).join('')}
+      <div class="sec-tt" style="font-size:13px;margin:22px 0 12px">
+        <span class="ic">${ic('download')}</span>Formato de saída
       </div>
-      <div class="inote">${ic('warnc')}<span>${r.note}</span></div>
+      <div class="rep-fmt">
+        <label class="fmt-chip on" onclick="pickFmt(this)">${ic('doc2')}PDF</label>
+        <label class="fmt-chip" onclick="pickFmt(this)">${ic('hash')}Excel</label>
+        <label class="fmt-chip" onclick="pickFmt(this)">${ic('list')}CSV</label>
+        <label class="fmt-chip" onclick="pickFmt(this)">${ic('print')}Imprimir</label>
+      </div>
+
+      <div class="row" style="justify-content:flex-end;gap:9px;margin-top:22px;
+        padding-top:18px;border-top:1px solid var(--line-2)">
+        <button class="btn btn-ghost">${ic('refresh')} Limpar filtros</button>
+        <button class="btn btn-pri">${ic('file')} Gerar Relatório</button>
+      </div>
     </div>
   </div>
 
