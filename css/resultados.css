@@ -321,6 +321,21 @@
   margin-bottom: 24px;
 }
 
+.evento-head-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 380px);
+  gap: 28px;
+  align-items: start;
+}
+
+.evento-head-main {
+  min-width: 0;
+}
+
+.evento-head-modalidade {
+  min-width: 0;
+}
+
 .evento-head-top {
   display: flex;
   gap: 18px;
@@ -419,15 +434,15 @@
   font-size: 15px;
   font-weight: 700;
   color: var(--color-text);
-  margin: 4px 0 12px;
+  margin: 0 0 12px;
 }
 
 .modalidade-card {
-  max-width: 440px;
+  max-width: none;
   border: 1px solid #d6d6d6;
   border-radius: 6px;
   overflow: hidden;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .modalidade-card-header {
@@ -478,10 +493,11 @@
 }
 
 .outras-modalidades {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--color-text);
-  margin-top: 4px;
+  margin: 0;
+  line-height: 1.45;
 }
 
 .outras-modalidades span {
@@ -564,12 +580,14 @@
 
 .tabela-scroll {
   max-height: 440px;
-  overflow-y: auto;
-  padding: 0 10px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 14px;
 }
 
 .tabela-result {
   width: 100%;
+  min-width: 1080px;
   border-collapse: collapse;
   font-size: 12.5px;
 }
@@ -578,7 +596,7 @@
   text-align: left;
   font-weight: 700;
   color: var(--color-text);
-  padding: 9px 10px;
+  padding: 10px 12px;
   border-bottom: 2px solid #e0e0e0;
   background: var(--color-white);
   position: sticky;
@@ -594,7 +612,7 @@
 }
 
 .tabela-result td {
-  padding: 9px 10px;
+  padding: 11px 12px;
   border-bottom: 1px solid #f0f0f0;
   font-family: 'Courier New', monospace;
   color: #333;
@@ -602,8 +620,58 @@
 }
 
 .tabela-result td.geral-col {
-  width: 76px;
+  width: 72px;
   font-family: inherit;
+}
+
+.tabela-result td.nome-col {
+  min-width: 220px;
+}
+
+.tabela-result td.peito-col {
+  width: 90px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.tabela-result td.cat-col {
+  width: 86px;
+  font-family: inherit;
+}
+
+.cat-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 58px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  border: 1px solid #d8e0ea;
+  color: #31465b;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.tabela-result td.equipe-col {
+  min-width: 170px;
+}
+
+.tabela-result td.cidade-col {
+  min-width: 132px;
+}
+
+.tabela-result td.pace-col {
+  min-width: 112px;
+  color: var(--color-text);
+}
+
+.pace-col span {
+  color: var(--color-gray-text);
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 600;
 }
 
 .ranking-badge {
@@ -675,12 +743,13 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .tabela-scroll {
-    overflow-x: auto;
+  .evento-head-layout {
+    grid-template-columns: 1fr;
+    gap: 22px;
   }
 
-  .tabela-result {
-    min-width: 920px;
+  .tabela-scroll {
+    overflow-x: auto;
   }
 }
 
@@ -708,6 +777,7 @@
 
   .evento-head-card { padding: 18px 16px; }
   .evento-head-top { flex-direction: column; gap: 12px; }
+  .evento-head-layout { gap: 18px; }
   .evento-head-info .nome { font-size: 16px; }
   .evento-head-actions { align-items: flex-start; flex-direction: column; gap: 12px; }
   .btn-contestar-resultado { width: 100%; }

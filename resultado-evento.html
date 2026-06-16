@@ -34,64 +34,70 @@
 
       <!-- Cabeçalho do evento -->
       <div class="evento-head-card">
-        <div class="evento-head-top">
-          <div class="data-badge">
-            <div class="ano">2026</div>
-            <div class="dia">17</div>
-            <div class="mes">mai</div>
-          </div>
-          <div class="evento-head-info">
-            <div class="nome">4ª CORRIDA FORÇA TOTAL ESPORTES</div>
-            <div class="meta">
-              <span><i class="fas fa-map-marker-alt"></i>Araçatuba - SP</span>
-              <span><i class="fas fa-person-running"></i>465 concluintes</span>
+        <div class="evento-head-layout">
+          <div class="evento-head-main">
+            <div class="evento-head-top">
+              <div class="data-badge">
+                <div class="ano">2026</div>
+                <div class="dia">17</div>
+                <div class="mes">mai</div>
+              </div>
+              <div class="evento-head-info">
+                <div class="nome">4ª CORRIDA FORÇA TOTAL ESPORTES</div>
+                <div class="meta">
+                  <span><i class="fas fa-map-marker-alt"></i>Araçatuba - SP</span>
+                  <span><i class="fas fa-person-running"></i>465 concluintes</span>
+                </div>
+                <div class="dist-pills">
+                  <span class="dist-pill azul"><i class="fas fa-person-running"></i> 5k | 465 concluintes</span>
+                </div>
+              </div>
             </div>
-            <div class="dist-pills">
-              <span class="dist-pill azul"><i class="fas fa-person-running"></i> 5k | 465 concluintes</span>
-            </div>
-          </div>
-        </div>
 
-        <div class="evento-head-divider"></div>
-        <div class="evento-head-actions">
-          <a href="#" class="btn-contestar-resultado" onclick="event.preventDefault(); showToast('Abrindo contestação via WhatsApp...', 'info')">
-            <i class="fab fa-whatsapp"></i> Contestar Resultado
-          </a>
-          <div class="evento-atualizado">
-            Dados atualizados pelo <a href="#" onclick="event.preventDefault()">resultado oficial do evento</a> em 18/05/2026.
+            <div class="evento-head-divider"></div>
+            <div class="evento-head-actions">
+              <a href="#" class="btn-contestar-resultado" onclick="event.preventDefault(); showToast('Abrindo contestação via WhatsApp...', 'info')">
+                <i class="fab fa-whatsapp"></i> Contestar Resultado
+              </a>
+              <div class="evento-atualizado">
+                Dados atualizados pelo <a href="#" onclick="event.preventDefault()">resultado oficial do evento</a> em 18/05/2026.
+              </div>
+            </div>
           </div>
+
+          <!-- Seleção de modalidade -->
+          <aside class="evento-head-modalidade">
+            <p class="modalidade-label">Escolha uma modalidade para ver os resultados:</p>
+
+            <div class="modalidade-card">
+              <div class="modalidade-card-header">
+                <i class="fas fa-person-running"></i> 5 KM
+              </div>
+              <div class="modalidade-row">
+                <span class="rot">Melhor:</span>
+                <span class="v"><i class="fas fa-venus"></i> 00:18:53</span>
+                <span class="v"><i class="fas fa-mars"></i> 00:16:43</span>
+              </div>
+              <div class="modalidade-row">
+                <span class="rot">Média:</span>
+                <span class="v"><i class="fas fa-venus"></i> 00:32:37</span>
+                <span class="v"><i class="fas fa-mars"></i> 00:26:20</span>
+              </div>
+              <div class="modalidade-row">
+                <span class="rot">Totais:</span>
+                <span class="v"><i class="fas fa-venus"></i> 274</span>
+                <span class="v"><i class="fas fa-mars"></i> 191</span>
+              </div>
+              <div class="modalidade-row full">
+                <span class="rot"></span>
+                <span class="v"><i class="fas fa-person-running"></i> 465 concluintes</span>
+              </div>
+            </div>
+
+            <p class="outras-modalidades">Outras modalidades: <span>nenhuma outra modalidade neste evento.</span></p>
+          </aside>
         </div>
       </div>
-
-      <!-- Seleção de modalidade -->
-      <p class="modalidade-label">Escolha uma modalidade para ver os resultados:</p>
-
-      <div class="modalidade-card">
-        <div class="modalidade-card-header">
-          <i class="fas fa-person-running"></i> 5 KM
-        </div>
-        <div class="modalidade-row">
-          <span class="rot">Melhor:</span>
-          <span class="v"><i class="fas fa-venus"></i> 00:18:53</span>
-          <span class="v"><i class="fas fa-mars"></i> 00:16:43</span>
-        </div>
-        <div class="modalidade-row">
-          <span class="rot">Média:</span>
-          <span class="v"><i class="fas fa-venus"></i> 00:32:37</span>
-          <span class="v"><i class="fas fa-mars"></i> 00:26:20</span>
-        </div>
-        <div class="modalidade-row">
-          <span class="rot">Totais:</span>
-          <span class="v"><i class="fas fa-venus"></i> 274</span>
-          <span class="v"><i class="fas fa-mars"></i> 191</span>
-        </div>
-        <div class="modalidade-row full">
-          <span class="rot"></span>
-          <span class="v"><i class="fas fa-person-running"></i> 465 concluintes</span>
-        </div>
-      </div>
-
-      <p class="outras-modalidades">Outras modalidades: <span>nenhuma outra modalidade neste evento.</span></p>
 
       <!-- Tabela de resultados -->
       <div class="resultado-bar">
@@ -118,9 +124,9 @@
             <thead>
               <tr>
                 <th onclick="ordenar('geral')">Geral <span class="sort">▲▼</span></th>
-                <th onclick="ordenar('cat')">Cat. <span class="sort">▲▼</span></th>
-                <th onclick="ordenar('numero')">Número <span class="sort">▲▼</span></th>
                 <th onclick="ordenar('nome')">Nome <span class="sort">▲▼</span></th>
+                <th onclick="ordenar('numero')">Nº Peito <span class="sort">▲▼</span></th>
+                <th onclick="ordenar('cat')">Cat. <span class="sort">▲▼</span></th>
                 <th onclick="ordenar('equipe')">Equipe <span class="sort">▲▼</span></th>
                 <th onclick="ordenar('cidade')">Cidade <span class="sort">▲▼</span></th>
                 <th onclick="ordenar('pace')">Pace <span class="sort">▲▼</span></th>
@@ -297,6 +303,12 @@
       return posicao;
     }
 
+    function formatarCategoria(cat) {
+      const prefixo = generoAtivo === 'mas' ? 'M' : 'F';
+      const idade = String(cat).slice(0, 2);
+      return `${prefixo}${idade}26`;
+    }
+
     function renderTabela() {
       const termo = (document.getElementById('buscaReg').value || '').trim().toUpperCase();
       let dados = corredores[generoAtivo].map((r, index) => ({
@@ -319,6 +331,7 @@
           r.nome.toUpperCase().includes(termo) ||
           r.equipe.toUpperCase().includes(termo) ||
           r.cidade.toUpperCase().includes(termo) ||
+          formatarCategoria(r.cat).includes(termo) ||
           String(r.numero).includes(termo)
         );
       }
@@ -326,12 +339,12 @@
       document.getElementById('tabelaBody').innerHTML = dados.map(r => `
         <tr>
           <td class="geral-col">${renderClassificacao(r.geral)}</td>
-          <td>${r.cat}</td>
-          <td>${r.numero}</td>
           <td class="nome-col">${r.nome}</td>
+          <td class="peito-col">${r.numero}</td>
+          <td class="cat-col"><span class="cat-badge">${formatarCategoria(r.cat)}</span></td>
           <td class="equipe-col">${r.equipe}</td>
           <td class="cidade-col">${r.cidade}</td>
-          <td>${r.pace}</td>
+          <td class="pace-col">${r.pace} <span>km/min</span></td>
           <td>${r.tempo}</td>
           <td>${r.gap}</td>
         </tr>`).join('') ||
