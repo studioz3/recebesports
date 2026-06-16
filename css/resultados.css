@@ -373,7 +373,7 @@
 
 .evento-head-actions {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 18px;
 }
@@ -418,10 +418,9 @@
 }
 
 .evento-atualizado {
-  text-align: right;
+  text-align: left;
   font-size: 12.5px;
   color: var(--color-gray-text);
-  margin-left: auto;
 }
 
 .evento-atualizado a {
