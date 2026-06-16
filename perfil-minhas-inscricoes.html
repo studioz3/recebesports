@@ -9,9 +9,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     /* ── Tabela de inscrições ── */
-    .insc-table-wrap { overflow-x: auto; }
+    .insc-table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
     .insc-table {
       width: 100%;
+      min-width: 760px;
       border-collapse: collapse;
       font-size: 13.5px;
     }
@@ -87,9 +91,13 @@
     .modal-overlay.open { display: flex; }
     .modal-box {
       background: #fff; border-radius: 10px;
-      width: 100%; max-width: 620px; margin: 16px;
+      width: min(100% - 32px, 620px);
+      max-height: min(92vh, 760px);
+      margin: 16px;
       box-shadow: 0 12px 48px rgba(0,0,0,.22);
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
     .modal-head {
       padding: 18px 22px 14px;
@@ -123,7 +131,11 @@
       font-size: 18px; line-height: 1; flex-shrink: 0; margin-top: 2px;
     }
     .modal-close:hover { color: #1c2b3a; }
-    .modal-body { padding: 18px 22px; }
+    .modal-body {
+      padding: 18px 22px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
     .modal-event-banner {
       width: 100%;
       aspect-ratio: 192 / 53;
@@ -143,6 +155,16 @@
     .modal-tbl {
       width: 100%; border-collapse: collapse; font-size: 12.5px;
       border: 1px solid #e4e8f0; border-radius: 8px; overflow: hidden;
+    }
+    .modal-tbl-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid #e4e8f0;
+      border-radius: 8px;
+    }
+    .modal-tbl-wrap .modal-tbl {
+      min-width: 560px;
+      border: 0;
     }
     .modal-tbl thead th {
       background: #f4f6fa; color: #4a5b6c; font-weight: 700;
@@ -191,6 +213,47 @@
       transition: background .15s;
     }
     .btn-modal-pri:hover { background: #cf6a1a; }
+
+    @media (max-width: 600px) {
+      .modal-overlay {
+        align-items: stretch;
+        padding: 10px;
+      }
+      .modal-box {
+        width: 100%;
+        max-height: calc(100dvh - 20px);
+        margin: 0;
+        border-radius: 10px;
+      }
+      .modal-event-banner { aspect-ratio: 16 / 6; }
+      .modal-head {
+        padding: 14px 16px;
+        gap: 10px;
+      }
+      .modal-head > div:last-child {
+        align-items: flex-start !important;
+        flex-direction: column-reverse;
+        gap: 8px !important;
+      }
+      .modal-body { padding: 16px; }
+      .modal-totais {
+        flex-direction: column;
+        gap: 6px;
+        align-items: stretch;
+      }
+      .modal-totais .mt-item {
+        justify-content: space-between;
+      }
+      .modal-foot {
+        padding: 12px 16px;
+        flex-direction: column;
+      }
+      .btn-modal-sec,
+      .btn-modal-pri {
+        width: 100%;
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -358,34 +421,36 @@
         <div class="modal-event-name">MARATONA DE SOROCABA 2026 – 21/06/2026</div>
         <div class="modal-event-sub">Parque das Águas, Sorocaba/SP / Largada às 06h30</div>
 
-        <table class="modal-tbl">
-          <thead>
-            <tr>
-              <th>Atleta</th>
-              <th>Dist./Categoria</th>
-              <th>Camiseta</th>
-              <th>Sexo</th>
-              <th>Kit</th>
-              <th style="text-align:right">Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                João Pedro Almeida<br>
-                <span style="font-size:11px;color:#7a8699">CPF: 123.456.789-00</span>
-              </td>
-              <td>
-                MEIA MARATONA 21 KM<br>
-                <span style="font-size:11px;color:#7a8699">F 30–34</span>
-              </td>
-              <td>M</td>
-              <td>M</td>
-              <td><span class="kit-tag">Kit Premium</span></td>
-              <td style="text-align:right;font-weight:700">R$ 189,90</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="modal-tbl-wrap">
+          <table class="modal-tbl">
+            <thead>
+              <tr>
+                <th>Atleta</th>
+                <th>Dist./Categoria</th>
+                <th>Camiseta</th>
+                <th>Sexo</th>
+                <th>Kit</th>
+                <th style="text-align:right">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  João Pedro Almeida<br>
+                  <span style="font-size:11px;color:#7a8699">CPF: 123.456.789-00</span>
+                </td>
+                <td>
+                  MEIA MARATONA 21 KM<br>
+                  <span style="font-size:11px;color:#7a8699">F 30–34</span>
+                </td>
+                <td>M</td>
+                <td>M</td>
+                <td><span class="kit-tag">Kit Premium</span></td>
+                <td style="text-align:right;font-weight:700">R$ 189,90</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         <div class="modal-totais">
           <div class="mt-item"><span class="mt-lbl">SubTotal</span><span class="mt-val">R$ 189,90</span></div>
@@ -429,34 +494,36 @@
         <div class="modal-event-name">DESAFIO MTB SERRA AZUL – 12/07/2026</div>
         <div class="modal-event-sub">Trilha Serra Azul, Ibiúna/SP / Largada às 08h00</div>
 
-        <table class="modal-tbl">
-          <thead>
-            <tr>
-              <th>Atleta</th>
-              <th>Dist./Categoria</th>
-              <th>Camiseta</th>
-              <th>Sexo</th>
-              <th>Kit</th>
-              <th style="text-align:right">Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                João Pedro Almeida<br>
-                <span style="font-size:11px;color:#7a8699">CPF: 123.456.789-00</span>
-              </td>
-              <td>
-                45 KM – PRO<br>
-                <span style="font-size:11px;color:#7a8699">Feminino Sport</span>
-              </td>
-              <td>P</td>
-              <td>F</td>
-              <td><span class="kit-tag">Kit Start</span></td>
-              <td style="text-align:right;font-weight:700">R$ 149,90</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="modal-tbl-wrap">
+          <table class="modal-tbl">
+            <thead>
+              <tr>
+                <th>Atleta</th>
+                <th>Dist./Categoria</th>
+                <th>Camiseta</th>
+                <th>Sexo</th>
+                <th>Kit</th>
+                <th style="text-align:right">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  João Pedro Almeida<br>
+                  <span style="font-size:11px;color:#7a8699">CPF: 123.456.789-00</span>
+                </td>
+                <td>
+                  45 KM – PRO<br>
+                  <span style="font-size:11px;color:#7a8699">Feminino Sport</span>
+                </td>
+                <td>P</td>
+                <td>F</td>
+                <td><span class="kit-tag">Kit Start</span></td>
+                <td style="text-align:right;font-weight:700">R$ 149,90</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         <div class="modal-totais">
           <div class="mt-item"><span class="mt-lbl">SubTotal</span><span class="mt-val">R$ 149,90</span></div>
@@ -499,34 +566,36 @@
         <div class="modal-event-name">TRIATHLON COSTA VERDE — SPRINT – 29/03/2026</div>
         <div class="modal-event-sub">Praia Grande, Ubatuba/SP / Largada às 07h00</div>
 
-        <table class="modal-tbl">
-          <thead>
-            <tr>
-              <th>Atleta</th>
-              <th>Dist./Categoria</th>
-              <th>Camiseta</th>
-              <th>Sexo</th>
-              <th>Kit</th>
-              <th style="text-align:right">Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                João Pedro Almeida<br>
-                <span style="font-size:11px;color:#7a8699">CPF: 123.456.789-00</span>
-              </td>
-              <td>
-                SPRINT (750m + 20km + 5km)<br>
-                <span style="font-size:11px;color:#7a8699">F 30–34 · 3º lugar</span>
-              </td>
-              <td>M</td>
-              <td>M</td>
-              <td><span class="kit-tag">Kit Participação</span></td>
-              <td style="text-align:right;font-weight:700">R$ 210,00</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="modal-tbl-wrap">
+          <table class="modal-tbl">
+            <thead>
+              <tr>
+                <th>Atleta</th>
+                <th>Dist./Categoria</th>
+                <th>Camiseta</th>
+                <th>Sexo</th>
+                <th>Kit</th>
+                <th style="text-align:right">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  João Pedro Almeida<br>
+                  <span style="font-size:11px;color:#7a8699">CPF: 123.456.789-00</span>
+                </td>
+                <td>
+                  SPRINT (750m + 20km + 5km)<br>
+                  <span style="font-size:11px;color:#7a8699">F 30–34 · 3º lugar</span>
+                </td>
+                <td>M</td>
+                <td>M</td>
+                <td><span class="kit-tag">Kit Participação</span></td>
+                <td style="text-align:right;font-weight:700">R$ 210,00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         <div class="modal-totais">
           <div class="mt-item"><span class="mt-lbl">SubTotal</span><span class="mt-val">R$ 210,00</span></div>
