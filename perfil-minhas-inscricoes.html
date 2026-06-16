@@ -124,6 +124,18 @@
     }
     .modal-close:hover { color: #1c2b3a; }
     .modal-body { padding: 18px 22px; }
+    .modal-event-banner {
+      width: 100%;
+      aspect-ratio: 192 / 53;
+      overflow: hidden;
+      background: #f4f6fa;
+    }
+    .modal-event-banner img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
     .modal-event-name { font-weight: 700; font-size: 14px; color: #1c2b3a; margin-bottom: 2px; }
     .modal-event-sub { font-size: 12.5px; color: #7a8699; margin-bottom: 14px; }
 
@@ -326,6 +338,9 @@
   <!-- Modal 1: Maratona de Sorocaba -->
   <div class="modal-overlay" id="modal-1" onclick="fecharModalOverlay(event, 'modal-1')">
     <div class="modal-box">
+      <div class="modal-event-banner">
+        <img src="assets/banner-evento.jpg" alt="Banner da Maratona de Sorocaba 2026">
+      </div>
       <div class="modal-head">
         <div class="modal-head-left">
           <div class="modal-head-title">Detalhes da Inscrição: <span>#RS-2026-04871</span></div>
@@ -394,6 +409,9 @@
   <!-- Modal 2: MTB pendente -->
   <div class="modal-overlay" id="modal-2" onclick="fecharModalOverlay(event, 'modal-2')">
     <div class="modal-box">
+      <div class="modal-event-banner">
+        <img src="assets/banner-evento.jpg" alt="Banner do Desafio MTB Serra Azul">
+      </div>
       <div class="modal-head">
         <div class="modal-head-left">
           <div class="modal-head-title">Detalhes da Inscrição: <span>#RS-2026-05120</span></div>
@@ -461,6 +479,9 @@
   <!-- Modal 3: Triathlon concluída -->
   <div class="modal-overlay" id="modal-3" onclick="fecharModalOverlay(event, 'modal-3')">
     <div class="modal-box">
+      <div class="modal-event-banner">
+        <img src="assets/banner-evento.jpg" alt="Banner do Triathlon Costa Verde Sprint">
+      </div>
       <div class="modal-head">
         <div class="modal-head-left">
           <div class="modal-head-title">Detalhes da Inscrição: <span>#RS-2026-03044</span></div>
