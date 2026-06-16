@@ -122,9 +122,10 @@
                 <th onclick="ordenar('numero')">Número <span class="sort">▲▼</span></th>
                 <th onclick="ordenar('nome')">Nome <span class="sort">▲▼</span></th>
                 <th onclick="ordenar('equipe')">Equipe <span class="sort">▲▼</span></th>
+                <th onclick="ordenar('cidade')">Cidade <span class="sort">▲▼</span></th>
                 <th onclick="ordenar('pace')">Pace <span class="sort">▲▼</span></th>
-                <th onclick="ordenar('tempo')">Tempo <span class="sort">▲▼</span></th>
-                <th onclick="ordenar('gap')">Gap <i class="fas fa-circle-info" style="font-size:10px;color:#bbb"></i> <span class="sort">▲▼</span></th>
+                <th onclick="ordenar('tempo')">Tempo Liquid. <span class="sort">▲▼</span></th>
+                <th onclick="ordenar('gap')">Tempo <span class="sort">▲▼</span></th>
               </tr>
             </thead>
             <tbody id="tabelaBody"></tbody>
@@ -252,6 +253,19 @@
       ]
     };
     const totais = { fem: 274, mas: 191 };
+    const cidades = {
+      fem: [
+        'Araçatuba - SP', 'Birigui - SP', 'Araçatuba - SP', 'Guararapes - SP', 'Penápolis - SP',
+        'Araçatuba - SP', 'Bilac - SP', 'Birigui - SP', 'Araçatuba - SP', 'Buritama - SP',
+        'Araçatuba - SP', 'Penápolis - SP', 'Birigui - SP', 'Guararapes - SP', 'Araçatuba - SP',
+        'Bilac - SP', 'Birigui - SP', 'Araçatuba - SP'
+      ],
+      mas: [
+        'Araçatuba - SP', 'Birigui - SP', 'Penápolis - SP', 'Araçatuba - SP', 'Guararapes - SP',
+        'Bilac - SP', 'Araçatuba - SP', 'Birigui - SP', 'Buritama - SP', 'Araçatuba - SP',
+        'Penápolis - SP', 'Guararapes - SP', 'Birigui - SP', 'Araçatuba - SP'
+      ]
+    };
 
     let generoAtivo = 'fem';
     const numericas = ['geral', 'cat', 'numero'];
@@ -271,9 +285,24 @@
       renderTabela();
     }
 
+    function renderClassificacao(posicao) {
+      if (posicao <= 3) {
+        return `<span class="ranking-badge podium pos-${posicao}"><i class="fas fa-trophy"></i>${posicao}</span>`;
+      }
+
+      if (posicao <= 10) {
+        return `<span class="ranking-badge top-ten">${posicao}</span>`;
+      }
+
+      return posicao;
+    }
+
     function renderTabela() {
       const termo = (document.getElementById('buscaReg').value || '').trim().toUpperCase();
-      let dados = corredores[generoAtivo].slice();
+      let dados = corredores[generoAtivo].map((r, index) => ({
+        ...r,
+        cidade: cidades[generoAtivo][index] || 'Araçatuba - SP'
+      }));
 
       // ordenação
       dados.sort((a, b) => {
@@ -285,20 +314,28 @@
       });
 
       // filtro de busca
-      if (termo) dados = dados.filter(r => r.nome.toUpperCase().includes(termo));
+      if (termo) {
+        dados = dados.filter(r =>
+          r.nome.toUpperCase().includes(termo) ||
+          r.equipe.toUpperCase().includes(termo) ||
+          r.cidade.toUpperCase().includes(termo) ||
+          String(r.numero).includes(termo)
+        );
+      }
 
       document.getElementById('tabelaBody').innerHTML = dados.map(r => `
         <tr>
-          <td>${r.geral}</td>
+          <td class="geral-col">${renderClassificacao(r.geral)}</td>
           <td>${r.cat}</td>
           <td>${r.numero}</td>
           <td class="nome-col">${r.nome}</td>
           <td class="equipe-col">${r.equipe}</td>
+          <td class="cidade-col">${r.cidade}</td>
           <td>${r.pace}</td>
           <td>${r.tempo}</td>
           <td>${r.gap}</td>
         </tr>`).join('') ||
-        '<tr><td colspan="8" style="text-align:center;padding:30px;font-family:inherit;color:#999;">Nenhum registro encontrado</td></tr>';
+        '<tr><td colspan="9" style="text-align:center;padding:30px;font-family:inherit;color:#999;">Nenhum registro encontrado</td></tr>';
 
       const total = totais[generoAtivo];
       const mostrando = termo ? dados.length : total;
