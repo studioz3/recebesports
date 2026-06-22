@@ -1124,10 +1124,22 @@ function vOrganizador(){
     ['612','Ana Lúcia Estevão','Operador de Inscrições','ana.estevao@kmseventos.com'],
     ['644','Marcos Vinícius Prado','Financeiro','marcos.prado@kmseventos.com'],
   ];
-  const social=(icon,col,label,val)=>`<div class="fld">
-    <span class="fld-lbl">${label}</span>
-    <div class="inp-ic"><span style="color:${col}">${ic(icon)}</span><input class="inp" value="${val}" style="padding-left:38px"></div>
-  </div>`;
+  const social=(key,label,val,ph)=>{
+    const brands={
+      facebook:{glyph:'f',tone:'#1877F2'},
+      instagram:{glyph:'◎',tone:'#E1306C'},
+      x:{glyph:'X',tone:'#111827'},
+      site:{glyph:ic('globe'),tone:'#1F9D55'},
+    };
+    const b=brands[key];
+    return `<label class="social-field social-${key}">
+      <span class="social-brand" style="--social-tone:${b.tone}" aria-hidden="true">${b.glyph}</span>
+      <span class="social-main">
+        <span class="fld-lbl">${label}</span>
+        <input class="inp" value="${val}" placeholder="${ph}">
+      </span>
+    </label>`;
+  };
   return `
   <div class="form-2col">
     <!-- LEFT -->
@@ -1173,17 +1185,19 @@ function vOrganizador(){
 
       <div class="fpanel">
         <div class="fpanel-h"><div class="ic">${ic('globe')}</div><div class="tt">Mídias Sociais &amp; Site</div></div>
-        <div class="fpanel-b">
-          <div class="fgrid g-3">
-            ${social('#1877F2','Facebook','/kmseventos')}
-            ${social('#E1306C','Instagram','@kmseventos')}
-            ${social('#1DA1F2','Twitter / X','@kmseventos')}
+        <div class="fpanel-b social-panel">
+          <p class="social-help">Informe os perfis públicos do organizador. Use @usuario, /pagina ou a URL completa.</p>
+          <div class="social-grid">
+            ${social('facebook','Facebook','/kmseventos','/sua-pagina')}
+            ${social('instagram','Instagram','@kmseventos','@seuinstagram')}
+            ${social('x','Twitter / X','@kmseventos','@seuperfil')}
+            ${social('site','Site oficial','https://www.kmseventos.com.br','https://seusite.com.br')}
           </div>
-          <div class="fgrid" style="margin-top:15px">
-            ${field('Site oficial',0,`<div class="inp-ic"><input class="inp" value="https://www.kmseventos.com.br" style="padding-left:13px;padding-right:36px"><span class="inp-ic-r" style="color:var(--ok)">${ic('globe')}</span></div>`)}
-          </div>
-          <div class="row" style="justify-content:space-between;margin-top:16px;padding:13px 15px;background:var(--surface-2);border:1px solid var(--line);border-radius:11px">
-            <span style="font-weight:600;font-size:13px">Exibir mídias sociais na página pública do evento</span>
+          <div class="social-toggle row">
+            <span>
+              <strong>Exibir na página pública do evento</strong>
+              <small>Mostra site e redes sociais para atletas e visitantes.</small>
+            </span>
             <span class="tg on" onclick="this.classList.toggle('on')"></span>
           </div>
         </div>

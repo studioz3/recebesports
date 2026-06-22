@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    PLATAFORMA DO ATLETA — Área logada
    ========================================================================== */
 
@@ -1185,4 +1185,196 @@
   .saude-resumo { padding: 18px; }
   .saude-resumo-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
   .saude-resumo-actions .btn { width: 100%; }
+}
+
+/* ========================================================================== 
+   MOBILE REFINADO — Área do atleta
+   ========================================================================== */
+.plataforma .container,
+.plat-content,
+.plat-sidebar {
+  min-width: 0;
+}
+
+@media (max-width: 860px) {
+  .plataforma {
+    padding: 24px 0 56px;
+  }
+
+  .plataforma .container {
+    gap: 22px;
+  }
+
+  .plat-sidebar {
+    width: 100%;
+  }
+
+  .plat-menu {
+    border-radius: 10px;
+    box-shadow: 0 10px 24px rgba(0, 34, 72, 0.10);
+  }
+
+  .plat-menu a {
+    padding: 13px 16px;
+    font-size: 13px;
+  }
+
+  .plat-menu a:hover {
+    padding-left: 16px;
+  }
+
+  .plat-content {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .plataforma {
+    padding: 18px 0 48px;
+  }
+
+  .plataforma .container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .plat-menu {
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow: hidden;
+  }
+
+  .plat-menu li {
+    border-bottom-color: rgba(255, 255, 255, 0.10);
+  }
+
+  .plat-menu a {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+  }
+
+  .plat-content h1 {
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .plat-content .subtitle {
+    margin-bottom: 18px;
+    line-height: 1.45;
+  }
+
+  .insc-tabs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    margin-bottom: 18px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .insc-tab {
+    flex: 0 0 auto;
+    min-height: 36px;
+  }
+
+  .hist-stats {
+    gap: 12px;
+  }
+
+  .hist-stat {
+    padding: 14px;
+    border-radius: 10px;
+  }
+
+  .hist-stat-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hist-card {
+    border-radius: 10px;
+  }
+
+  .hist-card-main {
+    padding: 16px;
+  }
+
+  .hist-card-info h3 {
+    font-size: 16px;
+  }
+
+  .hist-card-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 12px;
+  }
+
+  .hist-card-cta {
+    padding: 14px 16px 16px;
+  }
+
+  .dados-section-head {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .dados-section-head h2 {
+    margin-top: 0;
+    line-height: 1.2;
+  }
+
+  .dados-card,
+  .saude-resumo,
+  .amigos-empty,
+  .amigo-card {
+    border-radius: 10px;
+  }
+
+  .amigos-empty {
+    padding: 34px 20px;
+  }
+
+  .amigos-empty p br,
+  .plat-content .subtitle br {
+    display: none;
+  }
+
+  .saude-card .info {
+    padding: 22px 20px;
+  }
+
+  .saude-card.preenchida .btn-row,
+  .saude-resumo-actions {
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+
+  .saude-card.preenchida .btn-row .btn,
+  .saude-resumo-actions .btn,
+  .saude-resumo-actions label.btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .privacy-item {
+    padding: 14px 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .plataforma .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .hist-card-stats,
+  .saude-resumo-grid,
+  .saude-resumo-grid.saude-grid-vazia {
+    grid-template-columns: 1fr;
+  }
+
+  .amigo-card .acoes {
+    flex-direction: column;
+  }
 }

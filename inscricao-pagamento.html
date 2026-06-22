@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -77,7 +77,8 @@
       <!-- Título do checkout -->
       <div class="checkout-header">
         <h1><i class="fas fa-clipboard-check"></i> Resumo da sua Inscrição</h1>
-        <p>Confira os detalhes, complete os dados de contato e escolha a forma de pagamento.</p>
+        <p>Confira os detalhes, revise os contatos e escolha a forma de confirmação.</p>
+        <p class="checkout-prototipo-aviso"><i class="fas fa-eye"></i> Protótipo visual: use dados fictícios nesta tela.</p>
       </div>
 
       <!-- ============================================================
@@ -96,7 +97,7 @@
            ============================================================ -->
       <div class="painel checkout-painel">
         <div class="painel-header">
-          <span><i class="fas fa-credit-card" style="margin-right:8px"></i>Como você prefere pagar?</span>
+          <span><i class="fas fa-wallet" style="margin-right:8px"></i>Como você prefere pagar?</span>
         </div>
         <div class="painel-body">
           <div class="pagamento-opcoes">
@@ -113,15 +114,15 @@
               </div>
             </label>
 
-            <label class="pagamento-opcao" data-metodo="cartao">
-              <input type="radio" name="pagamento" value="cartao" onchange="setPagamento('cartao')">
+            <label class="pagamento-opcao" data-metodo="demo">
+              <input type="radio" name="pagamento" value="demo" onchange="setPagamento('demo')">
               <div class="pagamento-radio"></div>
               <div class="pagamento-info">
-                <div class="pagamento-nome">Cartão de crédito</div>
-                <div class="pagamento-desc">Em até 12x • Visa, Master, Elo, Hiper</div>
+                <div class="pagamento-nome">Pagamento demonstrativo</div>
+                <div class="pagamento-desc">Campos visuais para protótipo e parcelamento</div>
               </div>
               <div class="pagamento-icone">
-                <i class="far fa-credit-card"></i>
+                <i class="far fa-wallet"></i>
               </div>
             </label>
 
@@ -343,14 +344,14 @@
 
     function pagamentoDadosOk() {
       if (metodoPagamento === 'pix' || metodoPagamento === 'boleto') return true;
-      if (metodoPagamento === 'cartao') {
-        const nome = document.getElementById('cartaoNome');
-        const numero = document.getElementById('cartaoNumero');
-        const validade = document.getElementById('cartaoValidade');
-        const cvv = document.getElementById('cartaoCVV');
-        if (!nome || !numero || !validade || !cvv) return false;
-        return nome.value.trim() && numero.value.replace(/\s/g, '').length >= 13
-            && validade.value.length === 5 && cvv.value.length >= 3;
+      if (metodoPagamento === 'demo') {
+        const nome = document.getElementById('demoTitular');
+        const numero = document.getElementById('demoSequencia');
+        const validade = document.getElementById('demoPeriodo');
+        const codigo = document.getElementById('demoCodigo');
+        if (!nome || !numero || !validade || !codigo) return false;
+        return nome.value.trim() && numero.value.trim().length >= 6
+            && validade.value.trim().length >= 4 && codigo.value.trim().length >= 2;
       }
       return false;
     }
@@ -491,44 +492,44 @@
           </div>`;
       }
 
-      else if (metodoPagamento === 'cartao') {
+      else if (metodoPagamento === 'demo') {
         box.innerHTML = `
-          <div class="pag-detalhe pag-cartao">
-            <h4><i class="far fa-credit-card"></i> Dados do cartão</h4>
-            <div class="cartao-bandeiras">
-              <i class="fab fa-cc-visa" title="Visa"></i>
-              <i class="fab fa-cc-mastercard" title="Mastercard"></i>
-              <i class="fab fa-cc-amex" title="Amex"></i>
-              <i class="fab fa-cc-discover" title="Discover"></i>
+          <div class="pag-detalhe pag-demo">
+            <h4><i class="far fa-wallet"></i> Dados demonstrativos do pagamento</h4>
+            <div class="pag-demo-selos">
+              <span>Demo</span>
+              <span>Seguro</span>
+              <span>Layout</span>
+              <span>Figma</span>
             </div>
 
             <div class="form-group">
-              <label class="form-label">Nome impresso no cartão <span class="obrig">*</span></label>
-              <input type="text" class="form-control" id="cartaoNome" placeholder="Como aparece no cartão" oninput="atualizarBotaoConfirmar()">
+              <label class="form-label">Nome no comprovante <span class="obrig">*</span></label>
+              <input type="text" class="form-control" id="demoTitular" placeholder="Nome demonstrativo" autocomplete="off" data-prototype-field="payment-name" oninput="atualizarBotaoConfirmar()">
             </div>
 
             <div class="form-group">
-              <label class="form-label">Número do cartão <span class="obrig">*</span></label>
-              <input type="text" class="form-control" id="cartaoNumero" placeholder="0000 0000 0000 0000"
-                     maxlength="19" oninput="formatarCartao(this); atualizarBotaoConfirmar()">
+              <label class="form-label">Sequência demonstrativa <span class="obrig">*</span></label>
+              <input type="text" class="form-control" id="demoSequencia" placeholder="DEMO-0000-0000" autocomplete="off" data-prototype-field="payment-sequence"
+                     maxlength="19" oninput="atualizarBotaoConfirmar()">
             </div>
 
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label">Validade <span class="obrig">*</span></label>
-                <input type="text" class="form-control" id="cartaoValidade" placeholder="MM/AA"
-                       maxlength="5" oninput="formatarValidade(this); atualizarBotaoConfirmar()">
+                <label class="form-label">Período demo <span class="obrig">*</span></label>
+                <input type="text" class="form-control" id="demoPeriodo" placeholder="MM/AA" autocomplete="off" data-prototype-field="payment-period"
+                       maxlength="5" oninput="formatarPeriodoDemo(this); atualizarBotaoConfirmar()">
               </div>
               <div class="form-group">
-                <label class="form-label">CVV <span class="obrig">*</span></label>
-                <input type="text" class="form-control" id="cartaoCVV" placeholder="000"
-                       maxlength="4" oninput="this.value=this.value.replace(/\\D/g,''); atualizarBotaoConfirmar()">
+                <label class="form-label">Código demo <span class="obrig">*</span></label>
+                <input type="text" class="form-control" id="demoCodigo" placeholder="D-00" autocomplete="off" data-prototype-field="payment-code"
+                       maxlength="4" oninput="atualizarBotaoConfirmar()">
               </div>
             </div>
 
             <div class="form-group" style="margin-bottom:0;">
               <label class="form-label">Parcelamento</label>
-              <select class="form-control" id="cartaoParcelas">
+              <select class="form-control" id="demoParcelas">
                 ${gerarParcelas()}
               </select>
             </div>
@@ -574,13 +575,7 @@
       renderPagamentoDetalhes();
       renderTotal();
     }
-
-    function formatarCartao(input) {
-      let v = input.value.replace(/\D/g, '').substring(0, 16);
-      input.value = v.replace(/(\d{4})(?=\d)/g, '$1 ');
-    }
-
-    function formatarValidade(input) {
+    function formatarPeriodoDemo(input) {
       let v = input.value.replace(/\D/g, '');
       if (v.length >= 3) v = v.substring(0,2) + '/' + v.substring(2,4);
       input.value = v;
@@ -654,8 +649,8 @@
 
       document.getElementById('totalFinalVal').textContent = moeda(total);
 
-      // Atualiza opções de parcelamento se for cartão
-      const sel = document.getElementById('cartaoParcelas');
+      // Atualiza opções de parcelamento se o método demonstrativo estiver selecionado
+      const sel = document.getElementById('demoParcelas');
       if (sel) sel.innerHTML = gerarParcelas();
     }
 
@@ -676,12 +671,12 @@
         return;
       }
       if (!pagamentoDadosOk()) {
-        showToast('Complete os dados do pagamento', 'info');
+        showToast('Complete os campos demonstrativos', 'info');
         return;
       }
       // Sucesso — gera número de inscrição e leva o método escolhido para a conclusão
       const numeroInscricao = String(Math.floor(Math.random() * 9000000000) + 1000000000);
-      showToast('Processando seu pagamento...', 'sucesso');
+      showToast('Finalizando a inscrição...', 'sucesso');
       setTimeout(() => {
         window.location = 'inscricao-concluido.html?metodo=' + encodeURIComponent(metodoPagamento) + '&insc=' + numeroInscricao;
       }, 1200);

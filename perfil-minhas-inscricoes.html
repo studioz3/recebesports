@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -254,6 +254,94 @@
         justify-content: center;
       }
     }
+
+    @media (max-width: 640px) {
+      .insc-table-wrap {
+        overflow: visible;
+      }
+
+      .insc-table {
+        min-width: 0;
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 12px;
+      }
+
+      .insc-table thead {
+        display: none;
+      }
+
+      .insc-table tbody,
+      .insc-table tr,
+      .insc-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .insc-table tbody tr {
+        background: #fff;
+        border: 1px solid #e4e8f0;
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(0, 34, 72, 0.07);
+        overflow: hidden;
+      }
+
+      .insc-table tbody tr:hover {
+        background: #fff;
+      }
+
+      .insc-table td {
+        padding: 11px 14px;
+        display: grid;
+        grid-template-columns: minmax(88px, 35%) 1fr;
+        gap: 12px;
+        align-items: start;
+        border-bottom: 1px solid #eef1f6;
+      }
+
+      .insc-table td:last-child {
+        border-bottom: 0;
+      }
+
+      .insc-table td::before {
+        content: attr(data-label);
+        color: #718096;
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: .04em;
+        line-height: 1.4;
+      }
+
+      .insc-table td[data-label="Ações"] {
+        grid-template-columns: 1fr;
+        background: #f8f9fb;
+        padding: 12px 14px;
+      }
+
+      .insc-table td[data-label="Ações"]::before {
+        display: none;
+      }
+
+      .btn-opcoes {
+        width: 100%;
+        justify-content: center;
+        min-height: 38px;
+      }
+
+      .insc-num,
+      .insc-evt-name,
+      .insc-total-val {
+        overflow-wrap: anywhere;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .insc-table td {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -322,22 +410,22 @@
 
               <!-- Linha 1 — Maratona confirmada -->
               <tr data-status="proximas">
-                <td>
+                <td data-label="Ações">
                   <button class="btn-opcoes" onclick="abrirModal('modal-1')">
                     <i class="fas fa-bars"></i> Detalhes
                   </button>
                 </td>
-                <td>
+                <td data-label="Inscrição">
                   <span class="insc-num">#RS-2026-04871</span>
                   <span class="insc-date">21/05/2026 às 14:32:10</span>
                 </td>
-                <td>
+                <td data-label="Evento">
                   <div class="insc-evt-name">Maratona de Sorocaba 2026</div>
                   <div class="insc-evt-date">21/06/2026 às 06:30</div>
                 </td>
-                <td><span class="insc-modalidade-txt">Corrida de Rua</span></td>
-                <td><span class="badge-status confirmada">Confirmada</span></td>
-                <td>
+                <td data-label="Modalidade"><span class="insc-modalidade-txt">Corrida de Rua</span></td>
+                <td data-label="Status"><span class="badge-status confirmada">Confirmada</span></td>
+                <td data-label="Total">
                   <div class="insc-total-val">R$ 189,90 para 1 atleta</div>
                   <div class="insc-total-sub">Pix</div>
                 </td>
@@ -345,22 +433,22 @@
 
               <!-- Linha 2 — MTB pendente -->
               <tr data-status="proximas">
-                <td>
+                <td data-label="Ações">
                   <button class="btn-opcoes" onclick="abrirModal('modal-2')">
                     <i class="fas fa-bars"></i> Detalhes
                   </button>
                 </td>
-                <td>
+                <td data-label="Inscrição">
                   <span class="insc-num">#RS-2026-05120</span>
                   <span class="insc-date">03/06/2026 às 15:53:28</span>
                 </td>
-                <td>
+                <td data-label="Evento">
                   <div class="insc-evt-name">Desafio MTB Serra Azul</div>
                   <div class="insc-evt-date">12/07/2026 às 08:00</div>
                 </td>
-                <td><span class="insc-modalidade-txt">Mountain Bike</span></td>
-                <td><span class="badge-status pendente">Aguardando Pgto</span></td>
-                <td>
+                <td data-label="Modalidade"><span class="insc-modalidade-txt">Mountain Bike</span></td>
+                <td data-label="Status"><span class="badge-status pendente">Aguardando Pgto</span></td>
+                <td data-label="Total">
                   <div class="insc-total-val">R$ 149,90 para 1 atleta</div>
                   <div class="insc-total-sub">Pix</div>
                 </td>
@@ -368,22 +456,22 @@
 
               <!-- Linha 3 — Triathlon concluída -->
               <tr data-status="concluidas">
-                <td>
+                <td data-label="Ações">
                   <button class="btn-opcoes" onclick="abrirModal('modal-3')">
                     <i class="fas fa-bars"></i> Detalhes
                   </button>
                 </td>
-                <td>
+                <td data-label="Inscrição">
                   <span class="insc-num">#RS-2026-03044</span>
                   <span class="insc-date">10/03/2026 às 09:15:44</span>
                 </td>
-                <td>
+                <td data-label="Evento">
                   <div class="insc-evt-name">Triathlon Costa Verde — Sprint</div>
                   <div class="insc-evt-date">29/03/2026 às 07:00</div>
                 </td>
-                <td><span class="insc-modalidade-txt">Triathlon</span></td>
-                <td><span class="badge-status concluida">Concluída</span></td>
-                <td>
+                <td data-label="Modalidade"><span class="insc-modalidade-txt">Triathlon</span></td>
+                <td data-label="Status"><span class="badge-status concluida">Concluída</span></td>
+                <td data-label="Total">
                   <div class="insc-total-val">R$ 210,00 para 1 atleta</div>
                   <div class="insc-total-sub">Cartão de Crédito</div>
                 </td>
