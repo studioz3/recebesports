@@ -728,11 +728,12 @@ input, select, textarea {
   font-weight: 800;
   white-space: nowrap;
 }
-.wa-support-head img {
-  height: 34px;
-  max-width: 138px;
-  object-fit: contain;
+.wa-support-symbol {
+  width: 40px;
+  height: 40px;
+  display: block;
   margin-left: auto;
+  flex: none;
 }
 .wa-support-close {
   width: 32px;
@@ -809,7 +810,7 @@ input, select, textarea {
   .wa-support-menu { bottom: 64px; width: calc(100vw - 28px); border-radius: 22px 22px 16px 16px; }
   .wa-support-head { padding: 12px 14px; gap: 8px; }
   .wa-support-head strong { font-size: 14px; }
-  .wa-support-head img { height: 28px; max-width: 112px; }
+  .wa-support-symbol { width: 34px; height: 34px; }
   .wa-support-body { padding: 22px 16px 20px; }
   .wa-support-msg { font-size: 15px; }
   .wa-support-options a { min-height: 48px; font-size: 14px; }

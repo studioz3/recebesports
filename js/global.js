@@ -171,7 +171,28 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="wa-support-head">
           <span class="wa-support-avatar"><i class="fas fa-user"></i></span>
           <strong>Suporte Recebe Sports</strong>
-          <img src="assets/logo.svg" alt="Recebe Sports">
+          <svg class="wa-support-symbol" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xodm="http://www.corel.com/coreldraw/odm/2003" xml:space="preserve" width="74px" height="74px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 0.264 0.264" aria-hidden="true" focusable="false">
+            <defs>
+              <style type="text/css">
+                .fil0 {fill:black}
+                .fil1 {fill:#002248}
+                .fil2 {fill:#FF6600}
+              </style>
+              <mask id="id0-menu-support">
+                <linearGradient id="id1-menu-support" gradientUnits="userSpaceOnUse" x1="0.174" y1="0.092" x2="0.074" y2="0.105">
+                  <stop offset="0" style="stop-opacity:1; stop-color:white"></stop>
+                  <stop offset="1" style="stop-opacity:0; stop-color:white"></stop>
+                </linearGradient>
+                <rect style="fill:url(#id1-menu-support)" x="0.036" y="0.089" width="0.11" height="0.039"></rect>
+              </mask>
+            </defs>
+            <g id="Camada_x0020_1_support">
+              <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+              <path class="fil0" style="mask:url(#id0-menu-support)" d="M0.07 0.128c-0.005,-0.025 0.063,-0.013 0.076,-0.031 -0.009,-0.002 -0.053,-0.009 -0.046,-0.008 -0.02,0.006 -0.055,0.008 -0.064,0.024 -0.001,0.001 0.008,0.007 0.007,0.008l0.027 0.007z"></path>
+              <circle class="fil1" cx="0.132" cy="0.132" r="0.132"></circle>
+              <path class="fil2" d="M0.229 0.177c-0.029,-0.003 -0.13,-0.026 -0.136,-0.047 -0.007,-0.02 0.06,-0.005 0.048,-0.029 -0.006,-0.016 -0.075,-0.018 -0.107,-0.017l0.024 0.018c0.019,-0.001 0.039,0 0.054,0.003 -0.014,0.003 -0.035,0.005 -0.042,0.015 -0.022,0.035 0.142,0.069 0.159,0.057z"></path>
+            </g>
+          </svg>
           <button type="button" class="wa-support-close" aria-label="Fechar menu">&times;</button>
         </div>
         <div class="wa-support-body">
