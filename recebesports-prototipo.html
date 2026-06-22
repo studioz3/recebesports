@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -1808,7 +1808,6 @@ function reportView(r){
         <div class="rep-fmt">
           <label class="fmt-chip on" onclick="pickFmt(this)">${ic('doc2')}PDF</label>
           <label class="fmt-chip" onclick="pickFmt(this)">${ic('hash')}Excel</label>
-          <label class="fmt-chip" onclick="pickFmt(this)">${ic('list')}CSV</label>
           <label class="fmt-chip" onclick="pickFmt(this)">${ic('print')}Imprimir</label>
         </div>
 
@@ -1857,7 +1856,6 @@ function pickFmt(el){
 }
 
 /* ---- shared filter fragments ---- */
-const F_UNIDADE={t:'select',label:'Unidade',ph:'Todas as unidades',options:['00 · Matriz','01 · Filial Andradina']};
 const F_EVENTO ={t:'select',label:'Evento',req:1,ph:'Selecione o evento',options:['4142 · 2ª Cascalheira Trail Run','3989 · 3ª Clodoaldo Run','4409 · 1ª Lagartixa Runner']};
 const F_DIST   ={t:'select',label:'Distância',ph:'Todas as distâncias',options:['Corrida 5 KM','Corrida 7 KM','Corrida 10 KM','Caminhada']};
 const F_ORG    ={t:'select',label:'Organizador',ph:'Todos os organizadores',options:['KMS Assessoria','Fernando Lima Assessoria']};
@@ -1870,28 +1868,28 @@ const REP={
   'rel-crono':{
     title:'Relatório de Cronometragem', short:'Cronometragem', icon:'clock',
     desc:'Planilha completa de cronometragem para importação no sistema de chips, com numeração, categoria e equipe.',
-    fields:[F_EVENTO,F_DIST,
+    fields:[F_DE,F_ATE,F_EVENTO,F_DIST,
       {t:'select',label:'Categoria',ph:'Todas as categorias',options:['Geral','60 anos ou mais','PCD']},
       {t:'select',label:'Sexo',ph:'Ambos',options:['Masculino','Feminino']},
       {t:'select',label:'Equipe',ph:'Todas as equipes',options:['Hidalgo Treinamento','Elite Run']},
-      F_CIDADE,F_DE,F_ATE,F_TGPGTO],
+      F_CIDADE,F_TGPGTO],
     includes:[['Atletas no recorte','229'],['Número de peito','sequencial'],['Chip','vinculado'],['Categoria e Sexo','✓'],['Equipe e Cidade','✓']],
     note:'A planilha de cronometragem segue o layout padrão de importação para sistemas de chip RFID.',
   },
   'rel-crono-r':{
     title:'Cronometragem Reduzida', short:'Cronometragem Reduzida', icon:'pin2',
     desc:'Versão enxuta da planilha de cronometragem — apenas número, nome e categoria do atleta.',
-    fields:[F_UNIDADE,F_EVENTO,F_DIST,F_CIDADE,F_DE,F_ATE,F_TGPGTO],
+    fields:[F_DE,F_ATE,F_EVENTO,F_DIST,F_CIDADE,F_TGPGTO],
     includes:[['Número de peito','✓'],['Nome do atleta','✓'],['Categoria','✓'],['Distância','✓'],['Total de linhas','229']],
     note:'Formato reduzido ideal para conferência rápida no dia da prova e impressão da largada.',
   },
   'rel-inscricoes':{
     title:'Relatório de Inscrições', short:'Inscrições', icon:'list',
     desc:'Listagem detalhada de inscrições com dados cadastrais, pagamento, status e descontos aplicados.',
-    fields:[F_UNIDADE,F_EVENTO,F_DIST,F_ORG,
+    fields:[F_DE,F_ATE,F_EVENTO,F_DIST,F_ORG,
       {t:'select',label:'Forma de Pagamento',ph:'Todas as formas',options:['PIX','Cartão de Crédito','Boleto']},
-      {t:'select',label:'Status da Inscrição',ph:'Todos os status',options:['Paga','Em aberto','Cancelada','Estornada']},
-      F_CIDADE,F_DE,F_ATE,
+      {t:'select',label:'Status da Inscrição',options:['Todas','Aberta','Bloqueada','Cancelada','Confirmada','Cortesia','Pago','Estornadas','Sorteio Cortesia']},
+      F_CIDADE,
       {t:'toggle',label:'Somente inscrições com desconto'},F_TGPGTO],
     includes:[['Inscrições no período','172'],['Dados do atleta','completos'],['Pagamento e Status','✓'],['Cupom e Desconto','✓'],['Equipe e Camiseta','✓']],
     note:'O relatório respeita a LGPD: dados sensíveis ficam disponíveis somente ao organizador responsável.',
@@ -1899,31 +1897,26 @@ const REP={
   'rel-agrupadas':{
     title:'Inscrições Agrupadas', short:'Inscrições Agrupadas', icon:'layers',
     desc:'Totais consolidados de inscrições agrupados por um critério, ideais para visão gerencial e logística.',
-    fields:[F_UNIDADE,
+    fields:[F_DE,F_ATE,
       {t:'select',label:'Eventos',ph:'Selecione um ou mais eventos',options:['4142 · Cascalheira Trail Run','3989 · Clodoaldo Run']},
       F_ORG,
-      {t:'select',label:'Agrupar por',options:['Cidade','Categoria','Distância','Tamanho de Camiseta','Equipe','Forma de Pagamento']},
-      F_DE,F_ATE,F_TGPGTO],
+      {t:'select',label:'Agrupar por',options:['Camiseta','Cidade','Equipe','Categoria','Distância','Forma de Pagamento']},
+      F_TGPGTO],
     includes:[['Critério de agrupamento','Cidade'],['Eventos somados','até 10'],['Subtotais por grupo','✓'],['Total geral','✓'],['Percentual relativo','✓']],
     note:'Permite somar vários eventos no mesmo relatório — útil para o fechamento de temporada.',
   },
   'rel-externas':{
     title:'Inscrições Externas', short:'Inscrições Externas', icon:'external',
     desc:'Inscrições importadas de canais externos: cortesias, lotes de patrocinador e planilhas manuais.',
-    fields:[F_UNIDADE,F_EVENTO,F_DIST,
-      {t:'select',label:'Origem',ph:'Todas as origens',options:['Cortesia','Patrocinador','Importação manual']},
-      {t:'select',label:'Status',ph:'Todos os status',options:['Confirmada','Pendente']},
-      F_DE,F_ATE],
-    includes:[['Inscrições externas','24'],['Origem do registro','✓'],['Responsável pela inclusão','✓'],['Kit e Camiseta','✓'],['Data de importação','✓']],
+    fields:[F_DE,F_ATE,F_EVENTO,F_DIST,
+      {t:'select',label:'Status',ph:'Todos os status',options:['Todas','Cortesia','Pago','A Receber','Outro']}],
+    includes:[['Inscrições externas','24'],['Status da inscrição','✓'],['Responsável pela inclusão','✓'],['Kit e Camiseta','✓'],['Data de importação','✓']],
     note:'Inscrições externas não geram cobrança e não entram no cálculo de repasse financeiro.',
   },
   'rel-base':{
     title:'Base Completa', short:'Base Completa', icon:'database',
     desc:'Exportação integral da base de inscritos do evento, com todos os campos disponíveis no sistema.',
-    fields:[F_UNIDADE,F_EVENTO,F_DE,F_ATE,
-      {t:'toggle',label:'Incluir inscrições canceladas'},
-      {t:'toggle',label:'Incluir dados de pagamento'},
-      {t:'toggle',label:'Incluir campos personalizados'}],
+    fields:[F_DE,F_ATE,F_EVENTO],
     includes:[['Registros estimados','478'],['Colunas exportadas','60+'],['Histórico de status','✓'],['Pagamento e Repasse','opcional'],['Formato recomendado','Excel']],
     note:'Exportação pesada — o arquivo é gerado em segundo plano e enviado por e-mail quando concluído.',
   },
@@ -1964,7 +1957,7 @@ const ROUTES={
 ['rel-crono','rel-crono-r','rel-inscricoes','rel-agrupadas','rel-externas','rel-base'].forEach(id=>{
   const r=REP[id];
   ROUTES[id]={fn:()=>reportView(r),trail:['Relatórios'],title:r.title,icon:r.icon,
-    actions:[{l:'Agendar envio',i:'clock',c:'btn-ghost'}]};
+    actions:[]};
 });
 
 /* ============================================================
