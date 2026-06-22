@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    RECEBE DIGITAL — JS Global
    Micro-interações e helpers
    ========================================================================== */
@@ -146,29 +146,88 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 })();
 
-// ==========================================================================
-// BOTÃO FLUTUANTE WHATSAPP — balão de suporte
-// Aparece aos 5s, fecha aos 15s (10s depois).
-// ==========================================================================
-(function waFloatBalloon() {
+// ========================================================================== 
+// BOTAO FLUTUANTE DE SUPORTE - menu de atendimento
+// ========================================================================== 
+(function supportFloatMenu() {
   document.addEventListener('DOMContentLoaded', function () {
+    var wrap = document.getElementById('waFloat');
     var balloon = document.getElementById('waBalloon');
-    var btn     = document.getElementById('waBtn');
-    if (!balloon || !btn) return;
+    var btn = document.getElementById('waBtn');
+    if (!wrap || !btn) return;
 
+    btn.removeAttribute('onclick');
+    btn.setAttribute('type', 'button');
+    btn.setAttribute('aria-label', 'Abrir menu de suporte');
+    btn.setAttribute('aria-expanded', 'false');
+
+    if (!document.getElementById('waSupportMenu')) {
+      var menu = document.createElement('div');
+      menu.className = 'wa-support-menu';
+      menu.id = 'waSupportMenu';
+      menu.setAttribute('role', 'dialog');
+      menu.setAttribute('aria-label', 'Suporte Recebe Sports');
+      menu.innerHTML = `
+        <div class="wa-support-head">
+          <span class="wa-support-avatar"><i class="fas fa-user"></i></span>
+          <strong>Suporte Recebe Sports</strong>
+          <img src="assets/logo.svg" alt="Recebe Sports">
+          <button type="button" class="wa-support-close" aria-label="Fechar menu">&times;</button>
+        </div>
+        <div class="wa-support-body">
+          <div class="wa-support-msg">Olá! Bem-vindo ao atendimento Recebe Sports. Como posso ajudar você hoje?</div>
+          <div class="wa-support-options">
+            <a href="login.html">Área do atleta</a>
+            <a href="inscricao-pagamento.html"><span>|||</span> 2ª Via boleto/pix</a>
+            <a href="login.html"><i class="fas fa-key"></i> Recuperar senha</a>
+            <a href="perfil-minhas-inscricoes.html"><i class="fas fa-file-invoice"></i> Comp. Inscrição</a>
+            <a href="cadastro-1.html"><i class="fas fa-user-plus"></i> Cadastre-se</a>
+          </div>
+        </div>`;
+      if (balloon) wrap.insertBefore(menu, btn);
+      else wrap.insertBefore(menu, btn);
+    }
+
+    var supportMenu = document.getElementById('waSupportMenu');
+    var closeBtn = supportMenu.querySelector('.wa-support-close');
     var openTimer, closeTimer;
 
-    openTimer = setTimeout(function () {
-      balloon.classList.add('visible');
-      closeTimer = setTimeout(function () {
-        balloon.classList.remove('visible');
-      }, 10000);
-    }, 5000);
+    function setOpen(open) {
+      wrap.classList.toggle('support-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Fechar menu de suporte' : 'Abrir menu de suporte');
+      if (balloon) balloon.classList.remove('visible');
+    }
 
-    btn.addEventListener('click', function () {
+    if (balloon) {
+      openTimer = setTimeout(function () {
+        if (!wrap.classList.contains('support-open')) {
+          balloon.classList.add('visible');
+          closeTimer = setTimeout(function () { balloon.classList.remove('visible'); }, 10000);
+        }
+      }, 5000);
+    }
+
+    btn.addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
       clearTimeout(openTimer);
       clearTimeout(closeTimer);
-      balloon.classList.remove('visible');
+      setOpen(!wrap.classList.contains('support-open'));
+    });
+
+    closeBtn.addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      setOpen(false);
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!wrap.contains(event.target)) setOpen(false);
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') setOpen(false);
     });
   });
 })();

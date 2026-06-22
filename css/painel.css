@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    RECEBESPORTS — PAINEL DO ORGANIZADOR · folha de estilo
    Redesign do sistema interno · prototipo
    ============================================================ */
@@ -673,6 +673,18 @@ textarea.inp{height:auto;padding:11px 13px;resize:vertical;line-height:1.55}
 }
 .pm-disp-link svg{width:14px;height:14px}
 .pm-disp-link:hover{color:var(--brand)}
+.pm-disp-withdraw{
+  width:100%;min-height:46px;display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  border:0;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand-700));color:#fff;
+  font-family:var(--font);font-size:13.5px;font-weight:800;cursor:pointer;position:relative;z-index:1;
+  box-shadow:0 12px 26px rgba(241,87,27,.28), inset 0 1px 0 rgba(255,255,255,.18);
+  transition:box-shadow .14s ease,transform .14s ease,filter .14s ease;
+}
+.pm-disp-withdraw svg{width:17px;height:17px;flex:none}
+.pm-disp-withdraw span{line-height:1}
+.pm-disp-withdraw:hover{filter:saturate(1.05);box-shadow:0 15px 30px rgba(241,87,27,.34), inset 0 1px 0 rgba(255,255,255,.2);transform:translateY(-1px)}
+.pm-disp-withdraw:active{transform:translateY(0);box-shadow:0 8px 18px rgba(241,87,27,.24)}
+.pm-disp-withdraw:focus-visible{outline:3px solid rgba(241,87,27,.24);outline-offset:3px}
 
 /* responsive: pm-grid → 3 cols at medium, 2 at small, 1 at tiny */
 @media(max-width:1400px){.pm-grid{grid-template-columns:repeat(3,1fr)}}
