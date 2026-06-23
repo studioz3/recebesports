@@ -895,3 +895,28 @@
   font-weight: 700;
   line-height: 1.2;
 }
+/* Refinamento de peso visual na tabela: bold apenas para atleta e equipe */
+.tabela-result tbody td,
+.tabela-result tbody .cat-col,
+.tabela-result tbody .pace-col,
+.tabela-result tbody .tempo-col,
+.tabela-result tbody .cidade-nome,
+.tabela-result tbody .atleta-peito-inline {
+  font-weight: 400;
+}
+
+.tabela-result tbody .atleta-nome,
+.tabela-result tbody .equipe-nome {
+  font-weight: 800;
+}
+
+.atleta-peito-inline {
+  display: inline;
+  color: var(--color-gray-text);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.tabela-result tbody .ranking-badge {
+  font-weight: 400;
+}

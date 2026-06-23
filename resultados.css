@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    RESULTADOS — listagem e resultado de evento
    ========================================================================== */
 
@@ -272,7 +272,7 @@
   align-items: center;
   gap: 7px;
   color: var(--color-text);
-  font-family: 'Courier New', monospace;
+  font-family: var(--font);
   font-weight: 600;
 }
 
@@ -321,6 +321,21 @@
   margin-bottom: 24px;
 }
 
+.evento-head-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 380px);
+  gap: 28px;
+  align-items: start;
+}
+
+.evento-head-main {
+  min-width: 0;
+}
+
+.evento-head-modalidade {
+  min-width: 0;
+}
+
 .evento-head-top {
   display: flex;
   gap: 18px;
@@ -356,6 +371,41 @@
   margin: 16px 0;
 }
 
+.evento-head-actions {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.btn-contestar-resultado {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 9px 16px;
+  border-radius: 6px;
+  background: #25d366;
+  color: var(--color-white);
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+
+.btn-contestar-resultado:hover {
+  background: #1fb85a;
+  color: var(--color-white);
+  transform: translateY(-1px);
+}
+
+.btn-contestar-resultado i {
+  font-size: 16px;
+}
+
 .evento-sobre {
   font-size: 13px;
   color: var(--color-gray-text);
@@ -369,10 +419,9 @@
 }
 
 .evento-atualizado {
-  text-align: right;
+  text-align: left;
   font-size: 12.5px;
   color: var(--color-gray-text);
-  margin-top: 14px;
 }
 
 .evento-atualizado a {
@@ -385,19 +434,19 @@
   font-size: 15px;
   font-weight: 700;
   color: var(--color-text);
-  margin: 4px 0 12px;
+  margin: 0 0 12px;
 }
 
 .modalidade-card {
-  max-width: 440px;
+  max-width: none;
   border: 1px solid #d6d6d6;
   border-radius: 6px;
   overflow: hidden;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .modalidade-card-header {
-  background: #b9d8ee;
+  background: #eed9b9;
   color: var(--color-dark);
   font-weight: 800;
   font-size: 16px;
@@ -426,7 +475,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Courier New', monospace;
+  font-family: var(--font);
   font-weight: 600;
   color: var(--color-text);
 }
@@ -444,10 +493,11 @@
 }
 
 .outras-modalidades {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--color-text);
-  margin-top: 4px;
+  margin: 0;
+  line-height: 1.45;
 }
 
 .outras-modalidades span {
@@ -457,7 +507,7 @@
 
 /* Barra Resultado */
 .resultado-bar {
-  background: #b9d8ee;
+  background: #eed9b9;
   color: var(--color-dark);
   font-weight: 700;
   font-size: 16px;
@@ -530,12 +580,14 @@
 
 .tabela-scroll {
   max-height: 440px;
-  overflow-y: auto;
-  padding: 0 10px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 14px;
 }
 
 .tabela-result {
   width: 100%;
+  min-width: 1080px;
   border-collapse: collapse;
   font-size: 12.5px;
 }
@@ -544,7 +596,7 @@
   text-align: left;
   font-weight: 700;
   color: var(--color-text);
-  padding: 9px 10px;
+  padding: 10px 12px;
   border-bottom: 2px solid #e0e0e0;
   background: var(--color-white);
   position: sticky;
@@ -560,15 +612,93 @@
 }
 
 .tabela-result td {
-  padding: 9px 10px;
+  padding: 11px 12px;
   border-bottom: 1px solid #f0f0f0;
-  font-family: 'Courier New', monospace;
+  font-family: var(--font);
   color: #333;
   white-space: nowrap;
 }
 
-.tabela-result td.nome-col,
+.tabela-result td.geral-col {
+  width: 72px;
+  font-family: inherit;
+}
+
+.tabela-result td.nome-col {
+  min-width: 220px;
+}
+
+
+.tabela-result td.cat-col {
+  width: 86px;
+  font-family: inherit;
+}
+
+
 .tabela-result td.equipe-col {
+  min-width: 170px;
+}
+
+.tabela-result td.cidade-col {
+  min-width: 132px;
+}
+
+.tabela-result td.pace-col {
+  min-width: 112px;
+  color: var(--color-text);
+}
+
+.pace-col span {
+  color: var(--color-gray-text);
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.ranking-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 30px;
+  height: 26px;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.ranking-badge.podium {
+  color: var(--color-dark);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .08);
+}
+
+.ranking-badge.podium i {
+  font-size: 11px;
+}
+
+.ranking-badge.pos-1 {
+  background: linear-gradient(135deg, #ffe08a, #f2b532);
+}
+
+.ranking-badge.pos-2 {
+  background: linear-gradient(135deg, #edf1f5, #b7c0cb);
+}
+
+.ranking-badge.pos-3 {
+  background: linear-gradient(135deg, #f2c39a, #c5793a);
+}
+
+.ranking-badge.top-ten {
+  background: #eaf3fb;
+  color: #1f5b7c;
+  border: 1px solid #c5deee;
+}
+
+.tabela-result td.nome-col,
+.tabela-result td.equipe-col,
+.tabela-result td.cidade-col {
   white-space: normal;
 }
 
@@ -591,14 +721,202 @@
    -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
   .resultados-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .evento-head-layout {
     grid-template-columns: 1fr;
+    gap: 22px;
   }
 
   .tabela-scroll {
     overflow-x: auto;
   }
+}
 
-  .tabela-result {
-    min-width: 720px;
+@media (max-width: 600px) {
+  .resultados-page,
+  .evento-res-page { padding: 22px 0 70px; }
+
+  .res-titulo { font-size: 19px; }
+
+  .res-abas {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
+  .res-abas::-webkit-scrollbar { display: none; }
+  .res-aba { flex-shrink: 0; white-space: nowrap; }
+
+  .res-card { padding: 14px 12px; gap: 12px; }
+  .data-badge { width: 54px; }
+  .data-badge .dia { font-size: 20px; }
+  .res-card-info .nome { font-size: 14px; }
+
+  .stat-card-header { font-size: 14px; }
+
+  .evento-head-card { padding: 18px 16px; }
+  .evento-head-top { flex-direction: column; gap: 12px; }
+  .evento-head-layout { gap: 18px; }
+  .evento-head-info .nome { font-size: 16px; }
+  .evento-head-actions { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .btn-contestar-resultado { width: 100%; }
+  .evento-atualizado { text-align: left; }
+
+  .modalidade-card { max-width: 100%; }
+  .resultado-bar { font-size: 14px; }
+
+  .genero-aba { padding: 12px 10px; font-size: 12px; }
+  .tabela-busca { flex-wrap: wrap; justify-content: flex-start; }
+  .tabela-busca input { width: 100%; }
+}
+/* Ajustes da tabela de resultado: fonte padrão, ações e leitura de equipe/cidade */
+.tabela-result {
+  min-width: 1080px;
+  font-family: var(--font);
+  font-size: 13px;
+}
+
+.tabela-result th,
+.tabela-result td {
+  font-family: var(--font);
+}
+
+.tabela-result td {
+  vertical-align: middle;
+}
+
+.tabela-result td.cat-col {
+  width: 78px;
+  color: var(--color-dark);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+
+.tabela-result td.equipe-cidade-col {
+  min-width: 210px;
+  white-space: normal;
+}
+
+.equipe-nome {
+  display: block;
+  color: var(--color-dark);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.cidade-nome {
+  display: block;
+  margin-top: 3px;
+  color: var(--color-gray-text);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.tabela-result td.pace-col {
+  min-width: 76px;
+  font-weight: 700;
+}
+
+.tabela-result td.tempo-col {
+  min-width: 118px;
+  color: var(--color-dark);
+  font-weight: 700;
+}
+
+.tabela-result td.acoes-col {
+  width: 104px;
+  white-space: nowrap;
+}
+
+.resultado-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.resultado-row-btn {
+  width: 34px;
+  height: 34px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid #d9e2ec;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--color-dark);
+  transition: var(--transition);
+}
+
+.resultado-row-btn:hover {
+  border-color: var(--color-orange);
+  background: rgba(255, 102, 0, 0.1);
+  color: var(--color-orange);
+  transform: translateY(-1px);
+}
+
+.resultado-row-btn.share {
+  color: var(--color-orange);
+}
+
+.resultado-row-btn.share:hover {
+  background: var(--color-orange);
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .tabela-result {
+    min-width: 1020px;
+    font-size: 12px;
+  }
+
+  .resultado-row-btn {
+    width: 32px;
+    height: 32px;
+  }
+}
+.atleta-nome {
+  display: block;
+  color: var(--color-text);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.atleta-peito {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 4px;
+  color: var(--color-gray-text);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+/* Refinamento de peso visual na tabela: bold apenas para atleta e equipe */
+.tabela-result tbody td,
+.tabela-result tbody .cat-col,
+.tabela-result tbody .pace-col,
+.tabela-result tbody .tempo-col,
+.tabela-result tbody .cidade-nome,
+.tabela-result tbody .atleta-peito-inline {
+  font-weight: 400;
+}
+
+.tabela-result tbody .atleta-nome,
+.tabela-result tbody .equipe-nome {
+  font-weight: 800;
+}
+
+.atleta-peito-inline {
+  display: inline;
+  color: var(--color-gray-text);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.tabela-result tbody .ranking-badge {
+  font-weight: 400;
 }
