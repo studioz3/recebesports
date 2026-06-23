@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -123,14 +123,13 @@
             <thead>
               <tr>
                 <th onclick="ordenar('geral')">Geral <span class="sort">▲▼</span></th>
-                <th onclick="ordenar('nome')">Nome <span class="sort">▲▼</span></th>
-                <th onclick="ordenar('numero')">Nº Peito <span class="sort">▲▼</span></th>
                 <th onclick="ordenar('cat')">Cat. <span class="sort">▲▼</span></th>
-                <th onclick="ordenar('equipe')">Equipe <span class="sort">▲▼</span></th>
-                <th onclick="ordenar('cidade')">Cidade <span class="sort">▲▼</span></th>
+                <th onclick="ordenar('nome')">Nome <span class="sort">▲▼</span></th>
+                <th onclick="ordenar('equipe')">Equipe/Cidade <span class="sort">▲▼</span></th>
                 <th onclick="ordenar('pace')">Pace <span class="sort">▲▼</span></th>
                 <th onclick="ordenar('tempo')">Tempo Liquid. <span class="sort">▲▼</span></th>
                 <th onclick="ordenar('gap')">Tempo <span class="sort">▲▼</span></th>
+                <th>Ações</th>
               </tr>
             </thead>
             <tbody id="tabelaBody"></tbody>
@@ -308,6 +307,29 @@
       return `${prefixo}${idade}26`;
     }
 
+    function formatarTempoMilesimos(tempo) {
+      if (!tempo) return '-';
+      return tempo.includes('.') ? tempo : `${tempo}.000`;
+    }
+
+    function verMaisResultado(numero) {
+      const atleta = corredores[generoAtivo].find(r => r.numero === numero);
+      showToast(`Abrindo detalhes de ${atleta ? atleta.nome : 'atleta'}...`, 'info');
+    }
+
+    function compartilharResultado(numero) {
+      const url = `${window.location.origin}${window.location.pathname}?resultado=${numero}`;
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(url).then(() => {
+          showToast('Link do resultado copiado.', 'sucesso');
+        }).catch(() => {
+          showToast('Não foi possível copiar o link automaticamente.', 'info');
+        });
+        return;
+      }
+      showToast('Link do resultado pronto para compartilhar.', 'info');
+    }
+
     function renderTabela() {
       const termo = (document.getElementById('buscaReg').value || '').trim().toUpperCase();
       let dados = corredores[generoAtivo].map((r, index) => ({
@@ -334,20 +356,33 @@
           String(r.numero).includes(termo)
         );
       }
-
       document.getElementById('tabelaBody').innerHTML = dados.map(r => `
         <tr>
           <td class="geral-col">${renderClassificacao(r.geral)}</td>
-          <td class="nome-col">${r.nome}</td>
-          <td class="peito-col">${r.numero}</td>
-          <td class="cat-col"><span class="cat-badge">${formatarCategoria(r.cat)}</span></td>
-          <td class="equipe-col">${r.equipe}</td>
-          <td class="cidade-col">${r.cidade}</td>
-          <td class="pace-col">${r.pace} <span>km/min</span></td>
-          <td>${r.tempo}</td>
-          <td>${r.gap}</td>
+          <td class="cat-col">${formatarCategoria(r.cat)}</td>
+          <td class="nome-col">
+            <span class="atleta-nome">${r.nome}</span>
+            <span class="atleta-peito">Nº Peito ${r.numero}</span>
+          </td>
+          <td class="equipe-cidade-col">
+            <span class="equipe-nome">${r.equipe}</span>
+            <span class="cidade-nome">${r.cidade}</span>
+          </td>
+          <td class="pace-col">${r.pace}</td>
+          <td class="tempo-col">${formatarTempoMilesimos(r.tempo)}</td>
+          <td class="tempo-col">${formatarTempoMilesimos(r.gap)}</td>
+          <td class="acoes-col">
+            <div class="resultado-actions">
+              <button type="button" class="resultado-row-btn" title="Ver mais" aria-label="Ver mais sobre ${r.nome}" onclick="verMaisResultado(${r.numero})">
+              <i class="fas fa-magnifying-glass"></i>
+            </button>
+              <button type="button" class="resultado-row-btn share" title="Compartilhar resultado" aria-label="Compartilhar resultado de ${r.nome}" onclick="compartilharResultado(${r.numero})">
+              <i class="fas fa-link"></i>
+            </button>
+            </div>
+          </td>
         </tr>`).join('') ||
-        '<tr><td colspan="9" style="text-align:center;padding:30px;font-family:inherit;color:#999;">Nenhum registro encontrado</td></tr>';
+        '<tr><td colspan="8" style="text-align:center;padding:30px;font-family:inherit;color:#999;">Nenhum registro encontrado</td></tr>';
 
       const total = totais[generoAtivo];
       const mostrando = termo ? dados.length : total;

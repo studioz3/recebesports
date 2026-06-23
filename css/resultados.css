@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    RESULTADOS — listagem e resultado de evento
    ========================================================================== */
 
@@ -272,7 +272,7 @@
   align-items: center;
   gap: 7px;
   color: var(--color-text);
-  font-family: 'Courier New', monospace;
+  font-family: var(--font);
   font-weight: 600;
 }
 
@@ -475,7 +475,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Courier New', monospace;
+  font-family: var(--font);
   font-weight: 600;
   color: var(--color-text);
 }
@@ -614,7 +614,7 @@
 .tabela-result td {
   padding: 11px 12px;
   border-bottom: 1px solid #f0f0f0;
-  font-family: 'Courier New', monospace;
+  font-family: var(--font);
   color: #333;
   white-space: nowrap;
 }
@@ -628,31 +628,12 @@
   min-width: 220px;
 }
 
-.tabela-result td.peito-col {
-  width: 90px;
-  font-weight: 700;
-  color: var(--color-text);
-}
 
 .tabela-result td.cat-col {
   width: 86px;
   font-family: inherit;
 }
 
-.cat-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 58px;
-  padding: 4px 8px;
-  border-radius: 999px;
-  background: #f1f5f9;
-  border: 1px solid #d8e0ea;
-  color: #31465b;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: .02em;
-}
 
 .tabela-result td.equipe-col {
   min-width: 170px;
@@ -789,4 +770,128 @@
   .genero-aba { padding: 12px 10px; font-size: 12px; }
   .tabela-busca { flex-wrap: wrap; justify-content: flex-start; }
   .tabela-busca input { width: 100%; }
+}
+/* Ajustes da tabela de resultado: fonte padrão, ações e leitura de equipe/cidade */
+.tabela-result {
+  min-width: 1080px;
+  font-family: var(--font);
+  font-size: 13px;
+}
+
+.tabela-result th,
+.tabela-result td {
+  font-family: var(--font);
+}
+
+.tabela-result td {
+  vertical-align: middle;
+}
+
+.tabela-result td.cat-col {
+  width: 78px;
+  color: var(--color-dark);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+
+.tabela-result td.equipe-cidade-col {
+  min-width: 210px;
+  white-space: normal;
+}
+
+.equipe-nome {
+  display: block;
+  color: var(--color-dark);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.cidade-nome {
+  display: block;
+  margin-top: 3px;
+  color: var(--color-gray-text);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.tabela-result td.pace-col {
+  min-width: 76px;
+  font-weight: 700;
+}
+
+.tabela-result td.tempo-col {
+  min-width: 118px;
+  color: var(--color-dark);
+  font-weight: 700;
+}
+
+.tabela-result td.acoes-col {
+  width: 104px;
+  white-space: nowrap;
+}
+
+.resultado-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.resultado-row-btn {
+  width: 34px;
+  height: 34px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid #d9e2ec;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--color-dark);
+  transition: var(--transition);
+}
+
+.resultado-row-btn:hover {
+  border-color: var(--color-orange);
+  background: rgba(255, 102, 0, 0.1);
+  color: var(--color-orange);
+  transform: translateY(-1px);
+}
+
+.resultado-row-btn.share {
+  color: var(--color-orange);
+}
+
+.resultado-row-btn.share:hover {
+  background: var(--color-orange);
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .tabela-result {
+    min-width: 1020px;
+    font-size: 12px;
+  }
+
+  .resultado-row-btn {
+    width: 32px;
+    height: 32px;
+  }
+}
+.atleta-nome {
+  display: block;
+  color: var(--color-text);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.atleta-peito {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 4px;
+  color: var(--color-gray-text);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
 }
