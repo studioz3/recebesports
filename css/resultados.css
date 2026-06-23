@@ -866,6 +866,10 @@
 
 .resultado-row-btn.share {
   color: var(--color-dark);
+}
+
+.resultado-row-btn.sharemodal {
+  color: var(--color-dark);
   width: 140px;
 }
 
