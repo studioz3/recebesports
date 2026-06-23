@@ -446,8 +446,8 @@
 }
 
 .modalidade-card-header {
-  background: #eed9b9;
-  color: var(--color-dark);
+  background: var(--color-dark);
+  color: #fff;
   font-weight: 800;
   font-size: 16px;
   padding: 12px;
@@ -507,8 +507,8 @@
 
 /* Barra Resultado */
 .resultado-bar {
-  background: #eed9b9;
-  color: var(--color-dark);
+  background: var(--color-dark);
+  color: #fff;
   font-weight: 700;
   font-size: 16px;
   padding: 14px 20px;
