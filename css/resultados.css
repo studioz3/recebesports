@@ -959,7 +959,7 @@ body.resultado-modal-open {
 .resultado-modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(130, 205, 228, 0.72);
+  background: rgba(27, 27, 27, 0.72);
   backdrop-filter: blur(1px);
 }
 
@@ -971,7 +971,6 @@ body.resultado-modal-open {
   display: grid;
   grid-template-columns: 82px minmax(0, 1fr);
   overflow: hidden;
-  border: 4px solid #454545;
   border-radius: 10px;
   background: #fff;
   box-shadow: 0 28px 70px rgba(0, 34, 72, 0.32);
