@@ -1,6 +1,9 @@
 ﻿/* ==========================================================================
    RESULTADOS — listagem e resultado de evento
    ========================================================================== */
+.container{
+  max-width: 1230px !important;
+}
 
 .resultados-page,
 .evento-res-page {
