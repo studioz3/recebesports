@@ -860,7 +860,7 @@
 }
 
 .resultado-row-btn.share {
-  color: var(--color-orange);
+  color: var(--color-dark);
 }
 
 .resultado-row-btn.share:hover {
@@ -919,4 +919,10 @@
 
 .tabela-result tbody .ranking-badge {
   font-weight: 400;
+}
+.resultado-share-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+  fill: currentColor;
 }
