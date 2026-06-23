@@ -854,6 +854,7 @@
   background: #fff;
   color: var(--color-dark);
   transition: var(--transition);
+  grid-auto-flow: column;
 }
 
 .resultado-row-btn:hover {
@@ -865,7 +866,7 @@
 
 .resultado-row-btn.share {
   color: var(--color-dark);
-  
+  width: 140px;
 }
 
 .resultado-row-btn.share:hover {
@@ -1079,7 +1080,7 @@ body.resultado-modal-open {
 .resultado-modal-metrics strong {
   color: #000;
   font-size: 25px;
-  font-weight: bold;
+  font-weight: 500;
   line-height: 1.1;
 }
 
