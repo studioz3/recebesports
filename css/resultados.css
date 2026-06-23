@@ -843,6 +843,7 @@
 .resultado-row-btn {
   width: 34px;
   height: 34px;
+  padding: 5px;
   display: inline-grid;
   place-items: center;
   border: 1px solid #d9e2ec;
@@ -860,12 +861,15 @@
 }
 
 .resultado-row-btn.share {
-  color: var(--color-orange);
+  color: var(--color-dark);
+  
 }
 
 .resultado-row-btn.share:hover {
-  background: var(--color-orange);
-  color: #fff;
+  border-color: var(--color-orange);
+  background: rgba(255, 102, 0, 0.1);
+  color: var(--color-orange);
+  transform: translateY(-1px);
 }
 
 @media (max-width: 600px) {
@@ -919,4 +923,10 @@
 
 .tabela-result tbody .ranking-badge {
   font-weight: 400;
+}
+.resultado-share-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+  fill: currentColor;
 }
