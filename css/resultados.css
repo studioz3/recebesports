@@ -939,6 +939,7 @@
   font-size: 12px;
   font-weight: 400;
   white-space: nowrap;
+  text-align: center;
 }
 /* Modal de detalhes do resultado */
 body.resultado-modal-open {
@@ -1025,7 +1026,7 @@ body.resultado-modal-open {
 .resultado-modal-top h2 {
   color: #111;
   font-size: 28px;
-  font-weight: 500;
+  font-weight: bold;
   line-height: 1.2;
   text-transform: uppercase;
 }
@@ -1078,7 +1079,7 @@ body.resultado-modal-open {
 .resultado-modal-metrics strong {
   color: #000;
   font-size: 25px;
-  font-weight: 600;
+  font-weight: bold;
   line-height: 1.1;
 }
 
