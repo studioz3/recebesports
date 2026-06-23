@@ -123,6 +123,7 @@
             <thead>
               <tr>
                 <th onclick="ordenar('geral')">Geral <span class="sort">▲▼</span></th>
+                <th onclick="ordenar('rankCat')">Ranking Cat. <span class="sort">▲▼</span></th>
                 <th onclick="ordenar('cat')">Cat. <span class="sort">▲▼</span></th>
                 <th onclick="ordenar('nome')">Nome <span class="sort">▲▼</span></th>
                 <th onclick="ordenar('equipe')">Equipe/Cidade <span class="sort">▲▼</span></th>
@@ -141,7 +142,40 @@
 
     </div>
   </section>
+  <!-- MODAL DETALHES DO RESULTADO -->
+  <div class="resultado-modal" id="resultadoModal" aria-hidden="true">
+    <div class="resultado-modal-backdrop" data-modal-close></div>
+    <div class="resultado-modal-panel" role="dialog" aria-modal="true" aria-labelledby="resultadoModalTitulo">
+      <div class="resultado-modal-rail">
+        <button type="button" class="resultado-modal-icon close" aria-label="Fechar detalhes" data-modal-close>
+          <i class="fas fa-xmark"></i>
+        </button>
+        <button type="button" class="resultado-modal-icon" aria-label="Imprimir resultado" onclick="window.print()">
+          <i class="fas fa-print"></i>
+        </button>
+        <button type="button" class="resultado-modal-icon" aria-label="Atualizar detalhes" onclick="showToast('Resultado atualizado.', 'info')">
+          <i class="fas fa-rotate-right"></i>
+        </button>
+      </div>
 
+      <div class="resultado-modal-content">
+        <div class="resultado-modal-top">
+          <h2 id="resultadoModalTitulo">Detalhes do Resultado</h2>
+          <button type="button" class="resultado-modal-share" id="resultadoModalShare">
+            <i class="fab fa-facebook-f"></i> Compartilhar
+          </button>
+        </div>
+
+        <div class="resultado-modal-info" id="resultadoModalInfo"></div>
+
+        <div class="resultado-modal-section-title">Resultados</div>
+        <div class="resultado-modal-metrics" id="resultadoModalMetrics"></div>
+
+        <div class="resultado-modal-section-title">Voltas</div>
+        <div class="resultado-modal-laps" id="resultadoModalLaps"></div>
+      </div>
+    </div>
+  </div>
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
@@ -272,7 +306,7 @@
     };
 
     let generoAtivo = 'fem';
-    const numericas = ['geral', 'cat', 'numero'];
+    const numericas = ['geral', 'rankCat', 'cat', 'numero'];
     let ordenacao = { col: 'geral', dir: 1 };
 
     function trocarGenero(g, btn) {
@@ -307,14 +341,98 @@
       return `${prefixo}${idade}26`;
     }
 
+    function montarDadosResultados() {
+      let dados = corredores[generoAtivo].map((r, index) => ({
+        ...r,
+        cidade: cidades[generoAtivo][index] || 'Araçatuba - SP'
+      }));
+
+      const rankingPorCategoria = {};
+      const totalPorCategoria = {};
+      const rankingPorNumero = new Map();
+      dados.forEach(r => { totalPorCategoria[r.cat] = (totalPorCategoria[r.cat] || 0) + 1; });
+      [...dados].sort((a, b) => a.geral - b.geral).forEach(r => {
+        rankingPorCategoria[r.cat] = (rankingPorCategoria[r.cat] || 0) + 1;
+        rankingPorNumero.set(r.numero, rankingPorCategoria[r.cat]);
+      });
+
+      return dados.map(r => ({
+        ...r,
+        rankCat: rankingPorNumero.get(r.numero),
+        totalCat: totalPorCategoria[r.cat]
+      }));
+    }
+
+    function tempoParaMs(tempo) {
+      const [h, m, s] = tempo.split(':').map(Number);
+      return ((h * 60 * 60) + (m * 60) + s) * 1000;
+    }
+
+    function msParaTempo(ms) {
+      const total = Math.max(0, Math.round(ms));
+      const h = Math.floor(total / 3600000);
+      const m = Math.floor((total % 3600000) / 60000);
+      const s = Math.floor((total % 60000) / 1000);
+      const milli = total % 1000;
+      return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}.${String(milli).padStart(3, '0')}`;
+    }
     function formatarTempoMilesimos(tempo) {
       if (!tempo) return '-';
       return tempo.includes('.') ? tempo : `${tempo}.000`;
     }
 
     function verMaisResultado(numero) {
-      const atleta = corredores[generoAtivo].find(r => r.numero === numero);
-      showToast(`Abrindo detalhes de ${atleta ? atleta.nome : 'atleta'}...`, 'info');
+      const atleta = montarDadosResultados().find(r => r.numero === numero);
+      if (!atleta) return;
+
+      const sexo = generoAtivo === 'fem' ? 'Feminino' : 'Masculino';
+      const modalidade = generoAtivo === 'fem' ? '5 KM FEM' : '5 KM MASC';
+      const categoria = formatarCategoria(atleta.cat);
+      const tempoLiquido = formatarTempoMilesimos(atleta.tempo);
+      const tempoBruto = msParaTempo(tempoParaMs(atleta.tempo) + 3421);
+      const ultimaVolta = tempoLiquido;
+      const horaLargada = '07:33:34';
+      const posSexo = generoAtivo === 'fem' ? `${atleta.geral}º` : '—';
+
+      document.getElementById('resultadoModalTitulo').textContent = atleta.nome;
+      document.getElementById('resultadoModalInfo').innerHTML = `
+        <div><span>Num</span><strong>${atleta.numero}</strong></div>
+        <div><span>Modalidade</span><strong>${modalidade}</strong></div>
+        <div><span>Categoria</span><strong>${categoria}</strong></div>
+        <div><span>Sexo</span><strong>${sexo}</strong></div>
+        <div><span>Equipe</span><strong>${atleta.equipe}</strong></div>
+        <div><span>Cidade</span><strong>${atleta.cidade}</strong></div>
+      `;
+      document.getElementById('resultadoModalMetrics').innerHTML = `
+        <div><span>Pos</span><strong>${atleta.geral}º</strong></div>
+        <div><span>Tempo</span><strong>${tempoLiquido}</strong></div>
+        <div><span>Voltas</span><strong>1 volta</strong></div>
+        <div><span>Tempo Bruto</span><strong>${tempoBruto}</strong></div>
+        <div><span>Hora Largada</span><strong>${horaLargada}</strong></div>
+        <div><span>Última Volta</span><strong>${ultimaVolta}</strong></div>
+        <div><span>Pos Categoria</span><strong>${atleta.rankCat}º / ${atleta.totalCat} ${categoria}</strong></div>
+        <div><span>${generoAtivo === 'fem' ? 'Somente Mulheres' : 'Somente Homens'}</span><strong>${posSexo}</strong></div>
+      `;
+      document.getElementById('resultadoModalLaps').innerHTML = `
+        <p>Melhor volta: <strong>${ultimaVolta}</strong></p>
+        <ol><li><strong>${ultimaVolta}</strong></li></ol>
+      `;
+      document.getElementById('resultadoModalShare').onclick = () => compartilharResultado(numero);
+      abrirResultadoModal();
+    }
+
+    function abrirResultadoModal() {
+      const modal = document.getElementById('resultadoModal');
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('resultado-modal-open');
+    }
+
+    function fecharResultadoModal() {
+      const modal = document.getElementById('resultadoModal');
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('resultado-modal-open');
     }
 
     function compartilharResultado(numero) {
@@ -332,10 +450,7 @@
 
     function renderTabela() {
       const termo = (document.getElementById('buscaReg').value || '').trim().toUpperCase();
-      let dados = corredores[generoAtivo].map((r, index) => ({
-        ...r,
-        cidade: cidades[generoAtivo][index] || 'Araçatuba - SP'
-      }));
+      let dados = montarDadosResultados();
 
       // ordenação
       dados.sort((a, b) => {
@@ -359,6 +474,7 @@
       document.getElementById('tabelaBody').innerHTML = dados.map(r => `
         <tr>
           <td class="geral-col">${renderClassificacao(r.geral)}</td>
+          <td class="cat-rank-col">${r.rankCat}º</td>
           <td class="cat-col">${formatarCategoria(r.cat)}</td>
           <td class="nome-col">
             <span class="atleta-nome">${r.nome} <span class="atleta-peito-inline">Nº Peito ${r.numero}</span></span>
@@ -383,7 +499,7 @@
             </div>
           </td>
         </tr>`).join('') ||
-        '<tr><td colspan="8" style="text-align:center;padding:30px;font-family:inherit;color:#999;">Nenhum registro encontrado</td></tr>';
+        '<tr><td colspan="9" style="text-align:center;padding:30px;font-family:inherit;color:#999;">Nenhum registro encontrado</td></tr>';
 
       const total = totais[generoAtivo];
       const mostrando = termo ? dados.length : total;
@@ -391,6 +507,13 @@
         `Mostrando de 1 até ${mostrando} de ${total} registros`;
     }
 
+
+    document.querySelectorAll('[data-modal-close]').forEach(el => {
+      el.addEventListener('click', fecharResultadoModal);
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') fecharResultadoModal();
+    });
     renderTabela();
   </script>
 </body>
