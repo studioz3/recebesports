@@ -127,9 +127,9 @@
                 <th onclick="ordenar('cat')">Cat. <span class="sort">▲▼</span></th>
                 <th onclick="ordenar('nome')">Nome <span class="sort">▲▼</span></th>
                 <th onclick="ordenar('equipe')">Equipe/Cidade <span class="sort">▲▼</span></th>
-                <th onclick="ordenar('pace')">Pace <span class="sort">▲▼</span></th>
                 <th onclick="ordenar('tempo')">Tempo Liquid. <span class="sort">▲▼</span></th>
                 <th onclick="ordenar('gap')">Tempo <span class="sort">▲▼</span></th>
+                <th onclick="ordenar('pace')">Pace <span class="sort">▲▼</span></th>
                 <th>Ações</th>
               </tr>
             </thead>
@@ -485,9 +485,9 @@
             <span class="equipe-nome">${r.equipe}</span>
             <span class="cidade-nome">${r.cidade}</span>
           </td>
-          <td class="pace-col">${r.pace}</td>
           <td class="tempo-col">${formatarTempoMilesimos(r.tempo)}</td>
           <td class="tempo-col">${formatarTempoMilesimos(r.gap)}</td>
+          <td class="pace-col">${r.pace}</td>
           <td class="acoes-col">
             <div class="resultado-actions">
               <button type="button" class="resultado-row-btn" title="Ver mais" aria-label="Ver mais sobre ${r.nome}" onclick="verMaisResultado(${r.numero})">
